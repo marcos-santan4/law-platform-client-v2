@@ -6,7 +6,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 2rem;
+  // padding: 2rem;
   overflow: hidden;
 }
 
@@ -31,10 +31,15 @@
 
 .login-content {
   display: flex;
-  width: 100%;
-  max-width: 1200px;
-  height: 90vh;
+  width: 35%;
+  // max-width: 1200px;
+  height: 100vh;
   position: relative;
+  border-width: 3px;
+  border-style: solid;
+  border-color: initial;
+  border-radius: 11px;
+  border-image: linear-gradient(to top, #ddca92, rgba(0, 0, 0, 0)) 1 100%;
 }
 
 .login-main {
@@ -48,25 +53,16 @@
   z-index: 2;
 }
 
+.logo {
+  max-width: 50%;
+}
+
 .logo-container {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 1rem;
   margin-bottom: 3rem;
-}
-
-.logo-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.logo-text {
-  font-size: 2rem;
-  font-weight: 600;
-  color: #D4AF37;
-  letter-spacing: 0.1em;
-  margin: 0;
 }
 
 .login-form {
@@ -75,26 +71,28 @@
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+  align-items: center;
 }
 
 .form-group {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  width: 100%;
 }
 
 .form-group label {
-  color: white;
+  color: #7b809a;
   font-size: 0.9rem;
   font-weight: 400;
-  margin-bottom: 0.25rem;
 }
 
 .form-group input {
   width: 100%;
+  height: 40px;
   padding: 0.875rem 1rem;
   background: white;
-  border: 1px solid #D4AF37;
+  border: 1px solid #ddca92;
   border-radius: 4px;
   font-size: 1rem;
   color: #0d1f1f;
@@ -102,7 +100,7 @@
   transition: border-color 0.2s;
 
   &:focus {
-    border-color: #F4D03F;
+    border-color: #ddca92;
   }
 
   &::placeholder {
@@ -130,7 +128,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #D4AF37;
+  color: #ddca92;
   transition: opacity 0.2s;
 
   &:hover {
@@ -143,6 +141,7 @@
   justify-content: space-between;
   align-items: center;
   margin-top: 0.5rem;
+  width: 100%;
 }
 
 .remember-me {
@@ -181,7 +180,7 @@
 }
 
 .remember-me input[type="checkbox"]:checked + .toggle-switch {
-  background: #D4AF37;
+  background: #ddca92;
 }
 
 .remember-me input[type="checkbox"]:checked + .toggle-switch::after {
@@ -193,25 +192,24 @@
 }
 
 .forgot-password {
-  color: #D4AF37;
+  color: #fff;
   text-decoration: none;
   font-size: 0.9rem;
   transition: opacity 0.2s;
 
   &:hover {
     opacity: 0.7;
-    text-decoration: underline;
   }
 }
 
 .login-button {
-  width: 100%;
-  padding: 1rem 2rem;
+  width: 70%;
+  height: 40px;
   background: #1a3a3a;
-  border: 1px solid #D4AF37;
-  border-radius: 4px;
+  border: 1px solid #ddca92;
+  border-radius: 10px;
   color: white;
-  font-size: 1rem;
+  font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.1em;
   cursor: pointer;
@@ -220,7 +218,7 @@
 
   &:hover {
     background: #2a4a4a;
-    border-color: #F4D03F;
+    border-color: #ddca92;
   }
 
   &:active {
@@ -243,8 +241,7 @@
 }
 
 .register-link a {
-  color: #D4AF37;
-  text-decoration: underline;
+  color: #ddca92;
   font-size: 0.9rem;
   transition: opacity 0.2s;
 
@@ -255,7 +252,7 @@
 
 .login-divider {
   width: 1px;
-  background: #D4AF37;
+  background: #ddca92;
   position: relative;
   z-index: 1;
   flex-shrink: 0;

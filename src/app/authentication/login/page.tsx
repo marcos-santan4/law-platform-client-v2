@@ -1,7 +1,9 @@
 'use client';
 
 import { useState } from 'react';
+import logo from '../../../../public/images/logos/logo-mindlaw.png';
 import './style.scss';
+import Link from 'next/link';
 
 export default function LoginPage() {
   const [email, setEmail] = useState('');
@@ -25,7 +27,7 @@ export default function LoginPage() {
       <div className="login-content">
         <div className="login-main">
           <div className="logo-container">
-            <h1 className="logo-text">MINDLAW</h1>
+            <img src={logo.src} alt="logo do LAW" className="logo" />
           </div>
 
           <form className="login-form" onSubmit={handleSubmit}>
@@ -52,27 +54,6 @@ export default function LoginPage() {
                   placeholder=""
                   required
                 />
-                <button
-                  type="button"
-                  className="password-toggle"
-                  onClick={() => setShowPassword(!showPassword)}
-                  aria-label={showPassword ? 'Ocultar senha' : 'Mostrar senha'}
-                >
-                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    {showPassword ? (
-                      <>
-                        <path d="M10 3C6 3 3.5 5.5 2 8.5C3.5 11.5 6 14 10 14C14 14 16.5 11.5 18 8.5C16.5 5.5 14 3 10 3Z" stroke="#D4AF37" strokeWidth="1.5"/>
-                        <path d="M10 11C11.1046 11 12 10.1046 12 9C12 7.89543 11.1046 7 10 7C8.89543 7 8 7.89543 8 9C8 10.1046 8.89543 11 10 11Z" stroke="#D4AF37" strokeWidth="1.5"/>
-                        <path d="M3 3L17 17" stroke="#D4AF37" strokeWidth="1.5" strokeLinecap="round"/>
-                      </>
-                    ) : (
-                      <>
-                        <path d="M10 3C6 3 3.5 5.5 2 8.5C3.5 11.5 6 14 10 14C14 14 16.5 11.5 18 8.5C16.5 5.5 14 3 10 3Z" stroke="#D4AF37" strokeWidth="1.5"/>
-                        <path d="M10 11C11.1046 11 12 10.1046 12 9C12 7.89543 11.1046 7 10 7C8.89543 7 8 7.89543 8 9C8 10.1046 8.89543 11 10 11Z" stroke="#D4AF37" strokeWidth="1.5"/>
-                      </>
-                    )}
-                  </svg>
-                </button>
               </div>
             </div>
 
@@ -96,12 +77,10 @@ export default function LoginPage() {
 
           <div className="register-link">
             <p>Não tem uma conta?</p>
-            <a href="#">Registre-se</a>
+            <br />
+            <Link href="#">Registre-se</Link>
           </div>
         </div>
-{/* 
-        <div className="login-divider"></div>
-        <div className="login-sidebar"></div> */}
       </div>
     </div>
   );
