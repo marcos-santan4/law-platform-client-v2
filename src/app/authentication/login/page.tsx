@@ -2,8 +2,11 @@
 
 import { useState } from 'react';
 import logo from '../../../../public/images/logos/logo-mindlaw.png';
+import { SlArrowLeft } from "react-icons/sl";
+import { IoMdEye, IoMdEyeOff } from 'react-icons/io';
 import './style.scss';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function LoginPage() {
   const [email, setEmail] = useState('');
@@ -19,15 +22,15 @@ export default function LoginPage() {
   return (
     <div className="login-container">
       <button className="back-button" aria-label="Voltar">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M15 18L9 12L15 6" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-        </svg>
+        <SlArrowLeft size={18} />
       </button>
 
       <div className="login-content">
         <div className="login-main">
           <div className="logo-container">
-            <img src={logo.src} alt="logo do LAW" className="logo" />
+            {/* <img src={logo.src} alt="logo do LAW" className="logo" /> */}
+            <Image src={logo} alt="logo do LAW" className="logo" />
+
           </div>
 
           <form className="login-form" onSubmit={handleSubmit}>
@@ -54,6 +57,15 @@ export default function LoginPage() {
                   placeholder=""
                   required
                 />
+                <button
+                  type="button"
+                  className="password-toggle"
+                  onClick={() => setShowPassword((v) => !v)}
+                  aria-label={showPassword ? 'Esconder senha' : 'Mostrar senha'}
+                  aria-pressed={showPassword}
+                >
+                  {showPassword ? <IoMdEyeOff size={20} /> : <IoMdEye size={20} />}
+                </button>
               </div>
             </div>
 
