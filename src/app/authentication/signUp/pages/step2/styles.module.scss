@@ -1,0 +1,192 @@
+// .right {
+//   width: min(980px, 100%);
+//   display: flex;
+//   flex-direction: column;
+//   gap: 14px;
+// }
+
+.right {
+  // padding: 42px 56px;
+  display: flex;
+  flex-direction: column;
+  // align-items: baseline;
+  justify-content: center;
+  width: 100%;
+  min-height: 950px;
+  padding: 42px 56px;
+  box-sizing: border-box;
+}
+
+.topRow {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.backLink {
+  color: rgba(0, 0, 0, 0.7);
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.stepIndicator {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.dots {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.12);
+}
+
+.dotActive {
+  width: 22px;
+  background: rgba(221, 202, 146, 0.95);
+}
+
+.stepText {
+  font-size: 13px;
+  font-weight: 700;
+  color: rgba(0, 0, 0, 0.55);
+}
+
+.title {
+  font-size: 40px;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin: 24px 0 8px;
+  color: #0b2f36;
+}
+
+.subtitle {
+  color: rgba(0, 0, 0, 0.55);
+  margin: 12px 0 32px;
+}
+
+.plansGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin: 10px 0 18px;
+}
+
+.couponBox {
+  background: rgba(0, 0, 0, 0.04);
+  border-radius: 16px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.couponTitle {
+  font-weight: 800;
+  color: rgba(0, 0, 0, 0.75);
+  font-size: 14px;
+}
+
+.couponRow {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px;
+  align-items: center;
+}
+
+.couponHint {
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.45);
+}
+
+.input {
+  height: 44px;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  padding: 0 14px;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  background: #fff;
+}
+
+.input:focus {
+  border-color: rgba(11, 47, 54, 0.4);
+  box-shadow: 0 0 0 4px rgba(11, 47, 54, 0.12);
+}
+
+.secondaryButton {
+  height: 44px;
+  padding: 0 16px;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  background: rgba(0, 0, 0, 0.06);
+  color: rgba(0, 0, 0, 0.65);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.secondaryButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.primaryButton {
+  margin-top: 8px;
+  height: 44px;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: rgba(221, 202, 146, 0.95);
+  color: #0b2f36;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: transform 0.05s, filter 0.2s, opacity 0.2s;
+}
+
+.primaryButton:active {
+  transform: translateY(1px);
+}
+
+.primaryButton:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+@media (max-width: 1024px) {
+  .plansGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 520px) {
+  .right {
+    padding: 24px 20px;
+  }
+
+  .topRow {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .title {
+    font-size: 34px;
+  }
+
+  .couponRow {
+    grid-template-columns: 1fr;
+  }
+}
+
+

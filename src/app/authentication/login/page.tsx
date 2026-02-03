@@ -90,7 +90,7 @@ export default function LoginPage() {
           <div className="register-link">
             <p>Não tem uma conta?</p>
             <br />
-            <Link href="#">Registre-se</Link>
+            <Link href="/authentication/signUp">Registre-se</Link>
           </div>
         </div>
       </div>

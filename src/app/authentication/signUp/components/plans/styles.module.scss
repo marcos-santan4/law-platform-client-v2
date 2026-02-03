@@ -1,0 +1,151 @@
+.card {
+  text-align: left;
+  padding: 32px;
+  border-radius: 16px;
+  border: 1.5px solid #e0e0e0;
+  background: #fff;
+  cursor: pointer;
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.18s ease;
+  will-change: transform;
+  display: flex;
+  flex-direction: column;
+  // gap: 12px;
+  height: 100%;
+  min-height: 340px;
+  box-shadow: rgba(0, 0, 0, 0.08) 0px 2px 8px;
+  font-family: var(--font-lexend);
+}
+
+.card:focus-visible {
+  outline: 3px solid rgba(221, 202, 146, 0.9);
+  outline-offset: 2px;
+}
+
+.card:hover {
+  border: 2px solid #0b2f36;
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
+}
+
+.card:active {
+  transform: translateY(1px);
+}
+
+.cardSelected {
+  border-color: rgba(11, 47, 54, 0.55);
+  box-shadow: 0 16px 60px rgba(11, 47, 54, 0.12);
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.title {
+  font-size: 1.25rem;
+  line-height: 1.3;
+  font-weight: 700;
+  color: #0b2f36;
+  margin: 0px 0px 16px;
+}
+
+.price {
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: #0b2f36;
+  margin-bottom: 16px;
+}
+
+.bullets {
+  margin: 0;
+  padding-left: 0;
+  color: rgba(0, 0, 0, 0.65);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-size: 14px;
+  list-style: none;
+}
+
+.bulletItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  line-height: 1.35;
+}
+
+.bulletIcon {
+  flex: 0 0 auto;
+  margin-top: 2px;
+  color: rgba(11, 47, 54, 0.75);
+  font-size: 18px;
+}
+
+.bulletText {
+  display: block;
+  color: #0b2f36;
+  font-weight: 400;
+}
+
+.featuresLink {
+  margin: 24px 0;
+  align-self: flex-start;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 700;
+  color: #0b2f36;
+  text-decoration: none;
+}
+
+.featuresLink:hover {
+  text-decoration: underline;
+}
+
+.ctaRow {
+  // margin-top: 1em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 44px;
+  border-radius: 12px;
+  border: 1px solid rgba(11, 47, 54, 0.75);
+}
+
+.ctaRow:hover {
+  background: #0b2f36;
+  .ctaText {
+    color: #fff;
+  }
+}
+
+.cardSelected .ctaRow {
+  background: #0b2f36;
+}
+
+.ctaText {
+  font-weight: 700;
+  color: #0b2f36;
+}
+
+.cardSelected .ctaText {
+  color: #fff;
+}
+
+@media (max-width: 1920px) {
+  .title {
+    font-size: 1.125rem;
+  }
+  .price {
+    font-size: 1.5rem;
+  }
+  .featuresLink {
+    font-size: 12px;
+  }
+  .ctaText {
+    font-size: 0.875rem;
+  }
+}
