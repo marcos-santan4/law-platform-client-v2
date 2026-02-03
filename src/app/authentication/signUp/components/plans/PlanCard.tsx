@@ -41,8 +41,6 @@ export function PlanCard({ id, title, priceLabel, bullets, selected, onSelect, o
             <span className={styles.bulletText}>{b}</span>
           </li>
         ))}
-      </ul>
-
       <button
         type="button"
         className={styles.featuresLink}
@@ -53,6 +51,8 @@ export function PlanCard({ id, title, priceLabel, bullets, selected, onSelect, o
       >
         Ver todas as funcionalidades
       </button>
+      </ul>
+
 
       <div className={styles.ctaRow}>
         <span className={styles.ctaText}>{selected ? 'Selecionado' : 'Selecionar'}</span>

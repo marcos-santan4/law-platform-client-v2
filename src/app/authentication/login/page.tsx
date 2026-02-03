@@ -1,12 +1,9 @@
 'use client';
 
 import { useState } from 'react';
-import logo from '../../../../public/images/logos/logo-mindlaw.png';
-import { SlArrowLeft } from "react-icons/sl";
 import { IoMdEye, IoMdEyeOff } from 'react-icons/io';
-import './style.scss';
 import Link from 'next/link';
-import Image from 'next/image';
+import { AuthShell } from '../components/authShell';
 
 export default function LoginPage() {
   const [email, setEmail] = useState('');
@@ -20,81 +17,70 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="login-container">
-      <button className="back-button" aria-label="Voltar">
-        <SlArrowLeft size={18} />
-      </button>
+    <AuthShell backHref="/">
+      <form className="login-form" onSubmit={handleSubmit}>
+        <div className="form-group">
+          <label htmlFor="email">Endereço de email</label>
+          <input
+            id="email"
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder=""
+            required
+          />
+        </div>
 
-      <div className="login-content">
-        <div className="login-main">
-          <div className="logo-container">
-            {/* <img src={logo.src} alt="logo do LAW" className="logo" /> */}
-            <Image src={logo} alt="logo do LAW" className="logo" />
-
-          </div>
-
-          <form className="login-form" onSubmit={handleSubmit}>
-            <div className="form-group">
-              <label htmlFor="email">Endereço de email</label>
-              <input
-                id="email"
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder=""
-                required
-              />
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="password">Senha</label>
-              <div className="password-input-wrapper">
-                <input
-                  id="password"
-                  type={showPassword ? 'text' : 'password'}
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  placeholder=""
-                  required
-                />
-                <button
-                  type="button"
-                  className="password-toggle"
-                  onClick={() => setShowPassword((v) => !v)}
-                  aria-label={showPassword ? 'Esconder senha' : 'Mostrar senha'}
-                  aria-pressed={showPassword}
-                >
-                  {showPassword ? <IoMdEyeOff size={20} /> : <IoMdEye size={20} />}
-                </button>
-              </div>
-            </div>
-
-            <div className="form-options">
-              <label className="remember-me">
-                <input
-                  type="checkbox"
-                  checked={rememberMe}
-                  onChange={(e) => setRememberMe(e.target.checked)}
-                />
-                <span className="toggle-switch"></span>
-                <span className="label-text">Lembrar-me</span>
-              </label>
-              <a href="#" className="forgot-password">Esqueci a senha</a>
-            </div>
-
-            <button type="submit" className="login-button">
-              ENTRAR
+        <div className="form-group">
+          <label htmlFor="password">Senha</label>
+          <div className="password-input-wrapper">
+            <input
+              id="password"
+              type={showPassword ? 'text' : 'password'}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder=""
+              required
+            />
+            <button
+              type="button"
+              className="password-toggle"
+              onClick={() => setShowPassword((v) => !v)}
+              aria-label={showPassword ? 'Esconder senha' : 'Mostrar senha'}
+              aria-pressed={showPassword}
+            >
+              {showPassword ? <IoMdEyeOff size={20} /> : <IoMdEye size={20} />}
             </button>
-          </form>
-
-          <div className="register-link">
-            <p>Não tem uma conta?</p>
-            <br />
-            <Link href="/authentication/signUp">Registre-se</Link>
           </div>
         </div>
+
+        <div className="form-options">
+          <label className="remember-me">
+            <input
+              type="checkbox"
+              checked={rememberMe}
+              onChange={(e) => setRememberMe(e.target.checked)}
+            />
+            <span className="toggle-switch"></span>
+            <span className="label-text">Lembrar-me</span>
+          </label>
+
+          <Link href="/request-password" className="forgot-password">
+            Esqueci a senha
+          </Link>
+        </div>
+
+        <button type="submit" className="login-button">
+          ENTRAR
+        </button>
+      </form>
+
+      <div className="register-link">
+        <p>Não tem uma conta?</p>
+        <br />
+        <Link href="/authentication/signUp">Registre-se</Link>
       </div>
-    </div>
+    </AuthShell>
   );
 }
 

@@ -1,6 +1,6 @@
 .card {
-  text-align: left;
-  padding: 32px;
+  //text-align: left;
+  padding: 32px 26px;
   border-radius: 16px;
   border: 1.5px solid #e0e0e0;
   background: #fff;
@@ -9,11 +9,13 @@
   will-change: transform;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   // gap: 12px;
   height: 100%;
   min-height: 340px;
   box-shadow: rgba(0, 0, 0, 0.08) 0px 2px 8px;
   font-family: var(--font-lexend);
+  max-width: 300px;
 }
 
 .card:focus-visible {
@@ -71,7 +73,7 @@
 .bulletItem {
   display: flex;
   align-items: flex-start;
-  gap: 10px;
+  gap: 8px;
   line-height: 1.35;
 }
 
@@ -85,7 +87,9 @@
 .bulletText {
   display: block;
   color: #0b2f36;
-  font-weight: 400;
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.5;
 }
 
 .featuresLink {
@@ -99,6 +103,7 @@
   font-weight: 700;
   color: #0b2f36;
   text-decoration: none;
+  font-family: var(--font-lexend);
 }
 
 .featuresLink:hover {
