@@ -3,9 +3,11 @@
 import { useState } from 'react';
 import { IoMdEye, IoMdEyeOff } from 'react-icons/io';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { AuthShell } from '../components/authShell';
 
 export default function LoginPage() {
+  const router = useRouter();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [rememberMe, setRememberMe] = useState(false);
@@ -13,7 +15,8 @@ export default function LoginPage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Lógica de login aqui
+    // TODO: integrar autenticação
+    router.push('/clientes');
   };
 
   return (
