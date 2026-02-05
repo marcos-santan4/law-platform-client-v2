@@ -3,10 +3,11 @@
   --foreground: #171717;
 
   --golden: #ddca92;
+  --deepTeal: #0b2f36;
   
   --gradient-primary: linear-gradient(to right, rgb(11, 47, 54) 0%, rgb(0, 0, 0) 100%);
 
-  --scrollbar-thumb: #0b2f36;
+  // --deepTeal: #0b2f36;
   --scrollbar-track: transparent;
 }
 
@@ -35,7 +36,7 @@ body {
 /* Firefox */
 * {
   scrollbar-width: thin;
-  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+  scrollbar-color: var(--deepTeal) var(--scrollbar-track);
 }
 
 /* Chrome/Edge/Safari */
@@ -49,14 +50,14 @@ body {
 }
 
 *::-webkit-scrollbar-thumb {
-  background-color: var(--scrollbar-thumb);
+  background-color: var(--deepTeal);
   border-radius: 999px;
   border: 2px solid transparent;
   background-clip: padding-box;
 }
 
 *::-webkit-scrollbar-thumb:hover {
-  background-color: var(--scrollbar-thumb);
+  background-color: var(--deepTeal);
 }
 
 * {

@@ -1,5 +1,5 @@
-import { FiPlus, FiSearch, FiUsers } from 'react-icons/fi';
-
+import { FiPlus, FiSearch, FiUsers, FiUserPlus } from 'react-icons/fi';
+import { TbUserShield } from 'react-icons/tb';
 import styles from './clientes.module.scss';
 
 export default function ClientesPage() {
@@ -16,17 +16,17 @@ export default function ClientesPage() {
 
       <div className={styles.cards}>
         <div className={styles.card}>
-          <FiUsers size={18} aria-hidden="true" />
+          <FiUsers size={22} aria-hidden="true" />
           <div className={styles.cardValue}>22</div>
           <div className={styles.cardLabel}>Total de clientes</div>
         </div>
         <div className={styles.card}>
-          <FiUsers size={18} aria-hidden="true" />
+          <TbUserShield size={22} aria-hidden="true" />
           <div className={styles.cardValue}>11</div>
           <div className={styles.cardLabel}>Clientes com processos atuais</div>
         </div>
         <div className={styles.card}>
-          <FiUsers size={18} aria-hidden="true" />
+          <FiUserPlus size={22} aria-hidden="true" />
           <div className={styles.cardValue}>0</div>
           <div className={styles.cardLabel}>Novos clientes</div>
         </div>

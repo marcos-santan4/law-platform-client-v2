@@ -200,9 +200,9 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: #0b2f36;
-  color: #fff;
-  border: 1px solid rgba(0, 0, 0, 0.12);
+  // background: #0b2f36;
+  color: var(--deepTeal);
+  // border: 1px solid rgba(0, 0, 0, 0.12);
 }
 
 .iconButton:hover {
