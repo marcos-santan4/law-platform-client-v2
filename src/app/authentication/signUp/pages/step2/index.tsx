@@ -2,11 +2,11 @@
 
 import Link from 'next/link';
 import { useMemo, useState } from 'react';
-import { PlanCard } from '../../components/plans/PlanCard';
-import { PlanFeaturesModal } from '../../components/plans/PlanFeaturesModal';
-import { useSignUpFlow } from '../../signUpFlowContext';
+import { PlanCard } from '../../components/plans/planCard';
+import { PlanFeaturesModal } from '../../components/plans/planFeaturesModal';
+import { useSignUpFlow } from '../..';
 import styles from './styles.module.scss';
-import type { PlanId } from '../../signUpFlowContext';
+import type { PlanId } from '../..';
 
 function StepIndicator({ current, total }: { current: number; total: number }) {
   return (

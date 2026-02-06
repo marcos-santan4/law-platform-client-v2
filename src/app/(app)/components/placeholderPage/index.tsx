@@ -1,4 +1,4 @@
-import styles from './placeholderPage.module.scss';
+import styles from './styles.module.scss';
 
 type PlaceholderPageProps = {
   title: string;
@@ -13,4 +13,5 @@ export function PlaceholderPage({ title, description }: PlaceholderPageProps) {
     </div>
   );
 }
+
 

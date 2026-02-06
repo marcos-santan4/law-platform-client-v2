@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import { SlArrowLeft } from 'react-icons/sl';
 
 import logo from '../../../../../public/images/logos/logo-mindlaw.png';
-import './styles.scss';
+import styles from './styles.module.scss';
 
 type AuthShellProps = {
   children: React.ReactNode;
@@ -26,15 +26,15 @@ export function AuthShell({ children, backHref, backAriaLabel = 'Voltar' }: Auth
   };
 
   return (
-    <div className="login-container">
-      <button className="back-button" aria-label={backAriaLabel} type="button" onClick={handleBack}>
+    <div className={styles.loginContainer}>
+      <button className={styles.backButton} aria-label={backAriaLabel} type="button" onClick={handleBack}>
         <SlArrowLeft size={18} />
       </button>
 
-      <div className="login-content">
-        <div className="login-main">
-          <div className="logo-container">
-            <Image src={logo} alt="logo do LAW" className="logo" priority />
+      <div className={styles.loginContent}>
+        <div className={styles.loginMain}>
+          <div className={styles.logoContainer}>
+            <Image src={logo} alt="logo do LAW" className={styles.logo} priority />
           </div>
 
           {children}

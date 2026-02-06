@@ -1,0 +1,258 @@
+.pageHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 800;
+  color: #0b2f36;
+}
+
+.primaryAction {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  height: var(--control-height);
+  padding: 0 14px;
+  border-radius: 10px;
+  border: 1px solid rgba(221, 202, 146, 0.55);
+  background: #0b2f36;
+  color: #fff;
+  cursor: pointer;
+  font-weight: 600;
+  font-family: var(--font-lexend);
+}
+
+.primaryActionIcon {
+  color: var(--golden);
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.card {
+  background: #0b2f36;
+  color: #fff;
+  border-radius: 12px;
+  padding: 16px;
+  border: 1px solid rgba(221, 202, 146, 0.25);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.1);
+}
+
+.cardValue {
+  font-size: 28px;
+  font-weight: 900;
+  color: var(--golden);
+  margin: 6px 0 0;
+}
+
+.cardLabel {
+  margin: 6px 0 0;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.contentPanel {
+  background: #fff;
+  border-radius: 12px;
+  padding: 16px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.filtersRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+
+.searchAndFilter {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  min-width: 1px;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid var(--golden);
+  border-radius: 10px;
+  padding: 8px 12px;
+  min-width: 280px;
+  color: #000;
+  height: var(--control-height);
+}
+
+.filterInline {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.filterInlineLabel {
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(11, 47, 54, 0.75);
+  font-family: var(--font-lexend);
+}
+
+.search input {
+  border: none;
+  outline: none;
+  width: 100%;
+  font-size: 14px;
+  font-family: inherit;
+  background-color: #fff;
+  color: #000;
+}
+
+.filterWrapper {
+  position: relative;
+}
+
+.filterButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  height: var(--control-height);
+  padding: 0 12px;
+  border-radius: 10px;
+  border: 1px solid var(--golden);
+  background: #fff;
+  color: #0b2f36;
+  cursor: pointer;
+  font-family: var(--font-lexend);
+}
+
+.filterValue {
+  color: #0b2f36;
+  font-weight: 500;
+}
+
+.filterIcon {
+  transition: transform 0.15s ease;
+  color: rgba(11, 47, 54, 0.75);
+}
+
+.filterIconOpen {
+  transform: rotate(180deg);
+}
+
+.filterDropdown {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  z-index: 60;
+  min-width: 180px;
+  padding: 8px;
+  border-radius: 10px;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 10px 18px rgba(0, 0, 0, 0.12);
+}
+
+.filterOption {
+  width: 100%;
+  text-align: left;
+  padding: 10px 10px;
+  border-radius: 8px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-family: var(--font-lexend);
+  font-weight: 600;
+  color: rgba(11, 47, 54, 0.75);
+}
+
+.filterOption:hover {
+  background: rgba(11, 47, 54, 0.06);
+  color: #0b2f36;
+}
+
+.filterOptionActive {
+  background: rgba(11, 47, 54, 0.08);
+  color: #0b2f36;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 14px;
+}
+
+.table th,
+.table td {
+  padding: 12px 10px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  text-align: left;
+  font-size: 14px;
+  color: #0b2f36;
+}
+
+.table th {
+  font-size: 12px;
+  color: #0b2f36;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.cellCenter {
+  text-align: center !important;
+  vertical-align: middle;
+}
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 24px;
+  padding: 0 10px;
+  border-radius: 999px;
+  background: #3aa655;
+  color: #0b2f36;
+  font-weight: 800;
+  font-size: 12px;
+}
+
+.statusInactive {
+  background: #cbd5e0;
+  color: #0b2f36;
+}
+
+.actionIconButton {
+  width: var(--control-height);
+  height: var(--control-height);
+  border-radius: 10px;
+  border: none;
+  background: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #0b2f36;
+  cursor: pointer;
+}
+
+.actionIconButton:hover {
+  background: rgba(11, 47, 54, 0.06);
+}
+
+@media (max-width: 1100px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+}
+

@@ -17,9 +17,9 @@ import { ImHammer2 } from 'react-icons/im';
 import { SlCalculator } from 'react-icons/sl';
 import { TbReportSearch } from 'react-icons/tb';
 
-import logo from '../../../../../public/images/logos/logo-mindlaw.png';
-import logoCollapsed from '../../../../../public/images/logos/logo-mindlaw2.png';
-import styles from './appShell.module.scss';
+import logo from '../../../../../../public/images/logos/logo-mindlaw.png';
+import logoCollapsed from '../../../../../../public/images/logos/logo-mindlaw2.png';
+import styles from '../styles.module.scss';
 
 const NAV_ITEMS = [
   { href: '/clientes', label: 'Clientes', icon: FiUsers },
@@ -103,4 +103,5 @@ export function AppSidebar({ collapsed, onToggleCollapsed }: AppSidebarProps) {
     </aside>
   );
 }
+
 

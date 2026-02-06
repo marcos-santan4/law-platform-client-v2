@@ -2,9 +2,9 @@
 
 import { useState } from 'react';
 
-import styles from './appShell.module.scss';
-import { AppSidebar } from './AppSidebar';
-import { AppTopHeader } from './AppTopHeader';
+import styles from '../styles.module.scss';
+import { AppSidebar } from '../AppSidebar';
+import { AppTopHeader } from '../AppTopHeader';
 
 export function AppShell({ children }: { children: React.ReactNode }) {
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
@@ -23,4 +23,5 @@ export function AppShell({ children }: { children: React.ReactNode }) {
     </div>
   );
 }
+
 

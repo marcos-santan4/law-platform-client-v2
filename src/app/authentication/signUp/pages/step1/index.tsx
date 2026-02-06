@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { useMemo, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { useSignUpFlow } from '../../signUpFlowContext';
+import { useSignUpFlow } from '../..';
 import styles from './styles.module.scss';
 
 function StepIndicator({ current, total }: { current: number; total: number }) {

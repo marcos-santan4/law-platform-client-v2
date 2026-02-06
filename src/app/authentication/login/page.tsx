@@ -5,6 +5,7 @@ import { IoMdEye, IoMdEyeOff } from 'react-icons/io';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { AuthShell } from '../components/authShell';
+import styles from './styles.module.scss';
 
 export default function LoginPage() {
   const router = useRouter();
@@ -21,8 +22,8 @@ export default function LoginPage() {
 
   return (
     <AuthShell backHref="/">
-      <form className="login-form" onSubmit={handleSubmit}>
-        <div className="form-group">
+      <form className={styles.loginForm} onSubmit={handleSubmit}>
+        <div className={styles.formGroup}>
           <label htmlFor="email">Endereço de email</label>
           <input
             id="email"
@@ -34,9 +35,9 @@ export default function LoginPage() {
           />
         </div>
 
-        <div className="form-group">
+        <div className={styles.formGroup}>
           <label htmlFor="password">Senha</label>
-          <div className="password-input-wrapper">
+          <div className={styles.passwordInputWrapper}>
             <input
               id="password"
               type={showPassword ? 'text' : 'password'}
@@ -47,7 +48,7 @@ export default function LoginPage() {
             />
             <button
               type="button"
-              className="password-toggle"
+              className={styles.passwordToggle}
               onClick={() => setShowPassword((v) => !v)}
               aria-label={showPassword ? 'Esconder senha' : 'Mostrar senha'}
               aria-pressed={showPassword}
@@ -57,28 +58,28 @@ export default function LoginPage() {
           </div>
         </div>
 
-        <div className="form-options">
-          <label className="remember-me">
+        <div className={styles.formOptions}>
+          <label className={styles.rememberMe}>
             <input
               type="checkbox"
               checked={rememberMe}
               onChange={(e) => setRememberMe(e.target.checked)}
             />
-            <span className="toggle-switch"></span>
-            <span className="label-text">Lembrar-me</span>
+            <span className={styles.toggleSwitch}></span>
+            <span className={styles.labelText}>Lembrar-me</span>
           </label>
 
-          <Link href="/request-password" className="forgot-password">
+          <Link href="/request-password" className={styles.forgotPassword}>
             Esqueci a senha
           </Link>
         </div>
 
-        <button type="submit" className="login-button">
+        <button type="submit" className={styles.loginButton}>
           ENTRAR
         </button>
       </form>
 
-      <div className="register-link">
+      <div className={styles.registerLink}>
         <p>Não tem uma conta?</p>
         <br />
         <Link href="/authentication/signUp">Registre-se</Link>

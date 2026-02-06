@@ -1,8 +1,9 @@
 'use client';
 
-import type { PlanId } from '../../signUpFlowContext';
-import styles from './styles.module.scss';
 import { IoIosCheckmarkCircleOutline } from 'react-icons/io';
+import type { PlanId } from '../../signUpFlowContext';
+
+import styles from './styles.module.scss';
 
 type Props = {
   id: PlanId;
@@ -41,18 +42,17 @@ export function PlanCard({ id, title, priceLabel, bullets, selected, onSelect, o
             <span className={styles.bulletText}>{b}</span>
           </li>
         ))}
-      <button
-        type="button"
-        className={styles.featuresLink}
-        onClick={(e) => {
-          e.stopPropagation();
-          onOpenFeatures(id);
-        }}
-      >
-        Ver todas as funcionalidades
-      </button>
+        <button
+          type="button"
+          className={styles.featuresLink}
+          onClick={(e) => {
+            e.stopPropagation();
+            onOpenFeatures(id);
+          }}
+        >
+          Ver todas as funcionalidades
+        </button>
       </ul>
-
 
       <div className={styles.ctaRow}>
         <span className={styles.ctaText}>{selected ? 'Selecionado' : 'Selecionar'}</span>

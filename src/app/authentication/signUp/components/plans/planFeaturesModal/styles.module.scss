@@ -36,8 +36,8 @@
 }
 
 .iconClose {
-  width: 36px;
-  height: 36px;
+  width: var(--control-height);
+  height: var(--control-height);
   border-radius: 10px;
   border: 1px solid rgba(0, 0, 0, 0.12);
   background: #fff;
@@ -112,7 +112,7 @@
 }
 
 .closeButton {
-  height: 40px;
+  height: var(--control-height);
   padding: 0 28px;
   border-radius: 12px;
   border: 1px solid rgba(11, 47, 54, 0.75);

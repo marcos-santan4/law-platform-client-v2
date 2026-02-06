@@ -101,7 +101,7 @@
 }
 
 .input {
-  height: 44px;
+  height: var(--control-height);
   border-radius: 10px;
   border: 1px solid rgba(0, 0, 0, 0.12);
   padding: 0 14px;
@@ -147,7 +147,7 @@
 
 .primaryButton {
   margin-top: 18px;
-  height: 44px;
+  height: var(--control-height);
   border: none;
   border-radius: 12px;
   background: var(--golden);

@@ -2,7 +2,7 @@
 
 import { useEffect, useId, useRef } from 'react';
 import { IoIosCheckmarkCircleOutline, IoMdClose } from 'react-icons/io';
-import styles from './PlanFeaturesModal.module.scss';
+import styles from './styles.module.scss';
 
 type FeatureItem = { title: string; description: string };
 

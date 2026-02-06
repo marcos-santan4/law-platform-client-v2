@@ -4,6 +4,7 @@ import { useMemo, useState } from 'react';
 import Link from 'next/link';
 
 import { AuthShell } from '../authentication/components/authShell';
+import styles from '../authentication/components/authShell/styles.module.scss';
 
 export default function RequestPasswordPage() {
   const [email, setEmail] = useState('');
@@ -28,13 +29,13 @@ export default function RequestPasswordPage() {
 
   return (
     <AuthShell backHref="/authentication/login" backAriaLabel="Voltar ao login">
-      <h1 className="auth-title">Recuperação de senha</h1>
-      <p className="auth-subtitle">
+      <h1 className={styles.authTitle}>Recuperação de senha</h1>
+      <p className={styles.authSubtitle}>
         Preencha o campo abaixo para solicitar a recuperação de senha
       </p>
 
-      <form className="login-form" onSubmit={handleSubmit}>
-        <div className="form-group">
+      <form className={styles.loginForm} onSubmit={handleSubmit}>
+        <div className={styles.formGroup}>
           <label htmlFor="email">Endereço de e-mail</label>
           <input
             id="email"
@@ -48,12 +49,12 @@ export default function RequestPasswordPage() {
           />
         </div>
 
-        <button type="submit" className="login-button" disabled={!canSubmit || submitted}>
+        <button type="submit" className={styles.loginButton} disabled={!canSubmit || submitted}>
           {isSubmitting ? 'ENVIANDO...' : 'ENVIAR'}
         </button>
       </form>
 
-      <div className="register-link">
+      <div className={styles.registerLink}>
         {submitted ? (
           <p>Se existir uma conta com esse e-mail, você receberá as instruções em instantes.</p>
         ) : null}
