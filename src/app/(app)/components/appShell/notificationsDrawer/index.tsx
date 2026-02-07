@@ -101,11 +101,6 @@ export function NotificationsDrawer({ open, onClose }: Props) {
     return () => window.removeEventListener('keydown', onKeyDown);
   }, [onClose, open]);
 
-  useEffect(() => {
-    if (!open) return;
-    setTab('todos');
-  }, [open]);
-
   if (!open) return null;
 
   return (

@@ -4,6 +4,7 @@ import { useCallback, useEffect, useId, useMemo, useRef, useState } from 'react'
 import { IoMdClose } from 'react-icons/io';
 import { FaRegCalendar } from 'react-icons/fa';
 
+import { DropdownSelect } from '../../../components/dropdownSelect';
 import styles from './styles.module.scss';
 
 type Props = {
@@ -72,6 +73,8 @@ const UF_OPTIONS = [
   'SE',
   'TO',
 ];
+
+const UF_SELECT_OPTIONS = UF_OPTIONS.map((uf) => ({ value: uf, label: uf }));
 
 const EMPTY_FORM: ClientForm = {
   nome: '',
@@ -251,20 +254,13 @@ export function CreateClientModal({ open, onClose }: Props) {
 
                 <div className={styles.field}>
                   <label className={styles.label}>Estado civil</label>
-                  <select
-                    className={styles.input}
+                  <DropdownSelect
                     value={form.estadoCivil}
-                    onChange={(e) => setForm((p) => ({ ...p, estadoCivil: e.target.value }))}
-                  >
-                    <option value="" disabled hidden>
-                      Selecione
-                    </option>
-                    {ESTADO_CIVIL_OPTIONS.map((opt) => (
-                      <option key={opt} value={opt}>
-                        {opt}
-                      </option>
-                    ))}
-                  </select>
+                    onChange={(v) => setForm((p) => ({ ...p, estadoCivil: v }))}
+                    options={ESTADO_CIVIL_OPTIONS.map((opt) => ({ value: opt, label: opt }))}
+                    placeholder="Selecione"
+                    menuAriaLabel="Estado civil"
+                  />
                 </div>
 
                 <div className={styles.field}>
@@ -301,20 +297,14 @@ export function CreateClientModal({ open, onClose }: Props) {
 
                 <div className={styles.field}>
                   <label className={styles.label}>UF</label>
-                  <select
-                    className={styles.input}
+                  <DropdownSelect
                     value={form.ufDocumento}
-                    onChange={(e) => setForm((p) => ({ ...p, ufDocumento: e.target.value }))}
-                  >
-                    <option value="" disabled hidden>
-                      Selecione
-                    </option>
-                    {UF_OPTIONS.map((uf) => (
-                      <option key={uf} value={uf}>
-                        {uf}
-                      </option>
-                    ))}
-                  </select>
+                    onChange={(v) => setForm((p) => ({ ...p, ufDocumento: v }))}
+                    options={UF_SELECT_OPTIONS}
+                    placeholder="Selecione"
+                    menuAriaLabel="UF"
+                    maxMenuHeight={220}
+                  />
                 </div>
               </div>
             </section>
@@ -416,20 +406,14 @@ export function CreateClientModal({ open, onClose }: Props) {
 
                 <div className={styles.field}>
                   <label className={styles.label}>Estado</label>
-                  <select
-                    className={styles.input}
+                  <DropdownSelect
                     value={form.estadoEndereco}
-                    onChange={(e) => setForm((p) => ({ ...p, estadoEndereco: e.target.value }))}
-                  >
-                    <option value="" disabled hidden>
-                      Selecione
-                    </option>
-                    {UF_OPTIONS.map((uf) => (
-                      <option key={uf} value={uf}>
-                        {uf}
-                      </option>
-                    ))}
-                  </select>
+                    onChange={(v) => setForm((p) => ({ ...p, estadoEndereco: v }))}
+                    options={UF_SELECT_OPTIONS}
+                    placeholder="Selecione"
+                    menuAriaLabel="Estado"
+                    maxMenuHeight={220}
+                  />
                 </div>
 
                 <div className={styles.field}>

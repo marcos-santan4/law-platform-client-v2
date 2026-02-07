@@ -131,10 +131,10 @@ export default function ClientesPage() {
       <section className={styles.contentPanel} aria-label="Lista de clientes">
         <div className={styles.filtersRow}>
           <div className={styles.searchAndFilter}>
-            <div className={styles.search} role="search">
-              <FiSearch size={16} aria-hidden="true" />
-              <input placeholder="Buscar por nome ou CPF" />
-            </div>
+          <div className={styles.search} role="search">
+            <FiSearch size={16} aria-hidden="true" />
+            <input placeholder="Buscar por nome ou CPF" />
+          </div>
 
             <div className={styles.filterInline}>
               <span className={styles.filterInlineLabel}>Filtrar:</span>
@@ -202,7 +202,7 @@ export default function ClientesPage() {
                   <span className={`${styles.status} ${c.status === 'Inativo' ? styles.statusInactive : ''}`}>
                     {c.status}
                   </span>
-                </td>
+              </td>
                 <td className={styles.cellCenter}>
                   <button
                     type="button"
@@ -215,15 +215,15 @@ export default function ClientesPage() {
                   >
                     <FiEye size={18} />
                   </button>
-                </td>
-              </tr>
+              </td>
+            </tr>
             ))}
           </tbody>
         </table>
       </section>
 
       <CreateClientModal open={createOpen} onClose={() => setCreateOpen(false)} />
-      <ViewClientModal open={viewOpen} client={selectedClient} onClose={() => setViewOpen(false)} />
+      {viewOpen ? <ViewClientModal open={viewOpen} client={selectedClient} onClose={() => setViewOpen(false)} /> : null}
     </div>
   );
 }

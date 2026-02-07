@@ -56,11 +56,6 @@ export function ViewClientModal({ open, client, onClose }: Props) {
     return () => window.removeEventListener('keydown', onKeyDown);
   }, [onClose, open]);
 
-  useEffect(() => {
-    if (!open) return;
-    setTab('detalhes');
-  }, [open]);
-
   const processes = useMemo(
     () => [
       { id: 'p1', numero: 'asdd', descricao: 'Sem descrição', criadoEm: '04/02/2026' },

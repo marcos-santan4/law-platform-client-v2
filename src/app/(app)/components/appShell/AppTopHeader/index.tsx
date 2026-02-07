@@ -74,7 +74,7 @@ export function AppTopHeader() {
         </div>
       </div>
 
-      <NotificationsDrawer open={notificationsOpen} onClose={() => setNotificationsOpen(false)} />
+      {notificationsOpen ? <NotificationsDrawer open={notificationsOpen} onClose={() => setNotificationsOpen(false)} /> : null}
     </header>
   );
 }

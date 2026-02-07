@@ -1,0 +1,102 @@
+.filtersFinalizadas {
+  margin-bottom: 16px;
+}
+
+.searchOnly {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid var(--golden);
+  border-radius: 10px;
+  padding: 0 12px;
+  height: var(--control-height);
+  width: min(480px, 100%);
+  color: var(--deepTeal);
+}
+
+.searchOnlyInput {
+  border: none;
+  outline: none;
+  width: 100%;
+  font-size: 14px;
+  font-family: inherit;
+  background: transparent;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.paginationRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding-top: 18px;
+}
+
+.pageSize {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: rgba(0, 0, 0, 0.65);
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.pageSizeValue {
+  height: var(--control-height);
+  min-width: 80px;
+  padding: 0 12px;
+  border-radius: 10px;
+  border: 1px solid var(--golden);
+  background: #fff;
+  color: var(--deepTeal);
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pager {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.pagerBtn {
+  width: var(--control-height);
+  height: var(--control-height);
+  border-radius: 999px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  background: #fff;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.pagerBtn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.pageIndex {
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  background: rgba(221, 202, 146, 0.45);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 400;
+  color: rgba(11, 47, 54, 0.9);
+}
+
+@media (max-width: 900px) {
+  .searchOnly {
+    width: 100%;
+  }
+}
+
+

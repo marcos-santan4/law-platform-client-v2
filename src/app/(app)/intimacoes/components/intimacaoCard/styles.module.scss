@@ -1,0 +1,257 @@
+// Estilos do card (antes ficavam em `src/app/(app)/intimacoes/styles.module.scss`)
+.itemCard {
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+
+.itemMain {
+  padding: 18px;
+}
+
+.itemRow {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.iconCol {
+  width: 56px;
+  flex: 0 0 auto;
+  display: flex;
+  justify-content: center;
+  padding-top: 2px;
+}
+
+.itemContent {
+  flex: 1;
+  min-width: 1px;
+  display: flex;
+  flex-direction: column;
+}
+
+.itemTopGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1.5fr;
+  gap: 16px;
+  align-items: start;
+}
+
+.avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 999px;
+  background: rgb(224, 247, 247);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--deepTeal);
+}
+
+.kicker {
+  font-size: 12px;
+  color: rgba(11, 47, 54, 0.55);
+  margin-bottom: 6px;
+}
+
+.valueStrong {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--deepTeal);
+}
+
+.value {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--deepTeal);
+  line-height: 1.35;
+}
+
+.actionsCol {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.btnBase {
+  height: var(--control-height);
+  border-radius: 10px;
+  padding: 0 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-family: var(--font-lexend);
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  background: #fff;
+  color: var(--deepTeal);
+  font-size: 12px;
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease,
+    transform 0.05s ease,
+    filter 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.btnBase:hover {
+  background: rgba(11, 47, 54, 0.04);
+}
+
+.btnBase:active {
+  transform: translateY(1px);
+}
+
+.btnBase:focus-visible {
+  outline: 3px solid rgba(221, 202, 146, 0.7);
+  outline-offset: 2px;
+}
+
+.btnPrimary {
+  @extend .btnBase;
+  background: var(--deepTeal);
+  border-color: rgba(11, 47, 54, 0.75);
+  color: #fff;
+}
+
+.btnPrimary:hover {
+  filter: brightness(1.05);
+  background: var(--deepTeal);
+}
+
+.btnSuccess {
+  @extend .btnBase;
+  background: #fff;
+  border-color: rgba(58, 166, 85, 0.8);
+  color: #2f855a;
+}
+
+.btnSuccess:hover {
+  background: rgba(58, 166, 85, 0.06);
+  border-color: rgba(58, 166, 85, 0.95);
+}
+
+.btnOutlinePurple {
+  @extend .btnBase;
+  border-color: rgba(120, 87, 255, 0.75);
+  color: rgb(120, 87, 255);
+}
+
+.btnOutlinePurple:hover {
+  background: rgba(120, 87, 255, 0.06);
+  border-color: rgba(120, 87, 255, 0.95);
+}
+
+.btnOutline {
+  @extend .btnBase;
+  border-color: rgba(0, 0, 0, 0.22);
+  color: rgba(11, 47, 54, 0.9);
+}
+
+.btnOutline:hover {
+  background: rgba(11, 47, 54, 0.04);
+  border-color: rgba(0, 0, 0, 0.28);
+}
+
+.itemBottomGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1.5fr;
+  gap: 16px;
+  margin-top: 16px;
+  padding-top: 16px;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  height: 22px;
+  padding: 0 10px;
+  border-radius: 999px;
+  background: rgba(58, 166, 85, 0.18);
+  color: #2f855a;
+  font-weight: 800;
+  font-size: 12px;
+  margin-top: 10px;
+}
+
+.meta {
+  margin-top: 10px;
+  color: rgba(0, 0, 0, 0.55);
+  font-weight: 300;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 11px;
+}
+
+.metaStrong {
+  font-weight: 600;
+}
+
+.aiRow {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 18px;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  background: #fff;
+}
+
+.aiButton {
+  height: var(--control-height);
+  padding: 0 16px;
+  border-radius: 12px;
+  border: none;
+  background: rgb(224, 247, 247);
+  color: var(--deepTeal);
+  font-weight: 600;
+  font-family: var(--font-lexend);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+
+  &:hover {
+    background: rgb(200, 240, 240);
+  }
+}
+
+.aiHint {
+  color: rgba(11, 47, 54, 0.65);
+  font-weight: 500;
+  font-size: 12px;
+}
+
+@media (max-width: 1200px) {
+  .itemRow {
+    flex-direction: column;
+  }
+
+  .iconCol {
+    width: auto;
+    justify-content: flex-start;
+    padding-top: 0;
+  }
+
+  .itemTopGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .actionsCol {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+
+  .itemBottomGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+

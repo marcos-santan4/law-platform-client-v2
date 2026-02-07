@@ -1,0 +1,99 @@
+.wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.button {
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  height: var(--control-height);
+  padding: 0 12px;
+  border-radius: 10px;
+  border: 1px solid var(--golden);
+  background: #fff;
+  color: var(--deepTeal);
+  cursor: pointer;
+  font-family: var(--font-lexend);
+  font-weight: 600;
+}
+
+.button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.button:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(221, 202, 146, 0.22);
+}
+
+.value {
+  font-weight: 600;
+  text-align: left;
+  min-width: 1px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.valuePlaceholder {
+  color: rgba(11, 47, 54, 0.55);
+}
+
+.icon {
+  transition: transform 0.15s ease;
+  color: rgba(11, 47, 54, 0.75);
+  flex: 0 0 auto;
+}
+
+.iconOpen {
+  transform: rotate(180deg);
+}
+
+.menu {
+  position: fixed;
+  z-index: 10110;
+  padding: 10px;
+  border-radius: 12px;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+  overflow: auto;
+}
+
+.menuUp {
+  // sem regras extras por enquanto; a posição é calculada via 'bottom'
+}
+
+.option {
+  width: 100%;
+  text-align: left;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-family: var(--font-lexend);
+  font-weight: 600;
+  color: rgba(11, 47, 54, 0.75);
+}
+
+.option:hover {
+  background: rgba(11, 47, 54, 0.06);
+  color: #0b2f36;
+}
+
+.option:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.optionActive {
+  background: rgba(11, 47, 54, 0.08);
+  color: #0b2f36;
+}
+
+
