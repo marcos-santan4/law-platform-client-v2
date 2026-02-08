@@ -254,4 +254,11 @@
   }
 }
 
+@media (max-width: 768px) {
+  .actionsCol {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
 

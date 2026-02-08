@@ -2,8 +2,9 @@
 
 import { useEffect, useMemo, useRef, useState } from 'react';
 
-import { FiChevronDown, FiEye, FiPlus, FiSearch, FiUsers, FiUserPlus } from 'react-icons/fi';
+import { FiEye, FiPlus, FiSearch, FiUsers, FiUserPlus } from 'react-icons/fi';
 import { TbUserShield } from 'react-icons/tb';
+import { LuListFilter } from 'react-icons/lu';
 import styles from './styles.module.scss';
 import { CreateClientModal } from './components/createClientModal';
 import { ViewClientModal } from './components/viewClientModal';
@@ -147,12 +148,8 @@ export default function ClientesPage() {
                   aria-expanded={filterOpen}
                   aria-haspopup="menu"
                 >
+                  <LuListFilter size={16} className={styles.filterIcon} aria-hidden="true" />
                   <span className={styles.filterValue}>{selectedFilter}</span>
-                  <FiChevronDown
-                    size={16}
-                    className={`${styles.filterIcon} ${filterOpen ? styles.filterIconOpen : ''}`}
-                    aria-hidden="true"
-                  />
                 </button>
 
                 {filterOpen && (
@@ -184,42 +181,44 @@ export default function ClientesPage() {
           </button>
         </div>
 
-        <table className={styles.table}>
-          <thead>
-            <tr>
-              <th>Nome completo</th>
-              <th>CPF</th>
-              <th className={styles.cellCenter}>Status</th>
-              <th className={styles.cellCenter}>Ações</th>
-            </tr>
-          </thead>
-          <tbody>
-            {clients.map((c) => (
-              <tr key={c.id}>
-                <td>{c.nome}</td>
-                <td>{c.cpf ? c.cpf : '—'}</td>
-                <td className={styles.cellCenter}>
-                  <span className={`${styles.status} ${c.status === 'Inativo' ? styles.statusInactive : ''}`}>
-                    {c.status}
-                  </span>
-              </td>
-                <td className={styles.cellCenter}>
-                  <button
-                    type="button"
-                    className={styles.actionIconButton}
-                    aria-label={`Visualizar ${c.nome}`}
-                    onClick={() => {
-                      setSelectedClient(c);
-                      setViewOpen(true);
-                    }}
-                  >
-                    <FiEye size={18} />
-                  </button>
-              </td>
-            </tr>
-            ))}
-          </tbody>
-        </table>
+        <div className={styles.tableWrapper}>
+          <table className={styles.table}>
+            <thead>
+              <tr>
+                <th>Nome completo</th>
+                <th>CPF</th>
+                <th className={styles.cellCenter}>Status</th>
+                <th className={styles.cellCenter}>Ações</th>
+              </tr>
+            </thead>
+            <tbody>
+              {clients.map((c) => (
+                <tr key={c.id}>
+                  <td>{c.nome}</td>
+                  <td>{c.cpf ? c.cpf : '—'}</td>
+                  <td className={styles.cellCenter}>
+                    <span className={`${styles.status} ${c.status === 'Inativo' ? styles.statusInactive : ''}`}>
+                      {c.status}
+                    </span>
+                  </td>
+                  <td className={styles.cellCenter}>
+                    <button
+                      type="button"
+                      className={styles.actionIconButton}
+                      aria-label={`Visualizar ${c.nome}`}
+                      onClick={() => {
+                        setSelectedClient(c);
+                        setViewOpen(true);
+                      }}
+                    >
+                      <FiEye size={18} />
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </section>
 
       <CreateClientModal open={createOpen} onClose={() => setCreateOpen(false)} />

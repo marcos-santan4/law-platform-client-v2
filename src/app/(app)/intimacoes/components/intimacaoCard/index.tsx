@@ -155,8 +155,8 @@ export function IntimacaoCard({
                 ]}
                 trigger={({ ref, toggle }) => (
                   <button ref={ref} type="button" className={styles.btnOutline} onClick={toggle}>
-                    <span>Mais Opções</span>
                     <FiMoreVertical size={18} aria-hidden="true" />
+                    <span>Mais Opções</span>
                   </button>
                 )}
               />

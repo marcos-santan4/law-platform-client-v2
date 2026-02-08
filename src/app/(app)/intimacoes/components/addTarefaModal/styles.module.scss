@@ -6,7 +6,7 @@
   align-items: center;
   justify-content: center;
   padding: 24px;
-  z-index: 10080;
+  z-index: var(--z-modal);
 }
 
 .dialog {
@@ -18,7 +18,7 @@
   overflow: hidden;
   display: grid;
   grid-template-rows: auto 1fr auto;
-  --dropdown-select-z: 10110;
+  --dropdown-select-z: var(--z-dropdown-select-modal);
 }
 
 .header {

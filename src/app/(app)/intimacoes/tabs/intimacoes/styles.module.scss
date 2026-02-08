@@ -90,7 +90,7 @@
   position: absolute;
   top: calc(100% + 10px);
   left: 0;
-  z-index: 60;
+  z-index: var(--z-dropdown-filter);
   min-width: 220px;
   padding: 10px;
   border-radius: 12px;
@@ -186,6 +186,12 @@
 @media (max-width: 900px) {
   .filters {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .filterDropdownUp {
+    min-width: fit-content;
   }
 }
 

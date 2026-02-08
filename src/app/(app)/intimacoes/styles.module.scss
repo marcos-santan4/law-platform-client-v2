@@ -33,6 +33,8 @@
   font-family: var(--font-lexend);
   color: rgba(11, 47, 54, 0.9);
   box-shadow: 0 10px 22px rgba(0, 0, 0, 0.12);
+  min-width: 160px;
+  justify-content: center;
 }
 
 .tabActive {
@@ -188,7 +190,7 @@
   position: absolute;
   top: calc(100% + 10px);
   left: 0;
-  z-index: 60;
+  z-index: var(--z-dropdown-filter);
   min-width: 220px;
   padding: 10px;
   border-radius: 12px;
@@ -310,10 +312,20 @@
   font-weight: 600;
 }
 
-@media (max-width: 1200px) {
-}
+@media (max-width: 768px) {
+  .tabs {
+    justify-content: center;
+  }
+  
+  .panelHeader {
+    margin: 22px 0;
+    flex-direction: column;
+    align-items: flex-start;
+  }
 
-@media (max-width: 900px) {
+  .panelTitle {
+    margin: 0;
+  }
 }
 
 

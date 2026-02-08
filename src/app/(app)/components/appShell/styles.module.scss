@@ -144,7 +144,7 @@
 .header {
   position: sticky;
   top: 0;
-  z-index: 50;
+  z-index: var(--z-header);
   height: var(--header-height);
   background: #ffffff;
   border-bottom: 1px solid rgba(0, 0, 0, 0.08);
@@ -161,7 +161,26 @@
 .headerLeft {
   display: flex;
   align-items: center;
+  gap: 12px;
   min-width: 1px;
+}
+
+.mobileMenuButton {
+  display: none;
+  width: var(--control-height);
+  height: var(--control-height);
+  border-radius: 10px;
+  border: none;
+  background: transparent;
+  color: var(--deepTeal);
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.mobileMenuButton:hover {
+  background: rgba(11, 47, 54, 0.06);
 }
 
 .pageTitle {
@@ -281,13 +300,57 @@
 }
 
 @media (max-width: 768px) {
-  .root {
-    --sidebar-width: 220px;
+
+  .header {
+    position: fixed;
+    width: 100%;
+  }
+
+  .headerLeft {
+    flex-direction: row-reverse;
+  }
+
+  .headerRight {
+    gap: 8px;
+  }
+
+  .sidebar {
+    display: none;
+  }
+
+  .main {
+    margin-left: 0;
+  }
+
+  .mobileMenuButton {
+    display: inline-flex;
+  }
+
+  .headerInner {
+    padding: 0 14px;
+    display: flex;
+    flex-direction: row-reverse;
+  }
+
+  .pageTitle {
+    font-size: 20px;
   }
 
   .quickAdd {
     padding: 10px 12px;
     font-size: 13px;
+  }
+
+  .quickAdd span {
+    display: none;
+  }
+
+  .quickAddIcon {
+    margin: 0;
+  }
+
+  .page {
+    padding: 80px 14px 40px;
   }
 }
 

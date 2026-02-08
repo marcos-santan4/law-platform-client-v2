@@ -10,6 +10,19 @@
 
   // --deepTeal: #0b2f36;
   --scrollbar-track: transparent;
+
+  // Z-index hierarchy
+  --z-base: 1;
+  --z-dropdown-filter: 50;
+  --z-header: 1000;
+  --z-dropdown-menu: 2000;
+  --z-notifications: 10000;
+  --z-modal-backdrop: 10050;
+  --z-modal: 10060;
+  --z-dropdown-select: 10061;
+  --z-mobile-menu-backdrop: 10070;
+  --z-mobile-menu: 10080;
+  --z-dropdown-select-modal: 10100;
 }
 
 @media (prefers-color-scheme: dark) {

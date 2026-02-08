@@ -3,10 +3,11 @@
 import Link from 'next/link';
 import { useState } from 'react';
 import { usePathname } from 'next/navigation';
-import { FiBell, FiPlus, FiUsers, FiUser } from 'react-icons/fi';
+import { FiBell, FiMenu, FiPlus, FiUsers, FiUser } from 'react-icons/fi';
 
 import styles from '../styles.module.scss';
 import { NotificationsDrawer } from '../notificationsDrawer';
+import { MobileMenu } from '../MobileMenu';
 
 function getPageTitle(pathname: string): string {
   const segments = pathname.split('/').filter(Boolean);
@@ -37,11 +38,21 @@ export function AppTopHeader() {
   const pathname = usePathname();
   const pageTitle = getPageTitle(pathname);
   const [notificationsOpen, setNotificationsOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
     <header className={styles.header} aria-label="Barra superior">
       <div className={styles.headerInner}>
         <div className={styles.headerLeft}>
+          <button
+            type="button"
+            className={styles.mobileMenuButton}
+            onClick={() => setMobileMenuOpen(true)}
+            aria-label="Abrir menu"
+            aria-expanded={mobileMenuOpen}
+          >
+            <FiMenu size={20} />
+          </button>
           <h1 className={styles.pageTitle}>{pageTitle}</h1>
         </div>
 
@@ -75,6 +86,7 @@ export function AppTopHeader() {
       </div>
 
       {notificationsOpen ? <NotificationsDrawer open={notificationsOpen} onClose={() => setNotificationsOpen(false)} /> : null}
+      <MobileMenu open={mobileMenuOpen} onClose={() => setMobileMenuOpen(false)} />
     </header>
   );
 }
