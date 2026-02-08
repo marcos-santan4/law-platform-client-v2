@@ -1,0 +1,81 @@
+.panelTitle {
+    margin: 0 0 14px;
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--deepTeal);
+}
+
+.formGrid {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    grid-column: span 2;
+}
+
+.label {
+    font-size: 13px;
+    font-weight: 800;
+    color: rgba(11, 47, 54, 0.75);
+}
+
+.input {
+    height: var(--control-height);
+    border-radius: 10px;
+    border: 1px solid var(--golden);
+    padding: 0 12px;
+    font-size: 14px;
+    font-family: var(--font-lexend);
+    outline: none;
+    background: #f3f6f8;
+    color: var(--deepTeal);
+}
+
+.actionsRow {
+    margin-top: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+.primaryButton {
+    height: var(--control-height);
+    padding: 0 18px;
+    border-radius: 10px;
+    border: 1px solid rgba(221, 202, 146, 0.55);
+    background: var(--deepTeal);
+    color: #fff;
+    font-weight: 700;
+    font-family: var(--font-lexend);
+    cursor: pointer;
+}
+
+.dangerButton {
+    height: var(--control-height);
+    padding: 0 18px;
+    border-radius: 10px;
+    border: 1px solid #ef4444;
+    background: #fff;
+    color: #ef4444;
+    font-weight: 700;
+    font-family: var(--font-lexend);
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+
+    .formGrid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .field {
+        grid-column: span 1;
+    }
+}

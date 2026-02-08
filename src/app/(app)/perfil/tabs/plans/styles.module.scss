@@ -1,0 +1,57 @@
+.panelTitle {
+    margin: 0 0 14px;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--deepTeal);
+}
+
+.planInfo {
+    border: 1px solid rgba(59, 130, 246, 0.25);
+    background: rgba(59, 130, 246, 0.06);
+    padding: 16px;
+    border-radius: 10px;
+    color: #1d4ed8;
+    font-weight: 500;
+}
+
+.cardsGrid {
+    margin-top: 16px;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.infoCard {
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 10px;
+    padding: 16px;
+    background: #fff;
+}
+
+.infoCardTitle {
+    font-weight: 700;
+    color: var(--deepTeal);
+    margin-bottom: 8px;
+}
+
+.infoCardMeta {
+    color: rgba(11, 47, 54, 0.65);
+    font-size: 13px;
+}
+
+.infoCardHint {
+    margin-top: 8px;
+    color: #16a34a;
+    font-size: 12px;
+    font-style: italic;
+}
+
+.supportBar {
+    margin-top: 18px;
+    background: rgba(0, 0, 0, 0.05);
+    padding: 14px;
+    border-radius: 10px;
+    text-align: center;
+    color: rgba(11, 47, 54, 0.65);
+    font-style: italic;
+}

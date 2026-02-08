@@ -1,4 +1,4 @@
-.page {
+/* .page {
   --background: #fafafa;
   --foreground: #fff;
 
@@ -92,7 +92,6 @@ a.secondary {
   border-color: var(--button-secondary-border);
 }
 
-/* Enable hover only on non-touch devices */
 @media (hover: hover) and (pointer: fine) {
   a.primary:hover {
     background: var(--button-primary-hover);
@@ -137,4 +136,4 @@ a.secondary {
     --button-secondary-hover: #1a1a1a;
     --button-secondary-border: #1a1a1a;
   }
-}
+} */

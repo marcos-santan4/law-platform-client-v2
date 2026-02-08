@@ -132,6 +132,15 @@
   gap: 10px;
 }
 
+.sectionTitle::before {
+  content: '';
+  width: 4px;
+  height: 14px;
+  border-radius: 999px;
+  background: var(--golden);
+  display: inline-block;
+}
+
 .grid3 {
   display: grid;
   grid-template-columns: 2fr 1fr 1fr;
