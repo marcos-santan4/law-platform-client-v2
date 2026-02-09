@@ -1,0 +1,54 @@
+$golden: #ddca92;
+$deep-teal: #0b2f36;
+$control-height: 40px;
+
+$gradient-primary: linear-gradient(to right, rgb(11, 47, 54) 0%, rgb(0, 0, 0) 100%);
+
+$scrollbar-track: transparent;
+
+$z-base: 1;
+$z-dropdown-filter: 50;
+$z-header: 1000;
+$z-dropdown-menu: 2000;
+$z-notifications: 10000;
+$z-modal-backdrop: 10050;
+$z-modal: 10060;
+$z-dropdown-select: 10061;
+$z-mobile-menu-backdrop: 10070;
+$z-mobile-menu: 10080;
+$z-dropdown-select-modal: 10100;
+
+// Border radius
+$radius-sm: 8px;
+$radius-md: 10px;
+$radius-lg: 12px;
+$radius-full: 999px;
+
+// Espaçamentos
+$spacing-xs: 8px;
+$spacing-sm: 10px;
+$spacing-md: 12px;
+$spacing-lg: 14px;
+$spacing-xl: 16px;
+$spacing-2xl: 18px;
+$spacing-3xl: 22px;
+$spacing-4xl: 24px;
+
+// Sombras
+$shadow-sm: 0 10px 18px rgba(0, 0, 0, 0.12);
+$shadow-md: 0 12px 24px rgba(0, 0, 0, 0.12);
+$shadow-lg: 0 20px 80px rgba(0, 0, 0, 0.35);
+
+// Bordas
+$border-light: 1px solid rgba(0, 0, 0, 0.08);
+$border-medium: 1px solid rgba(0, 0, 0, 0.12);
+$border-golden: 1px solid var(--golden);
+
+// Cores semânticas
+$color-error: #d12b2b;
+$color-error-bg: rgba(209, 43, 43, 0.12);
+$color-success: #3aa655;
+$color-inactive: #cbd5e0;
+$color-text-muted: rgba(0, 0, 0, 0.6);
+$color-text-secondary: rgba(0, 0, 0, 0.75);
+$color-text-light: rgba(0, 0, 0, 0.55);

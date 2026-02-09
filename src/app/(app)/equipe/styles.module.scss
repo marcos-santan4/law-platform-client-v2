@@ -1,33 +1,17 @@
-@use '../../_variables' as *;
 @use '../../_mixins' as *;
-// @import '../../_mixins.scss';
+@use '../../_variables' as *;
 
-// .pageHeader {
-//   @include flex-between;
-//   gap: $spacing-xl;
-//   margin-bottom: $spacing-2xl;
-// }
+.pageHeader {
+  @include flex-between;
+  gap: $spacing-xl;
+  margin-bottom: $spacing-2xl;
+}
 
-// .title {
-//   font-size: 28px;
-//   font-weight: 800;
-//   color: $deep-teal;
-// }
-
-// .primaryAction {
-//   height: $control-height;
-//   border-radius: 10px;
-//   font-weight: 600;
-//   font-family: var(--font-lexend);
-//   cursor: pointer;
-//   display: inline-flex;
-//   align-items: center;
-//   gap: 10px;
-//   padding: 0 14px;
-//   border: 1px solid rgba(221, 202, 146, 0.55);
-//   background: $deep-teal;
-//   color: #fff;
-// }
+.title {
+  font-size: 28px;
+  font-weight: 800;
+  color: $deep-teal;
+}
 
 .primaryAction {
   @include button-primary;
@@ -39,6 +23,13 @@
 
 .cards {
   @include summary-cards-container;
+  
+  // Ajuste para 2 colunas na página equipe
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
 }
 
 .card {
@@ -55,24 +46,22 @@
 
 .contentPanel {
   background: #fff;
-  border-radius: 12px;
-  padding: 16px;
-  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: $radius-lg;
+  padding: $spacing-xl;
+  border: $border-light;
 }
 
 .filtersRow {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
+  @include flex-between;
+  gap: $spacing-xl;
   flex-wrap: wrap;
-  margin-top: 12px;
+  margin-top: $spacing-md;
 }
 
 .searchAndFilter {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: $spacing-lg;
   flex-wrap: wrap;
   min-width: 1px;
 }
@@ -80,10 +69,10 @@
 .search {
   display: flex;
   align-items: center;
-  gap: 10px;
-  border: 1px solid $golden;
-  border-radius: 10px;
-  padding: 8px 12px;
+  gap: $spacing-sm;
+  border: $border-golden;
+  border-radius: $radius-md;
+  padding: $spacing-xs $spacing-md;
   min-width: 280px;
   color: #000;
   height: $control-height;
@@ -92,7 +81,7 @@
 .filterInline {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: $spacing-sm;
   flex-wrap: wrap;
 }
 
@@ -135,22 +124,22 @@
 
 .filterDropdown {
   position: absolute;
-  top: calc(100% + 10px);
+  top: calc(100% + $spacing-sm);
   left: 0;
   z-index: $z-dropdown-filter;
   min-width: 180px;
-  padding: 8px;
-  border-radius: 10px;
+  padding: $spacing-xs;
+  border-radius: $radius-md;
   background: #fff;
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  box-shadow: 0 10px 18px rgba(0, 0, 0, 0.12);
+  border: $border-light;
+  box-shadow: $shadow-sm;
 }
 
 .filterOption {
   width: 100%;
   text-align: left;
-  padding: 10px 10px;
-  border-radius: 8px;
+  padding: $spacing-sm $spacing-sm;
+  border-radius: $radius-sm;
   border: none;
   background: transparent;
   cursor: pointer;
@@ -170,33 +159,23 @@
 }
 
 .tableWrapper {
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  margin-top: 14px;
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  border-radius: 12px;
+  @include table-wrapper;
+  margin-top: $spacing-lg;
 }
 
 .table {
-  width: 100%;
+  @include table-base;
   min-width: 600px;
-  border-collapse: collapse;
 }
 
 .table th,
 .table td {
-  padding: 12px 10px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-  text-align: left;
-  font-size: 14px;
-  color: $deep-teal;
+  @include table-cell;
 }
 
 .table th {
-  font-size: 12px;
+  @include table-header;
   color: $deep-teal;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
 }
 
 .cellCenter {
@@ -209,8 +188,8 @@
   align-items: center;
   justify-content: center;
   height: 24px;
-  padding: 0 10px;
-  border-radius: 999px;
+  padding: 0 $spacing-sm;
+  border-radius: $radius-full;
   background: $color-success;
   color: $deep-teal;
   font-weight: 800;
@@ -218,8 +197,15 @@
 }
 
 .statusInactive {
-  background: #cbd5e0;
+  background: $color-inactive;
   color: $deep-teal;
+}
+
+.actionButtons {
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-xs;
+  justify-content: center;
 }
 
 .actionIconButton {
@@ -233,27 +219,21 @@
   justify-content: center;
   color: $deep-teal;
   cursor: pointer;
-}
+  transition: background 0.15s ease;
 
-.actionIconButton:hover {
-  background: rgba($deep-teal, 0.06);
+  &:hover {
+    background: rgba($deep-teal, 0.06);
+  }
 }
-
-// @media (max-width: 1100px) {
-//   .cards {
-//     grid-template-columns: 1fr;
-//   }
-// }
 
 @media (max-width: 768px) {
   .cards {
-    gap: 12px;
-    margin-bottom: 16px;
-    // grid-template-columns: 1fr 1fr 1fr;
+    gap: $spacing-md;
+    margin-bottom: $spacing-xl;
   }
 
   .card {
-    padding: 14px;
+    padding: $spacing-lg;
   }
 
   .cardValue {
@@ -265,14 +245,14 @@
   }
 
   .contentPanel {
-    padding: 14px;
+    padding: $spacing-lg;
     overflow: visible;
   }
 
   .filtersRow {
     flex-direction: column;
     align-items: stretch;
-    gap: 12px;
+    gap: $spacing-md;
   }
 
   .filterDropdown {
@@ -283,7 +263,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 10px;
+    gap: $spacing-sm;
     width: 100%;
   }
 
@@ -308,7 +288,7 @@
 
   .filterButton {
     min-width: auto;
-    padding: 0 12px;
+    padding: 0 $spacing-md;
   }
 
   .primaryAction {
@@ -328,7 +308,7 @@
 
   .table th,
   .table td {
-    padding: 10px 8px;
+    padding: $spacing-sm $spacing-xs;
   }
 }
 

@@ -1,0 +1,249 @@
+@use '../../../../_mixins' as *;
+@use '../../../../_variables' as *;
+
+.backdrop {
+  @include modal-backdrop;
+}
+
+.dialog {
+  @include modal-dialog(980px, 760px);
+  grid-template-rows: auto auto 1fr auto;
+}
+
+.header {
+  position: relative;
+  padding: 22px;
+  border-bottom: $border-light;
+}
+
+.headerCenter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.headerTitle {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 800;
+  color: $deep-teal;
+  letter-spacing: -0.01em;
+}
+
+.headerSubtitle {
+  font-size: 18px;
+  font-weight: 600;
+  color: rgba($deep-teal, 0.8);
+}
+
+.iconClose {
+  @include modal-close-button;
+  position: absolute;
+  top: 16px;
+  right: 16px;
+}
+
+.tabs {
+  display: flex;
+  align-items: flex-end;
+  gap: 28px;
+  padding: 0 22px;
+  border-bottom: $border-light;
+}
+
+.tab {
+  height: var(--control-height);
+  padding: 0 6px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-weight: 600;
+  font-family: var(--font-lexend);
+  color: $deep-teal;
+  position: relative;
+  font-size: 14px;
+}
+
+.tabActive {
+  color: $golden;
+}
+
+.tabActive::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 2px;
+  background: $golden;
+  border-radius: $radius-full;
+}
+
+.body {
+  @include modal-body;
+}
+
+.formGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: $spacing-lg;
+}
+
+.field {
+  @include form-field;
+}
+
+.label {
+  @include form-label;
+}
+
+.required {
+  color: $color-error;
+}
+
+.input {
+  @include form-input;
+}
+
+.permissionsContent {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-2xl;
+}
+
+.permissionsSection {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+}
+
+.permissionsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: $spacing-lg;
+}
+
+.permissionCard {
+  background: #f9fafb;
+  border-radius: $radius-md;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  padding: $spacing-md;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+}
+
+.permissionCardHeader {
+  font-weight: 700;
+  color: $deep-teal;
+  font-size: 14px;
+  margin-bottom: $spacing-xs;
+}
+
+.permissionCardBody {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+}
+
+.permissionOption {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $spacing-md;
+  border-radius: $radius-sm;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  background: #fff;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  text-align: left;
+  
+  &:hover {
+    background: rgba($deep-teal, 0.02);
+  }
+}
+
+.permissionOptionGestor {
+  background: var(--deepTeal);
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.1);
+  
+  &:hover {
+    background: rgba(11, 47, 54, 0.9);
+  }
+}
+
+.permissionOptionActive {
+  border-color: $golden;
+  box-shadow: 0 0 0 2px rgba(221, 202, 146, 0.2);
+}
+
+.permissionOptionContent {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+
+.permissionOptionLabel {
+  font-weight: 700;
+  font-size: 14px;
+  color: $deep-teal;
+}
+
+.permissionOptionGestor .permissionOptionLabel {
+  color: #fff;
+}
+
+.permissionOptionDesc {
+  font-size: 12px;
+  color: rgba($deep-teal, 0.7);
+  font-weight: 500;
+}
+
+.permissionOptionGestor .permissionOptionDesc {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.permissionCheck {
+  width: 20px;
+  height: 20px;
+  color: $golden;
+  flex-shrink: 0;
+}
+
+.permissionOptionGestor .permissionCheck {
+  color: $golden;
+}
+
+.permissionNote {
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.55);
+  font-weight: 500;
+  margin-top: $spacing-xs;
+  line-height: 1.4;
+}
+
+.footer {
+  @include modal-footer;
+}
+
+.secondaryButton {
+  @include button-secondary;
+}
+
+.primaryButton {
+  @include button-primary;
+}
+
+@media (max-width: 900px) {
+  .formGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .permissionsGrid {
+    grid-template-columns: 1fr;
+  }
+}
+

@@ -1,0 +1,446 @@
+// ============================================
+// MIXINS - MODAIS
+// ============================================
+@use './_variables' as *;
+
+// Tamanhos padrão de modais (mantém compatível com os tamanhos já usados no projeto)
+$modal-width-sm: 760px;
+$modal-height-sm: 640px;
+$modal-width-md: 980px;
+$modal-height-md: 760px;
+$modal-width-lg: 1200px;
+$modal-height-lg: 860px;
+$modal-width-xl: 1400px;
+$modal-height-xl: 900px;
+
+@mixin modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: $spacing-4xl;
+  z-index: var(--z-modal);
+
+  @media (max-width: 520px) {
+    padding: $spacing-lg;
+  }
+}
+
+@mixin modal-dialog($max-width: 980px, $max-height: 760px) {
+  width: min($max-width, 100%);
+  max-height: min($max-height, calc(100vh - 48px));
+  background: #fff;
+  border-radius: $radius-lg;
+  box-shadow: $shadow-lg;
+  overflow: hidden;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+@mixin modal-dialog-sm {
+  @include modal-dialog($modal-width-sm, $modal-height-sm);
+}
+
+@mixin modal-dialog-md {
+  @include modal-dialog($modal-width-md, $modal-height-md);
+}
+
+@mixin modal-dialog-lg {
+  @include modal-dialog($modal-width-lg, $modal-height-lg);
+}
+
+@mixin modal-dialog-xl {
+  @include modal-dialog($modal-width-xl, $modal-height-xl);
+}
+
+@mixin modal-header {
+  padding: $spacing-2xl $spacing-3xl;
+  border-bottom: $border-light;
+}
+
+@mixin modal-header-centered {
+  @include modal-header;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $spacing-xs;
+}
+
+@mixin modal-header-row {
+  @include modal-header;
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: $spacing-xl;
+}
+
+@mixin modal-header-dark {
+  position: relative;
+  padding: $spacing-xl $spacing-2xl;
+  background: $deep-teal;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+@mixin modal-title($size: md, $color: $deep-teal) {
+  margin: 0;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: $color;
+
+  @if $size == sm {
+    font-size: 20px;
+  } @else if $size == md {
+    font-size: 22px;
+  } @else if $size == lg {
+    font-size: 26px;
+  } @else if $size == xl {
+    font-size: 28px;
+  } @else {
+    font-size: 22px;
+  }
+}
+
+@mixin modal-subtitle {
+  font-size: 18px;
+  font-weight: 600;
+  color: rgba($deep-teal, 0.8);
+}
+
+@mixin modal-body {
+  padding: $spacing-2xl $spacing-3xl;
+  overflow: auto;
+}
+
+@mixin modal-footer {
+  padding: $spacing-xl $spacing-3xl;
+  border-top: $border-light;
+  display: flex;
+  justify-content: flex-end;
+  gap: $spacing-md;
+}
+
+@mixin modal-close-button {
+  width: var(--control-height);
+  height: var(--control-height);
+  border-radius: $radius-md;
+  border: $border-medium;
+  background: #fff;
+  color: rgba(0, 0, 0, 0.7);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.15s ease;
+  
+  &:hover {
+    background: rgba(0, 0, 0, 0.04);
+  }
+}
+
+@mixin modal-close-button-inverse {
+  width: var(--control-height);
+  height: var(--control-height);
+  border-radius: $radius-md;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.06);
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.15s ease;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.12);
+  }
+}
+
+@mixin modal-tabs {
+  display: flex;
+  align-items: flex-end;
+  gap: 28px;
+  padding: 0 $spacing-3xl;
+  border-bottom: $border-light;
+}
+
+@mixin modal-tab {
+  height: var(--control-height);
+  padding: 0 $spacing-xs;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-weight: 600;
+  font-family: var(--font-lexend);
+  color: $deep-teal;
+  position: relative;
+  font-size: 14px;
+}
+
+@mixin modal-tab-active {
+  color: $golden;
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -1px;
+    height: 2px;
+    background: $golden;
+    border-radius: $radius-full;
+  }
+}
+
+// ============================================
+// MIXINS - TABELAS
+// ============================================
+
+@mixin table-wrapper {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  background: #fff;
+  border-radius: $radius-lg;
+  border: $border-light;
+  overflow: hidden;
+}
+
+@mixin table-base {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+@mixin table-cell {
+  padding: $spacing-md $spacing-sm;
+  border-bottom: $border-light;
+  text-align: left;
+  font-size: 14px;
+  color: var(--deepTeal);
+}
+
+@mixin table-header {
+  @include table-cell;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+// ============================================
+// MIXINS - FORMULÁRIOS
+// ============================================
+
+@mixin form-field {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+  min-width: 1px;
+}
+
+@mixin form-label {
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--deepTeal);
+}
+
+@mixin form-input {
+  height: var(--control-height);
+  border-radius: $radius-md;
+  border: $border-golden;
+  padding: 0 $spacing-md;
+  font-size: 14px;
+  font-family: var(--font-lexend);
+  outline: none;
+  background: #fff;
+  color: var(--deepTeal);
+  width: 100%;
+  transition: box-shadow 0.15s ease, border-color 0.15s ease;
+  
+  &:focus {
+    box-shadow: 0 0 0 4px rgba(221, 202, 146, 0.22);
+  }
+  
+  &[aria-invalid="true"],
+  &.error {
+    border-color: $color-error;
+    box-shadow: 0 0 0 4px $color-error-bg;
+  }
+}
+
+@mixin form-textarea {
+  @include form-input;
+  min-height: calc(var(--control-height) * 3);
+  padding: $spacing-md;
+  resize: vertical;
+}
+
+@mixin form-input-with-icon {
+  padding-right: calc(var(--control-height) + $spacing-xs);
+}
+
+@mixin form-error-text {
+  font-size: 12px;
+  color: $color-error;
+  font-weight: 700;
+}
+
+// ============================================
+// MIXINS - BOTÕES
+// ============================================
+
+@mixin button-base {
+  height: var(--control-height);
+  border-radius: $radius-md;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: var(--font-lexend);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-sm;
+  transition: all 0.15s ease;
+  
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+@mixin button-primary {
+  @include button-base;
+  padding: 0 $spacing-2xl;
+  border: 1px solid rgba(11, 47, 54, 0.75);
+  background: var(--deepTeal);
+  color: #fff;
+  
+  &:hover:not(:disabled) {
+    filter: brightness(1.03);
+  }
+}
+
+@mixin button-secondary {
+  @include button-base;
+  padding: 0 $spacing-2xl;
+  border: $border-golden;
+  background: #fff;
+  color: var(--deepTeal);
+  
+  &:hover:not(:disabled) {
+    background: rgba(11, 47, 54, 0.04);
+  }
+}
+
+@mixin button-icon {
+  @include button-base;
+  width: var(--control-height);
+  height: var(--control-height);
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: var(--deepTeal);
+  
+  &:hover:not(:disabled) {
+    background: rgba(11, 47, 54, 0.06);
+  }
+}
+
+// ============================================
+// MIXINS - GRID LAYOUTS
+// ============================================
+
+@mixin grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $spacing-lg;
+}
+
+@mixin grid-3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: $spacing-lg;
+}
+
+@mixin grid-responsive {
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+// ============================================
+// MIXINS - UTILITÁRIOS
+// ============================================
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// ============================================
+// MIXINS - CARDS DE RESUMO
+// ============================================
+
+@mixin summary-cards-container {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: $spacing-xl;
+  margin-bottom: $spacing-2xl;
+  
+  @media (max-width: 768px) {
+    gap: $spacing-md;
+    margin-bottom: $spacing-xl;
+  }
+}
+
+@mixin summary-card {
+  background: var(--deepTeal);
+  color: #fff;
+  border-radius: $radius-lg;
+  padding: $spacing-xl;
+  border: 1px solid rgba(221, 202, 146, 0.25);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.1);
+  
+  @media (max-width: 768px) {
+    padding: $spacing-lg;
+  }
+}
+
+@mixin summary-card-value {
+  font-size: 28px;
+  font-weight: 900;
+  color: $golden;
+  margin: 6px 0 0;
+  
+  @media (max-width: 768px) {
+    font-size: 24px;
+  }
+}
+
+@mixin summary-card-label {
+  margin: 6px 0 0;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.85);
+  
+  @media (max-width: 768px) {
+    font-size: 12px;
+  }
+}

@@ -1,29 +1,18 @@
+@use '../../../../_mixins' as *;
+@use '../../../../_variables' as *;
+
 .backdrop {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.55);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 24px;
-  z-index: var(--z-modal);
+  @include modal-backdrop;
 }
 
 .dialog {
-  width: min(1220px, 100%);
-  max-height: min(860px, calc(100vh - 48px));
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 20px 80px rgba(0, 0, 0, 0.35);
-  overflow: hidden;
-  display: grid;
+  @include modal-dialog-lg;
   grid-template-rows: auto auto 1fr;
 }
 
 .header {
+  @include modal-header;
   position: relative;
-  padding: 22px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 .headerCenter {
@@ -34,77 +23,34 @@
 }
 
 .headerTitle {
-  margin: 0;
-  font-size: 26px;
-  font-weight: 800;
-  color: #0b2f36;
-  letter-spacing: -0.01em;
+  @include modal-title(md);
 }
 
 .headerSubtitle {
-  font-size: 20px;
-  font-weight: 800;
-  color: #0b2f36;
+  @include modal-subtitle;
 }
 
 .iconClose {
+  @include modal-close-button;
   position: absolute;
-  top: 16px;
-  right: 16px;
-  width: var(--control-height);
-  height: var(--control-height);
-  border-radius: 12px;
-  border: 1px solid rgba(0, 0, 0, 0.12);
-  background: #fff;
-  color: rgba(0, 0, 0, 0.75);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-}
-
-.iconClose:hover {
-  background: rgba(0, 0, 0, 0.04);
+  top: $spacing-xl;
+  right: $spacing-xl;
 }
 
 .tabs {
-  display: flex;
-  align-items: flex-end;
-  gap: 28px;
-  padding: 0 22px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  @include modal-tabs;
 }
 
 .tab {
-  height: var(--control-height);
-  padding: 0 6px;
-  border: none;
-  background: transparent;
-  cursor: pointer;
-  font-weight: 600;
-  font-family: var(--font-lexend);
-  color: #0b2f36;
-  position: relative;
+  @include modal-tab;
 }
 
 .tabActive {
-  color: rgba(221, 202, 146, 0.95);
-}
-
-.tabActive::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -1px;
-  height: 2px;
-  background: rgba(221, 202, 146, 0.95);
-  border-radius: 999px;
+  @include modal-tab-active;
 }
 
 .body {
-  padding: 22px;
-  overflow: auto;
+  @include modal-body;
 }
 
 .sectionStack {
