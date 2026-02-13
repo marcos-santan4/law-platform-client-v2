@@ -16,7 +16,13 @@ type Props = {
   defaultProcesso: string;
 };
 
-export function AddAudienciaModal({ open, onClose, processoOptions, advogadoOptions, defaultProcesso }: Props) {
+export function AddAudienciaModal({
+  open,
+  onClose,
+  processoOptions,
+  advogadoOptions,
+  defaultProcesso,
+}: Props) {
   const titleId = useId();
   const closeBtnRef = useRef<HTMLButtonElement | null>(null);
   const dateInputRef = useRef<HTMLInputElement | null>(null);
@@ -31,8 +37,14 @@ export function AddAudienciaModal({ open, onClose, processoOptions, advogadoOpti
   const [link, setLink] = useState('');
   const [importante, setImportante] = useState(false);
 
-  const processoSelectOptions = useMemo(() => processoOptions.map((p) => ({ value: p, label: p })), [processoOptions]);
-  const advogadoSelectOptions = useMemo(() => advogadoOptions.map((a) => ({ value: a, label: a })), [advogadoOptions]);
+  const processoSelectOptions = useMemo(
+    () => processoOptions.map((p) => ({ value: p, label: p })),
+    [processoOptions],
+  );
+  const advogadoSelectOptions = useMemo(
+    () => advogadoOptions.map((a) => ({ value: a, label: a })),
+    [advogadoOptions],
+  );
 
   useEffect(() => {
     if (!open) return;
@@ -155,7 +167,11 @@ export function AddAudienciaModal({ open, onClose, processoOptions, advogadoOpti
 
           <div className={styles.field}>
             <label className={styles.label}>Descrição</label>
-            <textarea className={styles.textarea} value={descricao} onChange={(e) => setDescricao(e.target.value)} />
+            <textarea
+              className={styles.textarea}
+              value={descricao}
+              onChange={(e) => setDescricao(e.target.value)}
+            />
           </div>
 
           <div className={styles.grid2}>
@@ -180,22 +196,24 @@ export function AddAudienciaModal({ open, onClose, processoOptions, advogadoOpti
           </div>
 
           <label className={styles.checkboxRow}>
-            <input type="checkbox" checked={importante} onChange={(e) => setImportante(e.target.checked)} />
+            <input
+              type="checkbox"
+              checked={importante}
+              onChange={(e) => setImportante(e.target.checked)}
+            />
             <span>Marcar como importante</span>
           </label>
         </div>
 
         <footer className={styles.footer}>
           <button type="button" className={styles.secondaryButton} onClick={onClose}>
-            CANCELAR
+            Cancelar
           </button>
           <button type="button" className={styles.primaryButton} onClick={onClose}>
-            SALVAR
+            Salvar
           </button>
         </footer>
       </div>
     </div>
   );
 }
-
-

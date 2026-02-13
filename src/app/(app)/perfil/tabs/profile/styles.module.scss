@@ -1,3 +1,5 @@
+@use '../../../../_mixins' as *;
+
 .panelTitle {
   margin: 0 0 14px;
   font-size: 20px;
@@ -37,15 +39,7 @@
 }
 
 .input {
-  height: var(--control-height);
-  border-radius: 10px;
-  border: 1px solid var(--golden);
-  padding: 0 12px;
-  font-size: 14px;
-  font-family: var(--font-lexend);
-  outline: none;
-  background: none;
-  color: var(--deepTeal);
+  @include form-input;
 }
 
 .sectionTitle {
@@ -103,20 +97,7 @@
 // }
 
 .dangerButton {
-  height: var(--control-height);
-  padding: 0 18px;
-  border-radius: 10px;
-  border: 1px solid #ef4444;
-  background: #fff;
-  color: #ef4444;
-  font-weight: 700;
-  font-family: var(--font-lexend);
-  cursor: pointer;
-
-  &:hover {
-    background: #ffe3e3;
-    color: #ef4444;
-  }
+  @include button-danger;
 }
 
 @media (max-width: 1024px) {

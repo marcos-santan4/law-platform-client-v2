@@ -1,3 +1,5 @@
+@use '../../../../../_mixins' as *;
+
 .backdrop {
   position: fixed;
   inset: 0;
@@ -36,20 +38,7 @@
 }
 
 .iconClose {
-  width: var(--control-height);
-  height: var(--control-height);
-  border-radius: 10px;
-  border: 1px solid rgba(0, 0, 0, 0.12);
-  background: #fff;
-  color: rgba(0, 0, 0, 0.7);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-}
-
-.iconClose:hover {
-  background: rgba(0, 0, 0, 0.04);
+  @include modal-close-button;
 }
 
 .body {
@@ -112,18 +101,7 @@
 }
 
 .closeButton {
-  height: var(--control-height);
-  padding: 0 28px;
-  border-radius: 12px;
-  border: 1px solid rgba(11, 47, 54, 0.75);
-  background: #0b2f36;
-  color: #fff;
-  font-weight: 700;
-  cursor: pointer;
-}
-
-.closeButton:hover {
-  filter: brightness(1.03);
+  @include button-primary;
 }
 
 @media (max-width: 520px) {

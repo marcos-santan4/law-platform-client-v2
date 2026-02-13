@@ -1,3 +1,5 @@
+@use '../../_mixins' as *;
+
 .loginContainer {
   min-height: 100vh;
   // width: 100%;
@@ -99,21 +101,7 @@
 }
 
 .formGroup input {
-  width: 100%;
-  height: var(--control-height);
-  padding: 0.875rem 1rem;
-  background: white;
-  border: 1px solid var(--golden);
-  border-radius: 4px;
-  font-size: 1rem;
-  font-family: var(--font-lexend);
-  color: #0d1f1f;
-  outline: none;
-  transition: border-color 0.2s;
-
-  &:focus {
-    border-color: var(--golden);
-  }
+  @include form-input;
 
   &::placeholder {
     color: #999;
@@ -165,7 +153,7 @@
   font-size: 0.9rem;
 }
 
-.rememberMe input[type="checkbox"] {
+.rememberMe input[type='checkbox'] {
   display: none;
 }
 
@@ -191,11 +179,11 @@
   transition: transform 0.3s;
 }
 
-.rememberMe input[type="checkbox"]:checked + .toggleSwitch {
+.rememberMe input[type='checkbox']:checked + .toggleSwitch {
   background: var(--golden);
 }
 
-.rememberMe input[type="checkbox"]:checked + .toggleSwitch::after {
+.rememberMe input[type='checkbox']:checked + .toggleSwitch::after {
   transform: translateX(20px);
 }
 
@@ -215,20 +203,15 @@
 }
 
 .loginButton {
+  @include button-base;
   width: 20em;
-  height: var(--control-height);
+  margin-top: 1rem;
   background: #1a3a3a;
   border: 1px solid var(--golden);
-  border-radius: 10px;
   color: var(--golden);
-  font-size: 12px;
-  font-weight: 600;
   letter-spacing: 0.1em;
-  cursor: pointer;
-  margin-top: 1rem;
-  transition: all 0.2s;
 
-  &:hover {
+  &:hover:not(:disabled) {
     background: transparent;
     border-color: #fff;
   }
@@ -325,4 +308,3 @@
     justify-content: center;
   }
 }
-

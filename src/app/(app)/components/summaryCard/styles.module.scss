@@ -1,0 +1,129 @@
+@use '../../../_variables' as *;
+
+.card {
+  background: #fff;
+  border-radius: 12px;
+  padding: $spacing-xl;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.cardBg_white {
+  background: #fff;
+}
+
+.cardBg_gray {
+  background: #f5f6f8;
+}
+
+.cardBg_cream {
+  background: #fdf9f0;
+}
+
+.iconWrap {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.iconBg_blue {
+  .iconWrap {
+    background: rgba(74, 144, 217, 0.18);
+  }
+
+  .icon {
+    color: #4a90d9;
+  }
+}
+
+.iconBg_amber {
+  .iconWrap {
+    background: rgba(221, 202, 146, 0.35);
+  }
+
+  .icon {
+    color: $golden;
+  }
+}
+
+.iconBg_yellow {
+  .iconWrap {
+    background: rgba(234, 179, 8, 0.2);
+  }
+
+  .icon {
+    color: #c9a227;
+  }
+}
+
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.title {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: rgba(0, 0, 0, 0.55);
+}
+
+.value {
+  font-size: 28px;
+  font-weight: 900;
+  color: $deep-teal;
+
+  @media (max-width: 768px) {
+    font-size: 24px;
+  }
+}
+
+.grid_double,
+.grid_triple {
+  display: grid;
+  gap: 8px;
+}
+
+.grid_double {
+  grid-template-columns: 1fr 1fr;
+}
+
+.grid_triple {
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.gridItem {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.gridLabel {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: rgba(0, 0, 0, 0.55);
+}
+
+.gridValue {
+  font-size: 22px;
+  font-weight: 900;
+  color: $deep-teal;
+
+  @media (max-width: 768px) {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 768px) {
+  .card {
+    padding: $spacing-lg;
+  }
+}

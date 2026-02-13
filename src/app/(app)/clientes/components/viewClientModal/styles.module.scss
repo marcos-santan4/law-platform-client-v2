@@ -7,7 +7,7 @@
 
 .dialog {
   @include modal-dialog-lg;
-  grid-template-rows: auto auto 1fr;
+  grid-template-rows: auto auto 1fr auto;
 }
 
 .header {
@@ -119,29 +119,11 @@
 }
 
 .input {
-  height: var(--control-height);
-  border-radius: 10px;
-  border: 1px solid var(--golden);
-  padding: 0 12px;
-  font-size: 14px;
-  font-family: var(--font-lexend);
-  outline: none;
-  background: #f3f4f6;
-  color: #0b2f36;
-  width: 100%;
+  @include form-input;
 }
 
 .textarea {
-  min-height: calc(var(--control-height) * 3);
-  border-radius: 10px;
-  border: 1px solid var(--golden);
-  padding: 12px;
-  font-size: 14px;
-  font-family: var(--font-lexend);
-  outline: none;
-  background: #f3f4f6;
-  color: #0b2f36;
-  resize: vertical;
+  @include form-textarea;
 }
 
 .sectionTopRow {
@@ -175,19 +157,21 @@
   color: #000;
 }
 
+.footer {
+  @include modal-footer;
+  justify-content: space-between;
+}
+
+.secondaryButton {
+  @include button-primary;
+}
+
+.dangerButton {
+  @include button-danger;
+}
+
 .primaryButton {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  height: var(--control-height);
-  padding: 0 14px;
-  border-radius: 10px;
-  border: 1px solid rgba(221, 202, 146, 0.55);
-  background: #0b2f36;
-  color: #fff;
-  cursor: pointer;
-  font-weight: 600;
-  font-family: var(--font-lexend);
+  @include button-primary;
 }
 
 .primaryButtonIcon {
@@ -226,20 +210,7 @@
 }
 
 .iconButton {
-  width: var(--control-height);
-  height: var(--control-height);
-  border-radius: 10px;
-  border: 1px solid rgba(0, 0, 0, 0.12);
-  background: #fff;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  color: #0b2f36;
-  cursor: pointer;
-}
-
-.iconButton:hover {
-  background: rgba(11, 47, 54, 0.06);
+  @include button-icon;
 }
 
 .emptyState {
@@ -265,14 +236,9 @@
 }
 
 .pagerBtn {
-  width: var(--control-height);
-  height: var(--control-height);
-  border-radius: 10px;
-  border: 1px solid rgba(0, 0, 0, 0.12);
-  background: #fff;
-  cursor: pointer;
-  font-weight: 600;
+  @include button-icon;
   color: rgba(0, 0, 0, 0.65);
+  font-weight: 600;
 }
 
 .pagerBtn:disabled {
@@ -298,5 +264,3 @@
     width: 100%;
   }
 }
-
-

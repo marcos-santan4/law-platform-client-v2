@@ -111,7 +111,7 @@ export default function ClientesPage() {
 
   return (
     <div>
-      <div className={styles.cards}>
+      {/* <div className={styles.cards}>
         <div className={styles.card}>
           <FiUsers size={22} aria-hidden="true" />
           <div className={styles.cardValue}>22</div>
@@ -127,15 +127,15 @@ export default function ClientesPage() {
           <div className={styles.cardValue}>0</div>
           <div className={styles.cardLabel}>Novos clientes</div>
         </div>
-      </div>
+      </div> */}
 
       <section className={styles.contentPanel} aria-label="Lista de clientes">
         <div className={styles.filtersRow}>
           <div className={styles.searchAndFilter}>
-          <div className={styles.search} role="search">
-            <FiSearch size={16} aria-hidden="true" />
-            <input placeholder="Buscar por nome ou CPF" />
-          </div>
+            <div className={styles.search} role="search">
+              <FiSearch size={16} aria-hidden="true" />
+              <input placeholder="Buscar por nome ou CPF" />
+            </div>
 
             <div className={styles.filterInline}>
               <span className={styles.filterInlineLabel}>Filtrar:</span>
@@ -175,9 +175,13 @@ export default function ClientesPage() {
             </div>
           </div>
 
-          <button className={styles.primaryAction} type="button" onClick={() => setCreateOpen(true)}>
-            <span>Cadastrar</span>
+          <button
+            className={styles.primaryAction}
+            type="button"
+            onClick={() => setCreateOpen(true)}
+          >
             <FiPlus size={18} aria-hidden="true" className={styles.primaryActionIcon} />
+            <span>Cadastrar</span>
           </button>
         </div>
 
@@ -197,7 +201,9 @@ export default function ClientesPage() {
                   <td>{c.nome}</td>
                   <td>{c.cpf ? c.cpf : '—'}</td>
                   <td className={styles.cellCenter}>
-                    <span className={`${styles.status} ${c.status === 'Inativo' ? styles.statusInactive : ''}`}>
+                    <span
+                      className={`${styles.status} ${c.status === 'Inativo' ? styles.statusInactive : ''}`}
+                    >
                       {c.status}
                     </span>
                   </td>
@@ -222,8 +228,13 @@ export default function ClientesPage() {
       </section>
 
       <CreateClientModal open={createOpen} onClose={() => setCreateOpen(false)} />
-      {viewOpen ? <ViewClientModal open={viewOpen} client={selectedClient} onClose={() => setViewOpen(false)} /> : null}
+      {viewOpen ? (
+        <ViewClientModal
+          open={viewOpen}
+          client={selectedClient}
+          onClose={() => setViewOpen(false)}
+        />
+      ) : null}
     </div>
   );
 }
-

@@ -11,6 +11,7 @@ import {
   FiChevronLeft,
   FiChevronRight,
   FiUsers,
+  FiGrid,
 } from 'react-icons/fi';
 import { FaTasks } from 'react-icons/fa';
 import { ImHammer2 } from 'react-icons/im';
@@ -22,6 +23,7 @@ import logoCollapsed from '../../../../../../public/images/logos/logo-mindlaw2.p
 import styles from '../styles.module.scss';
 
 const NAV_ITEMS = [
+  { href: '/dashboard', label: 'Dashboard', icon: FiGrid },
   { href: '/clientes', label: 'Clientes', icon: FiUsers },
   { href: '/intimacoes', label: 'Intimações', icon: ImHammer2 },
   { href: '/casos', label: 'Casos e Processos', icon: TbReportSearch },

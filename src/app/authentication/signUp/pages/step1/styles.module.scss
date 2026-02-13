@@ -1,3 +1,5 @@
+@use '../../../../mixins' as *;
+
 // .right {
 //   width: 70%;
 //   // display: flex;
@@ -101,20 +103,7 @@
 }
 
 .input {
-  height: var(--control-height);
-  border-radius: 10px;
-  border: 1px solid rgba(0, 0, 0, 0.12);
-  padding: 0 14px;
-  font-size: 14px;
-  font-family: var(--font-lexend);
-  outline: none;
-  transition: border-color 0.2s, box-shadow 0.2s;
-  background: none;
-  color: #000;
-}
-
-.input:focus {
-  border: 2px solid var(--golden);
+  @include form-input;
 }
 
 .error {
@@ -147,16 +136,17 @@
 
 .primaryButton {
   margin-top: 18px;
-  height: var(--control-height);
+  @include button-base;
+  width: 100%;
   border: none;
   border-radius: 12px;
   background: var(--golden);
   color: #0b2f36;
-  font-weight: 800;
   letter-spacing: 0.02em;
-  cursor: pointer;
-  transition: transform 0.05s, filter 0.2s, opacity 0.2s;
-  font-family: var(--font-lexend);
+  transition:
+    transform 0.05s,
+    filter 0.2s,
+    opacity 0.2s;
 }
 
 .primaryButton:active {
@@ -188,5 +178,3 @@
     font-size: 36px;
   }
 }
-
-

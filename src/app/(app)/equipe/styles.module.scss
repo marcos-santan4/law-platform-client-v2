@@ -209,21 +209,7 @@
 }
 
 .actionIconButton {
-  width: $control-height;
-  height: $control-height;
-  border-radius: 10px;
-  border: none;
-  background: none;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  color: $deep-teal;
-  cursor: pointer;
-  transition: background 0.15s ease;
-
-  &:hover {
-    background: rgba($deep-teal, 0.06);
-  }
+  @include button-icon;
 }
 
 @media (max-width: 768px) {

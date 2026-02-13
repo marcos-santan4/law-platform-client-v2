@@ -1,3 +1,5 @@
+@use '../../../../_mixins' as *;
+
 .configIntro {
   display: flex;
   align-items: flex-start;
@@ -15,14 +17,7 @@
 }
 
 .btnAddOab {
-  height: var(--control-height);
-  padding: 0 18px;
-  border-radius: 10px;
-  border: 1px solid rgba(11, 47, 54, 0.75);
-  background: var(--deepTeal);
-  color: #fff;
-  font-weight: 700;
-  cursor: pointer;
+  @include button-primary;
   font-family: var(--font-lexend);
   display: inline-flex;
   align-items: center;
@@ -244,19 +239,7 @@
 }
 
 .addBtn {
-  height: var(--control-height);
-  padding: 0 18px;
-  border-radius: 10px;
-  border: 1px solid rgba(11, 47, 54, 0.35);
-  background: #fff;
-  color: rgba(11, 47, 54, 0.85);
-  font-weight: 700;
-  cursor: pointer;
-  font-family: var(--font-lexend);
-}
-
-.addBtn:hover {
-  background: rgba(11, 47, 54, 0.04);
+  @include button-secondary;
 }
 
 @media (max-width: 900px) {

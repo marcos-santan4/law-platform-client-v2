@@ -137,7 +137,9 @@ export default function EquipePage() {
         </div>
         <div className={styles.card}>
           <FiUserPlus size={22} aria-hidden="true" />
-          <div className={styles.cardValue}>{teamMembers.filter((m) => m.status === 'Ativo').length}</div>
+          <div className={styles.cardValue}>
+            {teamMembers.filter((m) => m.status === 'Ativo').length}
+          </div>
           <div className={styles.cardLabel}>Equipes ativas</div>
         </div>
       </div>
@@ -189,8 +191,8 @@ export default function EquipePage() {
           </div>
 
           <button className={styles.primaryAction} type="button">
-            <span>Cadastrar</span>
             <FiPlus size={18} aria-hidden="true" className={styles.primaryActionIcon} />
+            <span>Cadastrar</span>
           </button>
         </div>
 
@@ -210,7 +212,9 @@ export default function EquipePage() {
                   <td>{member.nome}</td>
                   <td>{member.cargo || '—'}</td>
                   <td className={styles.cellCenter}>
-                    <span className={`${styles.status} ${member.status === 'Inativo' ? styles.statusInactive : ''}`}>
+                    <span
+                      className={`${styles.status} ${member.status === 'Inativo' ? styles.statusInactive : ''}`}
+                    >
                       {member.status}
                     </span>
                   </td>
@@ -263,4 +267,3 @@ export default function EquipePage() {
     </div>
   );
 }
-

@@ -1,3 +1,5 @@
+@use '../../../../_mixins' as *;
+
 // Estilos do card (antes ficavam em `src/app/(app)/intimacoes/styles.module.scss`)
 .itemCard {
   background: #fff;
@@ -77,85 +79,48 @@
 }
 
 .btnBase {
-  height: var(--control-height);
-  border-radius: 10px;
-  padding: 0 14px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  font-family: var(--font-lexend);
-  font-weight: 600;
-  cursor: pointer;
-  border: 1px solid rgba(0, 0, 0, 0.12);
-  background: #fff;
-  color: var(--deepTeal);
-  font-size: 12px;
-  transition:
-    background 0.15s ease,
-    border-color 0.15s ease,
-    transform 0.05s ease,
-    filter 0.15s ease,
-    box-shadow 0.15s ease;
-}
-
-.btnBase:hover {
-  background: rgba(11, 47, 54, 0.04);
-}
-
-.btnBase:active {
-  transform: translateY(1px);
-}
-
-.btnBase:focus-visible {
-  outline: 3px solid rgba(221, 202, 146, 0.7);
-  outline-offset: 2px;
+  @include button-secondary;
 }
 
 .btnPrimary {
-  @extend .btnBase;
-  background: var(--deepTeal);
-  border-color: rgba(11, 47, 54, 0.75);
-  color: #fff;
-}
-
-.btnPrimary:hover {
-  filter: brightness(1.05);
-  background: var(--deepTeal);
+  @include button-primary;
+  width: 180px;
 }
 
 .btnSuccess {
-  @extend .btnBase;
+  @include button-base;
   background: #fff;
-  border-color: rgba(58, 166, 85, 0.8);
+  border: 1px solid rgba(58, 166, 85, 0.8);
   color: #2f855a;
-}
 
-.btnSuccess:hover {
-  background: rgba(58, 166, 85, 0.06);
-  border-color: rgba(58, 166, 85, 0.95);
+  &:hover:not(:disabled) {
+    background: rgba(58, 166, 85, 0.06);
+    border-color: rgba(58, 166, 85, 0.95);
+  }
 }
 
 .btnOutlinePurple {
-  @extend .btnBase;
-  border-color: rgba(120, 87, 255, 0.75);
+  @include button-base;
+  background: #fff;
+  border: 1px solid rgba(120, 87, 255, 0.75);
   color: rgb(120, 87, 255);
-}
 
-.btnOutlinePurple:hover {
-  background: rgba(120, 87, 255, 0.06);
-  border-color: rgba(120, 87, 255, 0.95);
+  &:hover:not(:disabled) {
+    background: rgba(120, 87, 255, 0.06);
+    border-color: rgba(120, 87, 255, 0.95);
+  }
 }
 
 .btnOutline {
-  @extend .btnBase;
-  border-color: rgba(0, 0, 0, 0.22);
+  @include button-base;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.22);
   color: rgba(11, 47, 54, 0.9);
-}
 
-.btnOutline:hover {
-  background: rgba(11, 47, 54, 0.04);
-  border-color: rgba(0, 0, 0, 0.28);
+  &:hover:not(:disabled) {
+    background: rgba(11, 47, 54, 0.04);
+    border-color: rgba(0, 0, 0, 0.28);
+  }
 }
 
 .itemBottomGrid {
@@ -203,21 +168,12 @@
 }
 
 .aiButton {
-  height: var(--control-height);
-  padding: 0 16px;
-  border-radius: 12px;
+  @include button-base;
   border: none;
   background: rgb(224, 247, 247);
   color: var(--deepTeal);
-  font-weight: 600;
-  font-family: var(--font-lexend);
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 12px;
 
-  &:hover {
+  &:hover:not(:disabled) {
     background: rgb(200, 240, 240);
   }
 }
@@ -260,5 +216,3 @@
     grid-template-columns: 1fr 1fr;
   }
 }
-
-

@@ -138,7 +138,7 @@ $modal-height-xl: 900px;
   justify-content: center;
   cursor: pointer;
   transition: background 0.15s ease;
-  
+
   &:hover {
     background: rgba(0, 0, 0, 0.04);
   }
@@ -249,6 +249,8 @@ $modal-height-xl: 900px;
   color: var(--deepTeal);
 }
 
+// _mixins.scss - versão expandida
+
 @mixin form-input {
   height: var(--control-height);
   border-radius: $radius-md;
@@ -260,16 +262,71 @@ $modal-height-xl: 900px;
   background: #fff;
   color: var(--deepTeal);
   width: 100%;
-  transition: box-shadow 0.15s ease, border-color 0.15s ease;
-  
+  transition:
+    box-shadow 0.15s ease,
+    border-color 0.15s ease;
+
   &:focus {
     box-shadow: 0 0 0 4px rgba(221, 202, 146, 0.22);
   }
-  
-  &[aria-invalid="true"],
+
+  &[aria-invalid='true'],
   &.error {
     border-color: $color-error;
     box-shadow: 0 0 0 4px $color-error-bg;
+  }
+
+  // Para inputs de data/hora: esconde o picker nativo do Chrome
+  &[type='date']::-webkit-calendar-picker-indicator,
+  &[type='time']::-webkit-calendar-picker-indicator {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+@mixin form-textarea {
+  @include form-input;
+  min-height: calc(var(--control-height) * 3);
+  padding: $spacing-md;
+  resize: vertical;
+}
+
+// Variante para quando o input precisa de espaço para ícone à direita
+@mixin form-input-with-icon {
+  padding-right: calc(var(--control-height) + $spacing-xs);
+}
+
+// Select nativo (mesmo visual do input)
+@mixin form-select {
+  @include form-input;
+  appearance: none;
+  background-image: url('data:image/svg+xml,...'); // seta customizada, se quiser
+}
+
+// Wrapper para input com ícone (ex: date picker, busca)
+@mixin form-input-icon-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+@mixin form-input-icon-button {
+  position: absolute;
+  width: var(--control-height);
+  height: var(--control-height);
+  border: none;
+  background: transparent;
+  color: $golden;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: $radius-md;
+
+  &:hover {
+    background: rgba($deep-teal, 0.06);
+    color: $deep-teal;
   }
 }
 
@@ -296,6 +353,7 @@ $modal-height-xl: 900px;
 
 @mixin button-base {
   height: var(--control-height);
+  min-width: var(--button-min-width, 120px);
   border-radius: $radius-md;
   font-size: 14px;
   font-weight: 600;
@@ -306,7 +364,11 @@ $modal-height-xl: 900px;
   justify-content: center;
   gap: $spacing-sm;
   transition: all 0.15s ease;
-  
+
+  &:focus-visible {
+    box-shadow: 0 0 0 4px rgba($golden, 0.22);
+  }
+
   &:disabled {
     opacity: 0.5;
     cursor: not-allowed;
@@ -319,7 +381,7 @@ $modal-height-xl: 900px;
   border: 1px solid rgba(11, 47, 54, 0.75);
   background: var(--deepTeal);
   color: #fff;
-  
+
   &:hover:not(:disabled) {
     filter: brightness(1.03);
   }
@@ -331,21 +393,34 @@ $modal-height-xl: 900px;
   border: $border-golden;
   background: #fff;
   color: var(--deepTeal);
-  
+
   &:hover:not(:disabled) {
     background: rgba(11, 47, 54, 0.04);
   }
 }
 
+@mixin button-danger {
+  @include button-base;
+  padding: 0 $spacing-2xl;
+  border: 1px solid #ef4444;
+  background: #fff;
+  color: #ef4444;
+
+  &:hover:not(:disabled) {
+    background: rgba(239, 68, 68, 0.08);
+  }
+}
+
 @mixin button-icon {
   @include button-base;
+  min-width: 0;
   width: var(--control-height);
   height: var(--control-height);
   padding: 0;
   border: none;
   background: transparent;
   color: var(--deepTeal);
-  
+
   &:hover:not(:disabled) {
     background: rgba(11, 47, 54, 0.06);
   }
@@ -404,7 +479,7 @@ $modal-height-xl: 900px;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: $spacing-xl;
   margin-bottom: $spacing-2xl;
-  
+
   @media (max-width: 768px) {
     gap: $spacing-md;
     margin-bottom: $spacing-xl;
@@ -418,7 +493,7 @@ $modal-height-xl: 900px;
   padding: $spacing-xl;
   border: 1px solid rgba(221, 202, 146, 0.25);
   box-shadow: 0 10px 22px rgba(0, 0, 0, 0.1);
-  
+
   @media (max-width: 768px) {
     padding: $spacing-lg;
   }
@@ -429,7 +504,7 @@ $modal-height-xl: 900px;
   font-weight: 900;
   color: $golden;
   margin: 6px 0 0;
-  
+
   @media (max-width: 768px) {
     font-size: 24px;
   }
@@ -439,7 +514,7 @@ $modal-height-xl: 900px;
   margin: 6px 0 0;
   font-size: 13px;
   color: rgba(255, 255, 255, 0.85);
-  
+
   @media (max-width: 768px) {
     font-size: 12px;
   }

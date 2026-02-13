@@ -17,6 +17,7 @@ function getPageTitle(pathname: string): string {
   }
 
   const routeMap: Record<string, string> = {
+    dashboard: 'Dashboard',
     clientes: 'Clientes',
     intimacoes: 'Intimações',
     casos: 'Casos e Processos',
@@ -58,8 +59,8 @@ export function AppTopHeader() {
 
         <div className={styles.headerRight}>
           <button className={styles.quickAdd} type="button">
-            <span>Adicionar</span>
             <FiPlus size={18} className={styles.quickAddIcon} />
+            <span>Adicionar</span>
           </button>
 
           <button
@@ -85,10 +86,10 @@ export function AppTopHeader() {
         </div>
       </div>
 
-      {notificationsOpen ? <NotificationsDrawer open={notificationsOpen} onClose={() => setNotificationsOpen(false)} /> : null}
+      {notificationsOpen ? (
+        <NotificationsDrawer open={notificationsOpen} onClose={() => setNotificationsOpen(false)} />
+      ) : null}
       <MobileMenu open={mobileMenuOpen} onClose={() => setMobileMenuOpen(false)} />
     </header>
   );
 }
-
-

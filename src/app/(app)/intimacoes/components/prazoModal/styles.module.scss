@@ -1,3 +1,5 @@
+@use '../../../../_mixins' as *;
+
 .backdrop {
   position: fixed;
   inset: 0;
@@ -36,19 +38,10 @@
 }
 
 .iconClose {
+  @include modal-close-button;
   position: absolute;
   top: 14px;
   right: 14px;
-  width: var(--control-height);
-  height: var(--control-height);
-  border-radius: 12px;
-  border: 1px solid rgba(0, 0, 0, 0.12);
-  background: #fff;
-  color: rgba(0, 0, 0, 0.7);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
 }
 
 .body {
@@ -83,65 +76,27 @@
 }
 
 .input {
-  height: var(--control-height);
-  border-radius: 10px;
-  border: 1px solid var(--golden);
-  padding: 0 12px;
-  font-size: 14px;
-  font-family: var(--font-lexend);
-  outline: none;
-  background: #fff;
-  color: var(--deepTeal);
-  width: 100%;
+  @include form-input;
 }
 
 .textarea {
+  @include form-textarea;
   min-height: 120px;
-  border-radius: 10px;
-  border: 1px solid var(--golden);
-  padding: 12px;
-  font-size: 14px;
-  font-family: var(--font-lexend);
-  outline: none;
-  background: #fff;
-  color: var(--deepTeal);
-  resize: vertical;
 }
 
 .inputIconWrap {
-  position: relative;
+  @include form-input-icon-wrap;
 }
 
 .inputWithIcon {
-  padding-right: calc(var(--control-height) + 8px);
-}
-
-.input[type='date']::-webkit-calendar-picker-indicator,
-.input[type='time']::-webkit-calendar-picker-indicator {
-  opacity: 0;
-  pointer-events: none;
+  @include form-input-with-icon;
 }
 
 .inputIconButton {
-  position: absolute;
+  @include form-input-icon-button;
   right: 6px;
   top: 50%;
   transform: translateY(-50%);
-  width: var(--control-height);
-  height: var(--control-height);
-  border: none;
-  background: transparent;
-  color: var(--golden);
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 10px;
-}
-
-.inputIconButton:hover {
-  background: rgba(11, 47, 54, 0.06);
-  color: var(--deepTeal);
 }
 
 .checkboxRow {
@@ -153,35 +108,15 @@
 }
 
 .footer {
-  padding: 16px 22px;
-  border-top: 1px solid rgba(0, 0, 0, 0.08);
-  display: flex;
-  justify-content: flex-end;
-  gap: 12px;
+  @include modal-footer;
 }
 
 .secondaryButton {
-  height: var(--control-height);
-  padding: 0 22px;
-  border-radius: 10px;
-  border: 1px solid var(--golden);
-  background: #fff;
-  color: var(--deepTeal);
-  font-weight: 600;
-  cursor: pointer;
-  font-family: var(--font-lexend);
+  @include button-secondary;
 }
 
 .primaryButton {
-  height: var(--control-height);
-  padding: 0 22px;
-  border-radius: 10px;
-  border: 1px solid rgba(221, 202, 146, 0.55);
-  background: var(--deepTeal);
-  color: var(--golden);
-  font-weight: 600;
-  cursor: pointer;
-  font-family: var(--font-lexend);
+  @include button-primary;
 }
 
 @media (max-width: 900px) {

@@ -2,7 +2,7 @@
 
 import { useEffect, useId, useMemo, useRef, useState } from 'react';
 import { IoMdClose } from 'react-icons/io';
-import { FiEye, FiPlus, FiSearch } from 'react-icons/fi';
+import { FiEye, FiPlus, FiSearch, FiEdit2, FiTrash2 } from 'react-icons/fi';
 
 import styles from './styles.module.scss';
 
@@ -37,9 +37,11 @@ type Props = {
   open: boolean;
   client: Client | null;
   onClose: () => void;
+  onEdit?: (client: Client) => void;
+  onDelete?: (client: Client) => void;
 };
 
-export function ViewClientModal({ open, client, onClose }: Props) {
+export function ViewClientModal({ open, client, onClose, onEdit, onDelete }: Props) {
   const titleId = useId();
   const closeBtnRef = useRef<HTMLButtonElement | null>(null);
   const [tab, setTab] = useState<TabKey>('detalhes');
@@ -59,9 +61,19 @@ export function ViewClientModal({ open, client, onClose }: Props) {
   const processes = useMemo(
     () => [
       { id: 'p1', numero: 'asdd', descricao: 'Sem descrição', criadoEm: '04/02/2026' },
-      { id: 'p2', numero: '0005438-75.2025.8.05.0079', descricao: 'Sem descrição', criadoEm: '02/02/2026' },
+      {
+        id: 'p2',
+        numero: '0005438-75.2025.8.05.0079',
+        descricao: 'Sem descrição',
+        criadoEm: '02/02/2026',
+      },
       { id: 'p3', numero: '123', descricao: '12345', criadoEm: '30/01/2026' },
-      { id: 'p4', numero: '0002696-42.2026.4.05.8400', descricao: 'Sem descrição', criadoEm: '28/01/2026' },
+      {
+        id: 'p4',
+        numero: '0002696-42.2026.4.05.8400',
+        descricao: 'Sem descrição',
+        criadoEm: '28/01/2026',
+      },
     ],
     [],
   );
@@ -196,7 +208,11 @@ export function ViewClientModal({ open, client, onClose }: Props) {
                 <div className={styles.grid3}>
                   <div className={styles.field}>
                     <label className={styles.label}>Telefone Secundário</label>
-                    <input className={styles.input} value={client.telefoneSecundario ?? ''} disabled />
+                    <input
+                      className={styles.input}
+                      value={client.telefoneSecundario ?? ''}
+                      disabled
+                    />
                   </div>
                 </div>
               </section>
@@ -250,8 +266,8 @@ export function ViewClientModal({ open, client, onClose }: Props) {
                 </div>
 
                 <button className={styles.primaryButton} type="button">
-                  <span>Cadastrar Novo Processo</span>
                   <FiPlus size={18} aria-hidden="true" className={styles.primaryButtonIcon} />
+                  <span>Cadastrar Novo Processo</span>
                 </button>
               </div>
 
@@ -272,7 +288,11 @@ export function ViewClientModal({ open, client, onClose }: Props) {
                         <td>{p.descricao}</td>
                         <td>{p.criadoEm}</td>
                         <td className={styles.cellCenter}>
-                          <button type="button" className={styles.iconButton} aria-label="Visualizar processo">
+                          <button
+                            type="button"
+                            className={styles.iconButton}
+                            aria-label="Visualizar processo"
+                          >
                             <FiEye size={18} />
                           </button>
                         </td>
@@ -282,9 +302,16 @@ export function ViewClientModal({ open, client, onClose }: Props) {
                 </table>
 
                 <div className={styles.tableFooter}>
-                  <span>1–{processes.length} de {processes.length}</span>
+                  <span>
+                    1–{processes.length} de {processes.length}
+                  </span>
                   <div className={styles.pager}>
-                    <button type="button" className={styles.pagerBtn} disabled aria-label="Anterior">
+                    <button
+                      type="button"
+                      className={styles.pagerBtn}
+                      disabled
+                      aria-label="Anterior"
+                    >
                       ‹
                     </button>
                     <button type="button" className={styles.pagerBtn} disabled aria-label="Próximo">
@@ -305,8 +332,8 @@ export function ViewClientModal({ open, client, onClose }: Props) {
                 </div>
 
                 <button className={styles.primaryButton} type="button">
-                  <span>Novo Atendimento</span>
                   <FiPlus size={18} aria-hidden="true" className={styles.primaryButtonIcon} />
+                  <span>Novo Atendimento</span>
                 </button>
               </div>
 
@@ -332,7 +359,12 @@ export function ViewClientModal({ open, client, onClose }: Props) {
                 <div className={styles.tableFooter}>
                   <span>0–0 de 0</span>
                   <div className={styles.pager}>
-                    <button type="button" className={styles.pagerBtn} disabled aria-label="Anterior">
+                    <button
+                      type="button"
+                      className={styles.pagerBtn}
+                      disabled
+                      aria-label="Anterior"
+                    >
                       ‹
                     </button>
                     <button type="button" className={styles.pagerBtn} disabled aria-label="Próximo">
@@ -344,9 +376,28 @@ export function ViewClientModal({ open, client, onClose }: Props) {
             </section>
           ) : null}
         </div>
+
+        <footer className={styles.footer}>
+          <button
+            type="button"
+            className={styles.dangerButton}
+            onClick={() => onDelete?.(client)}
+            aria-label="Excluir cliente"
+          >
+            <FiTrash2 size={18} aria-hidden="true" />
+            <span>Excluir</span>
+          </button>
+          <button
+            type="button"
+            className={styles.secondaryButton}
+            onClick={() => onEdit?.(client)}
+            aria-label="Editar cliente"
+          >
+            <FiEdit2 size={18} aria-hidden="true" />
+            <span>Editar</span>
+          </button>
+        </footer>
       </div>
     </div>
   );
 }
-
-

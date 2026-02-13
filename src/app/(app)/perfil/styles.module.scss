@@ -1,3 +1,5 @@
+@use '../../_mixins' as *;
+
 .page {
   display: flex;
   flex-direction: column;
@@ -233,15 +235,7 @@
 }
 
 .input {
-  height: var(--control-height);
-  border-radius: 10px;
-  border: 1px solid var(--golden);
-  padding: 0 12px;
-  font-size: 14px;
-  font-family: var(--font-lexend);
-  outline: none;
-  background: #f3f6f8;
-  color: var(--deepTeal);
+  @include form-input;
 }
 
 .bottomRow {
@@ -343,27 +337,11 @@
 }
 
 .primaryButton {
-  height: var(--control-height);
-  padding: 0 18px;
-  border-radius: 10px;
-  border: 1px solid rgba(221, 202, 146, 0.55);
-  background: var(--deepTeal);
-  color: #fff;
-  font-weight: 700;
-  font-family: var(--font-lexend);
-  cursor: pointer;
+  @include button-primary;
 }
 
 .dangerButton {
-  height: var(--control-height);
-  padding: 0 18px;
-  border-radius: 10px;
-  border: 1px solid #ef4444;
-  background: #fff;
-  color: #ef4444;
-  font-weight: 700;
-  font-family: var(--font-lexend);
-  cursor: pointer;
+  @include button-danger;
 }
 
 .panel {

@@ -1,3 +1,5 @@
+@use '../../../../../../_mixins' as *;
+
 .backdrop {
   position: fixed;
   inset: 0;
@@ -77,29 +79,11 @@
 }
 
 .input {
-  height: var(--control-height);
-  border-radius: 10px;
-  border: 1px solid var(--golden);
-  padding: 0 12px;
-  font-size: 14px;
-  font-family: var(--font-lexend);
-  outline: none;
-  background: #fff;
-  color: var(--deepTeal);
-  width: 100%;
+  @include form-input;
 }
 
 .textarea {
-  min-height: calc(var(--control-height) * 3);
-  border-radius: 10px;
-  border: 1px solid var(--golden);
-  padding: 12px;
-  font-size: 14px;
-  font-family: var(--font-lexend);
-  outline: none;
-  background: #fff;
-  color: var(--deepTeal);
-  resize: vertical;
+  @include form-textarea;
 }
 
 .helperText {
@@ -109,48 +93,15 @@
 }
 
 .footer {
-  padding: 14px 18px;
-  border-top: 1px solid rgba(0, 0, 0, 0.08);
-  display: flex;
-  justify-content: flex-end;
-  gap: 12px;
+  @include modal-footer;
 }
 
 .secondaryButton {
-  height: var(--control-height);
-  padding: 0 18px;
-  border-radius: 10px;
-  border: 1px solid rgba(0, 0, 0, 0.22);
-  background: #fff;
-  color: rgba(0, 0, 0, 0.75);
-  font-weight: 700;
-  cursor: pointer;
-  font-family: var(--font-lexend);
-}
-
-.secondaryButton:hover {
-  background: rgba(0, 0, 0, 0.04);
+  @include button-secondary;
 }
 
 .primaryButton {
-  height: var(--control-height);
-  padding: 0 18px;
-  border-radius: 10px;
-  border: 1px solid rgba(11, 47, 54, 0.75);
-  background: var(--deepTeal);
-  color: #fff;
-  font-weight: 800;
-  cursor: pointer;
-  font-family: var(--font-lexend);
-}
-
-.primaryButton:disabled {
-  opacity: 0.55;
-  cursor: not-allowed;
-}
-
-.primaryButton:hover:not(:disabled) {
-  filter: brightness(1.05);
+  @include button-primary;
 }
 
 

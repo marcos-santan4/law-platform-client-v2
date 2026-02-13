@@ -1,3 +1,5 @@
+@use '../../../../_mixins' as *;
+
 .filters {
   display: grid;
   grid-template-columns: 170px 240px 1fr;
@@ -157,13 +159,8 @@
 }
 
 .pagerBtn {
-  width: var(--control-height);
-  height: var(--control-height);
+  @include button-icon;
   border-radius: 999px;
-  border: 1px solid rgba(0, 0, 0, 0.12);
-  background: #fff;
-  cursor: pointer;
-  font-weight: 600;
 }
 
 .pagerBtn:disabled {

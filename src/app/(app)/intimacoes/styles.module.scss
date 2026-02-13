@@ -1,3 +1,5 @@
+@use '../../_mixins' as *;
+
 .page {
   display: flex;
   flex-direction: column;
@@ -121,15 +123,7 @@
 }
 
 .input {
-  height: var(--control-height);
-  border-radius: 10px;
-  border: 1px solid var(--golden);
-  padding: 0 12px;
-  font-size: 14px;
-  font-family: var(--font-lexend);
-  outline: none;
-  background: #fff;
-  color: var(--deepTeal);
+  @include form-input;
 }
 
 .search {
@@ -251,16 +245,7 @@
 }
 
 .pageSizeBtn {
-  height: var(--control-height);
-  padding: 0 18px;
-  border-radius: 10px;
-  border: 1px solid var(--golden);
-  background: #fff;
-  color: var(--deepTeal);
-  font-weight: 600;
-  cursor: pointer;
-  font-size: 12px;
-  font-family: var(--font-lexend);
+  @include button-secondary;
 }
 
 .pager {
@@ -270,13 +255,8 @@
 }
 
 .pagerBtn {
-  width: var(--control-height);
-  height: var(--control-height);
+  @include button-icon;
   border-radius: 999px;
-  border: 1px solid rgba(0, 0, 0, 0.12);
-  background: #fff;
-  cursor: pointer;
-  font-weight: 600;
 }
 
 .pagerBtn:disabled {
