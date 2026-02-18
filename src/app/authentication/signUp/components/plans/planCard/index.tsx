@@ -1,7 +1,7 @@
 'use client';
 
 import { IoIosCheckmarkCircleOutline } from 'react-icons/io';
-import type { PlanId } from '../../signUpFlowContext';
+import type { PlanId } from '../../..';
 
 import styles from './styles.module.scss';
 

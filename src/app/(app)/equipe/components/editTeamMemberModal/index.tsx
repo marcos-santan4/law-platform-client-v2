@@ -335,11 +335,12 @@ export function EditTeamMemberModal({ open, member, onClose, onSave }: Props) {
                     title="Processos"
                     level={permissions.processos}
                     onSelect={(level) => {
-                      const newPerms = { ...permissions, processos: level };
-                      if (level === 'gestor') {
-                        newPerms.intimacoes = 'gestor';
-                        newPerms.agendamentos = 'gestor';
-                      }
+                      const newPerms: Record<string, PermissionLevel> = {
+                        ...permissions,
+                        processos: level,
+                        intimacoes: level === 'gestor' ? 'gestor' : permissions.intimacoes,
+                        agendamentos: level === 'gestor' ? 'gestor' : permissions.agendamentos,
+                      };
                       setPermissions(newPerms);
                     }}
                     note="Pode ser selecionado independentemente. Se Processos for selecionado, Intimações receberá automaticamente o mesmo nível de permissão (espelho)."
