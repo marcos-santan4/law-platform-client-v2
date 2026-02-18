@@ -209,10 +209,12 @@ $modal-height-xl: 900px;
   border-radius: $radius-lg;
   border: $border-light;
   overflow: hidden;
+  margin-top: $spacing-lg;
 }
 
-@mixin table-base {
+@mixin table-base($min-width: 600px) {
   width: 100%;
+  min-width: $min-width;
   border-collapse: collapse;
 }
 
@@ -230,6 +232,30 @@ $modal-height-xl: 900px;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   font-weight: 700;
+  color: rgba(0, 0, 0, 0.55);
+}
+
+@mixin table-cell-actions {
+  text-align: center !important;
+  vertical-align: middle;
+}
+
+@mixin table-actions-group {
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-sm;
+  justify-content: center;
+}
+
+@mixin table-status-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 24px;
+  padding: 0 $spacing-sm;
+  border-radius: $radius-full;
+  font-weight: 800;
+  font-size: 12px;
 }
 
 // ============================================

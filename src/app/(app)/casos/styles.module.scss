@@ -86,37 +86,29 @@
   color: var(--golden);
 }
 
-.tableWrap {
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  border: $border-light;
-  border-radius: 12px;
+.tableWrapper {
+  @include table-wrapper;
 }
 
 .table {
-  width: 100%;
-  min-width: 700px;
-  border-collapse: collapse;
+  @include table-base(700px);
 }
 
 .table th,
 .table td {
-  padding: 14px 12px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-  text-align: left;
-  font-size: 14px;
-  color: $deep-teal;
+  @include table-cell;
 }
 
 .table th {
-  font-size: 11px;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: rgba(0, 0, 0, 0.55);
+  @include table-header;
 }
 
 .cellActions {
-  text-align: right !important;
+  @include table-cell-actions;
+}
+
+.actionsGroup {
+  @include table-actions-group;
 }
 
 .celNumero {
@@ -181,13 +173,6 @@
   color: #fff;
 }
 
-.actionsGroup {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  justify-content: flex-end;
-}
-
 .monitorAuto,
 .monitorManual {
   padding: 4px 10px;
@@ -206,7 +191,7 @@
   color: $deep-teal;
 }
 
-.actionIcon {
+.actionIconButton {
   @include button-icon;
 }
 
@@ -279,5 +264,18 @@
   .primaryButton {
     width: 100%;
     justify-content: center;
+  }
+
+  .tableWrapper {
+    width: 100%;
+  }
+
+  .table {
+    font-size: 13px;
+  }
+
+  .table th,
+  .table td {
+    padding: $spacing-sm $spacing-xs;
   }
 }

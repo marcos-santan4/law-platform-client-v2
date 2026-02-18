@@ -171,55 +171,38 @@
 }
 
 .tableWrapper {
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  margin-top: 14px;
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  border-radius: 12px;
+  @include table-wrapper;
 }
 
 .table {
-  width: 100%;
-  min-width: 600px;
-  border-collapse: collapse;
+  @include table-base(600px);
 }
 
 .table th,
 .table td {
-  padding: 12px 10px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-  text-align: left;
-  font-size: 14px;
-  color: $deep-teal;
+  @include table-cell;
 }
 
 .table th {
-  font-size: 12px;
-  color: $deep-teal;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+  @include table-header;
 }
 
-.cellCenter {
-  text-align: center !important;
-  vertical-align: middle;
+.cellActions {
+  @include table-cell-actions;
+}
+
+.actionsGroup {
+  @include table-actions-group;
 }
 
 .status {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  height: 24px;
-  padding: 0 10px;
-  border-radius: 999px;
+  @include table-status-badge;
   background: $color-success;
   color: $deep-teal;
-  font-weight: 800;
-  font-size: 12px;
 }
 
 .statusInactive {
-  background: #cbd5e0;
+  background: $color-inactive;
   color: $deep-teal;
 }
 
@@ -306,8 +289,6 @@
 
   .tableWrapper {
     width: 100%;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
   }
 
   .table {
@@ -316,6 +297,6 @@
 
   .table th,
   .table td {
-    padding: 10px 8px;
+    padding: $spacing-sm $spacing-xs;
   }
 }

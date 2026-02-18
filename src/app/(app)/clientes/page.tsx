@@ -191,8 +191,8 @@ export default function ClientesPage() {
               <tr>
                 <th>Nome completo</th>
                 <th>CPF</th>
-                <th className={styles.cellCenter}>Status</th>
-                <th className={styles.cellCenter}>Ações</th>
+                <th className={styles.cellActions}>Status</th>
+                <th className={styles.cellActions}>Ações</th>
               </tr>
             </thead>
             <tbody>
@@ -200,25 +200,27 @@ export default function ClientesPage() {
                 <tr key={c.id}>
                   <td>{c.nome}</td>
                   <td>{c.cpf ? c.cpf : '—'}</td>
-                  <td className={styles.cellCenter}>
+                  <td className={styles.cellActions}>
                     <span
                       className={`${styles.status} ${c.status === 'Inativo' ? styles.statusInactive : ''}`}
                     >
                       {c.status}
                     </span>
                   </td>
-                  <td className={styles.cellCenter}>
-                    <button
-                      type="button"
-                      className={styles.actionIconButton}
-                      aria-label={`Visualizar ${c.nome}`}
-                      onClick={() => {
-                        setSelectedClient(c);
-                        setViewOpen(true);
-                      }}
-                    >
-                      <FiEye size={18} />
-                    </button>
+                  <td className={styles.cellActions}>
+                    <div className={styles.actionsGroup}>
+                      <button
+                        type="button"
+                        className={styles.actionIconButton}
+                        aria-label={`Visualizar ${c.nome}`}
+                        onClick={() => {
+                          setSelectedClient(c);
+                          setViewOpen(true);
+                        }}
+                      >
+                        <FiEye size={18} />
+                      </button>
+                    </div>
                   </td>
                 </tr>
               ))}

@@ -22,26 +22,14 @@
 }
 
 .cards {
-  @include summary-cards-container;
-  
-  // Ajuste para 2 colunas na página equipe
+  display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  
+  gap: $spacing-xl;
+  margin-bottom: $spacing-2xl;
+
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
   }
-}
-
-.card {
-  @include summary-card;
-}
-
-.cardValue {
-  @include summary-card-value;
-}
-
-.cardLabel {
-  @include summary-card-label;
 }
 
 .contentPanel {
@@ -160,7 +148,6 @@
 
 .tableWrapper {
   @include table-wrapper;
-  margin-top: $spacing-lg;
 }
 
 .table {
@@ -175,37 +162,25 @@
 
 .table th {
   @include table-header;
-  color: $deep-teal;
 }
 
-.cellCenter {
-  text-align: center !important;
-  vertical-align: middle;
+.cellActions {
+  @include table-cell-actions;
+}
+
+.actionsGroup {
+  @include table-actions-group;
 }
 
 .status {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  height: 24px;
-  padding: 0 $spacing-sm;
-  border-radius: $radius-full;
+  @include table-status-badge;
   background: $color-success;
   color: $deep-teal;
-  font-weight: 800;
-  font-size: 12px;
 }
 
 .statusInactive {
   background: $color-inactive;
   color: $deep-teal;
-}
-
-.actionButtons {
-  display: inline-flex;
-  align-items: center;
-  gap: $spacing-xs;
-  justify-content: center;
 }
 
 .actionIconButton {
@@ -216,18 +191,6 @@
   .cards {
     gap: $spacing-md;
     margin-bottom: $spacing-xl;
-  }
-
-  .card {
-    padding: $spacing-lg;
-  }
-
-  .cardValue {
-    font-size: 24px;
-  }
-
-  .cardLabel {
-    font-size: 12px;
   }
 
   .contentPanel {

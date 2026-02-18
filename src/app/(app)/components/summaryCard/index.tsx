@@ -30,16 +30,16 @@ export function SummaryCard(props: Props) {
   const { title, icon, iconBgColor = 'blue', cardBg = 'white', variant } = props;
 
   return (
-    <div className={`${styles.card} ${styles[`cardBg_${cardBg}`]} ${styles[`iconBg_${iconBgColor}`]}`}>
+    <div
+      className={`${styles.card} ${styles[`cardBg_${cardBg}`]} ${styles[`iconBg_${iconBgColor}`]}`}
+    >
       <div className={styles.iconWrap}>
         <span className={styles.icon} aria-hidden="true">
           {icon}
         </span>
       </div>
       <div className={styles.title}>{title}</div>
-      {variant === 'single' && (
-        <div className={styles.value}>{props.value}</div>
-      )}
+      {variant === 'single' && <div className={styles.value}>{props.value}</div>}
       {(variant === 'double' || variant === 'triple') && (
         <div className={styles[`grid_${variant}`]}>
           {props.items.map((item) => (

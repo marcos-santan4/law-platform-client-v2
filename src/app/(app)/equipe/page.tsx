@@ -4,8 +4,8 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 
 import { FiEye, FiPlus, FiSearch, FiUsers, FiUserPlus, FiTrash } from 'react-icons/fi';
 import { RiRotateLockFill } from 'react-icons/ri';
-// import { TbUserShield } from 'react-icons/tb';
 import { LuListFilter } from 'react-icons/lu';
+import { SummaryCard } from '../components/summaryCard';
 import styles from './styles.module.scss';
 import { EditTeamMemberModal } from './components/editTeamMemberModal';
 
@@ -130,18 +130,20 @@ export default function EquipePage() {
   return (
     <div>
       <div className={styles.cards}>
-        <div className={styles.card}>
-          <FiUsers size={22} aria-hidden="true" />
-          <div className={styles.cardValue}>{teamMembers.length}</div>
-          <div className={styles.cardLabel}>Equipes cadastradas</div>
-        </div>
-        <div className={styles.card}>
-          <FiUserPlus size={22} aria-hidden="true" />
-          <div className={styles.cardValue}>
-            {teamMembers.filter((m) => m.status === 'Ativo').length}
-          </div>
-          <div className={styles.cardLabel}>Equipes ativas</div>
-        </div>
+        <SummaryCard
+          variant="single"
+          title="EQUIPES CADASTRADAS"
+          icon={<FiUsers size={24} />}
+          iconBgColor="blue"
+          value={String(teamMembers.length)}
+        />
+        <SummaryCard
+          variant="single"
+          title="EQUIPES ATIVAS"
+          icon={<FiUserPlus size={24} />}
+          iconBgColor="amber"
+          value={String(teamMembers.filter((m) => m.status === 'Ativo').length)}
+        />
       </div>
 
       <section className={styles.contentPanel} aria-label="Lista de equipe">
@@ -202,8 +204,8 @@ export default function EquipePage() {
               <tr>
                 <th>Nome completo</th>
                 <th>Cargo</th>
-                <th className={styles.cellCenter}>Status</th>
-                <th className={styles.cellCenter}>Ações</th>
+                <th className={styles.cellActions}>Status</th>
+                <th className={styles.cellActions}>Ações</th>
               </tr>
             </thead>
             <tbody>
@@ -211,15 +213,15 @@ export default function EquipePage() {
                 <tr key={member.id}>
                   <td>{member.nome}</td>
                   <td>{member.cargo || '—'}</td>
-                  <td className={styles.cellCenter}>
+                  <td className={styles.cellActions}>
                     <span
                       className={`${styles.status} ${member.status === 'Inativo' ? styles.statusInactive : ''}`}
                     >
                       {member.status}
                     </span>
                   </td>
-                  <td className={styles.cellCenter}>
-                    <div className={styles.actionButtons}>
+                  <td className={styles.cellActions}>
+                    <div className={styles.actionsGroup}>
                       <button
                         type="button"
                         className={styles.actionIconButton}

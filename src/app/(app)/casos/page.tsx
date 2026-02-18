@@ -214,14 +214,15 @@ export default function CasosPage() {
           </button>
         </div>
 
-        <div className={styles.tableWrap}>
+        <div className={styles.tableWrapper}>
           <table className={styles.table}>
             <thead>
               <tr>
                 <th>Número do Processo / Pasta / Cliente / CPF</th>
                 <th>Etiquetas</th>
                 <th>Responsáveis</th>
-                <th className={styles.cellActions}>Monitora...</th>
+                <th>Monitoramento</th>
+                <th className={styles.cellActions}>Ações</th>
               </tr>
             </thead>
             <tbody>
@@ -253,26 +254,28 @@ export default function CasosPage() {
                       {p.responsaveis}
                     </span>
                   </td>
+                  <td>
+                    <span
+                      className={
+                        p.monitora === 'Automático' ? styles.monitorAuto : styles.monitorManual
+                      }
+                    >
+                      {p.monitora}
+                    </span>
+                  </td>
                   <td className={styles.cellActions}>
                     <div className={styles.actionsGroup}>
-                      <span
-                        className={
-                          p.monitora === 'Automático' ? styles.monitorAuto : styles.monitorManual
-                        }
-                      >
-                        {p.monitora}
-                      </span>
                       <button
                         type="button"
-                        className={styles.actionIcon}
+                        className={styles.actionIconButton}
                         aria-label="Visualizar"
                       >
                         <FiEye size={18} />
                       </button>
-                      <button type="button" className={styles.actionIcon} aria-label="Editar">
+                      <button type="button" className={styles.actionIconButton} aria-label="Editar">
                         <FiEdit2 size={18} />
                       </button>
-                      <button type="button" className={styles.actionIcon} aria-label="Excluir">
+                      <button type="button" className={styles.actionIconButton} aria-label="Excluir">
                         <FiTrash2 size={18} />
                       </button>
                     </div>
