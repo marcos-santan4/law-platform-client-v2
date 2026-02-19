@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useId, useRef, useState } from 'react';
+import { useCallback, useEffect, useId, useMemo, useRef, useState } from 'react';
 import { IoMdClose } from 'react-icons/io';
 import { FiCheck } from 'react-icons/fi';
 import { DropdownSelect } from '../../../components/dropdownSelect';
@@ -9,14 +9,6 @@ import styles from './styles.module.scss';
 type TabKey = 'dados' | 'permissoes';
 
 type PermissionLevel = 'basica' | 'gestor';
-
-type Permission = {
-  id: string;
-  name: string;
-  description?: string;
-  level: PermissionLevel;
-  note?: string;
-};
 
 type TeamMember = {
   id: string;
@@ -50,6 +42,19 @@ const CARGOS = [
   { value: 'lider-comercial', label: 'Líder comercial' },
   { value: 'socio', label: 'Sócio' },
 ];
+
+const DEFAULT_PERMISSIONS: Record<string, PermissionLevel> = {
+  logs: 'basica',
+  clientes: 'basica',
+  documentos: 'basica',
+  financeiro: 'basica',
+  processos: 'basica',
+  intimacoes: 'basica',
+  agendamentos: 'basica',
+  subusuarios: 'basica',
+  tags: 'basica',
+  tarefas: 'basica',
+};
 
 type PermissionCardProps = {
   title: string;
@@ -103,59 +108,63 @@ export function EditTeamMemberModal({ open, member, onClose, onSave }: Props) {
   const titleId = useId();
   const closeBtnRef = useRef<HTMLButtonElement | null>(null);
   const [tab, setTab] = useState<TabKey>('dados');
-  const [formData, setFormData] = useState({
-    nome: '',
-    sobrenome: '',
-    email: '',
-    telefone: '',
-    oab: '',
-    cargo: '',
-  });
-  const [permissions, setPermissions] = useState<Record<string, PermissionLevel>>({
-    logs: 'basica',
-    clientes: 'basica',
-    documentos: 'basica',
-    financeiro: 'basica',
-    processos: 'basica',
-    intimacoes: 'basica',
-    agendamentos: 'basica',
-    subusuarios: 'basica',
-    tags: 'basica',
-    tarefas: 'basica',
-  });
+
+  const initialFormData = useMemo(() => {
+    if (!member) {
+      return { nome: '', sobrenome: '', email: '', telefone: '', oab: '', cargo: '' };
+    }
+
+    const nomeParts = member.nome.split(' ');
+    const cargoValue = member.cargo
+      ? CARGOS.find((c) => c.label.toLowerCase() === member.cargo?.toLowerCase())?.value || ''
+      : '';
+
+    return {
+      nome: nomeParts[0] || '',
+      sobrenome: nomeParts.slice(1).join(' ') || '',
+      email: member.email || '',
+      telefone: member.telefone || '',
+      oab: member.oab || '',
+      cargo: cargoValue,
+    };
+  }, [member]);
+
+  const initialPermissions = useMemo(() => {
+    return {
+      ...DEFAULT_PERMISSIONS,
+      ...(member?.permissions ?? {}),
+    };
+  }, [member]);
+
+  const [draftFormData, setDraftFormData] = useState<Partial<typeof initialFormData>>({});
+  const [draftPermissions, setDraftPermissions] = useState<Record<string, PermissionLevel>>({});
+
+  const formData = useMemo(() => {
+    return { ...initialFormData, ...draftFormData };
+  }, [draftFormData, initialFormData]);
+
+  const permissions = useMemo(() => {
+    return { ...initialPermissions, ...draftPermissions };
+  }, [draftPermissions, initialPermissions]);
+
+  const handleClose = useCallback(() => {
+    setDraftFormData({});
+    setDraftPermissions({});
+    setTab('dados');
+    onClose();
+  }, [onClose]);
 
   useEffect(() => {
     if (!open || !member) return;
     closeBtnRef.current?.focus();
 
     function onKeyDown(e: KeyboardEvent) {
-      if (e.key === 'Escape') onClose();
+      if (e.key === 'Escape') handleClose();
     }
 
     window.addEventListener('keydown', onKeyDown);
     return () => window.removeEventListener('keydown', onKeyDown);
-  }, [onClose, open, member]);
-
-  useEffect(() => {
-    if (member) {
-      const nomeParts = member.nome.split(' ');
-      // Mapear cargo para o valor do dropdown
-      const cargoValue = member.cargo
-        ? CARGOS.find((c) => c.label.toLowerCase() === member.cargo?.toLowerCase())?.value || ''
-        : '';
-      setFormData({
-        nome: nomeParts[0] || '',
-        sobrenome: nomeParts.slice(1).join(' ') || '',
-        email: member.email || '',
-        telefone: member.telefone || '',
-        oab: member.oab || '',
-        cargo: cargoValue,
-      });
-      if (member.permissions) {
-        setPermissions(member.permissions);
-      }
-    }
-  }, [member]);
+  }, [open, member, handleClose]);
 
   if (!open || !member) return null;
 
@@ -168,7 +177,7 @@ export function EditTeamMemberModal({ open, member, onClose, onSave }: Props) {
         permissions,
       });
     }
-    onClose();
+    handleClose();
   };
 
   return (
@@ -176,7 +185,7 @@ export function EditTeamMemberModal({ open, member, onClose, onSave }: Props) {
       className={styles.backdrop}
       role="presentation"
       onMouseDown={(e) => {
-        if (e.target === e.currentTarget) onClose();
+        if (e.target === e.currentTarget) handleClose();
       }}
     >
       <div className={styles.dialog} role="dialog" aria-modal="true" aria-labelledby={titleId}>
@@ -192,7 +201,7 @@ export function EditTeamMemberModal({ open, member, onClose, onSave }: Props) {
             ref={closeBtnRef}
             type="button"
             className={styles.iconClose}
-            onClick={onClose}
+            onClick={handleClose}
             aria-label="Fechar"
           >
             <IoMdClose size={18} />
@@ -232,7 +241,7 @@ export function EditTeamMemberModal({ open, member, onClose, onSave }: Props) {
                   className={styles.input}
                   type="text"
                   value={formData.nome}
-                  onChange={(e) => setFormData({ ...formData, nome: e.target.value })}
+                  onChange={(e) => setDraftFormData((prev) => ({ ...prev, nome: e.target.value }))}
                 />
               </div>
 
@@ -245,7 +254,7 @@ export function EditTeamMemberModal({ open, member, onClose, onSave }: Props) {
                   className={styles.input}
                   type="text"
                   value={formData.sobrenome}
-                  onChange={(e) => setFormData({ ...formData, sobrenome: e.target.value })}
+                  onChange={(e) => setDraftFormData((prev) => ({ ...prev, sobrenome: e.target.value }))}
                 />
               </div>
 
@@ -258,7 +267,7 @@ export function EditTeamMemberModal({ open, member, onClose, onSave }: Props) {
                   className={styles.input}
                   type="email"
                   value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  onChange={(e) => setDraftFormData((prev) => ({ ...prev, email: e.target.value }))}
                 />
               </div>
 
@@ -271,7 +280,7 @@ export function EditTeamMemberModal({ open, member, onClose, onSave }: Props) {
                   className={styles.input}
                   type="tel"
                   value={formData.telefone}
-                  onChange={(e) => setFormData({ ...formData, telefone: e.target.value })}
+                  onChange={(e) => setDraftFormData((prev) => ({ ...prev, telefone: e.target.value }))}
                 />
               </div>
 
@@ -284,7 +293,7 @@ export function EditTeamMemberModal({ open, member, onClose, onSave }: Props) {
                   className={styles.input}
                   type="text"
                   value={formData.oab}
-                  onChange={(e) => setFormData({ ...formData, oab: e.target.value })}
+                  onChange={(e) => setDraftFormData((prev) => ({ ...prev, oab: e.target.value }))}
                 />
               </div>
             </div>
@@ -296,7 +305,7 @@ export function EditTeamMemberModal({ open, member, onClose, onSave }: Props) {
                 </label>
                 <DropdownSelect
                   value={formData.cargo}
-                  onChange={(value) => setFormData({ ...formData, cargo: value })}
+                  onChange={(value) => setDraftFormData((prev) => ({ ...prev, cargo: value }))}
                   options={CARGOS}
                   placeholder="Selecione o cargo"
                 />
@@ -310,68 +319,67 @@ export function EditTeamMemberModal({ open, member, onClose, onSave }: Props) {
                   <PermissionCard
                     title="Logs de Auditoria"
                     level={permissions.logs}
-                    onSelect={(level) => setPermissions({ ...permissions, logs: level })}
+                    onSelect={(level) => setDraftPermissions((prev) => ({ ...prev, logs: level }))}
                     note="Visualização habilitada por padrão para todos os usuários."
                     onlyView
                   />
                   <PermissionCard
                     title="Clientes"
                     level={permissions.clientes}
-                    onSelect={(level) => setPermissions({ ...permissions, clientes: level })}
+                    onSelect={(level) => setDraftPermissions((prev) => ({ ...prev, clientes: level }))}
                     note="Visualização habilitada automaticamente"
                   />
                   <PermissionCard
                     title="Documentos"
                     level={permissions.documentos}
-                    onSelect={(level) => setPermissions({ ...permissions, documentos: level })}
+                    onSelect={(level) => setDraftPermissions((prev) => ({ ...prev, documentos: level }))}
                   />
                   <PermissionCard
                     title="Financeiro"
                     level={permissions.financeiro}
-                    onSelect={(level) => setPermissions({ ...permissions, financeiro: level })}
+                    onSelect={(level) => setDraftPermissions((prev) => ({ ...prev, financeiro: level }))}
                     onlyGestor
                   />
                   <PermissionCard
                     title="Processos"
                     level={permissions.processos}
                     onSelect={(level) => {
-                      const newPerms: Record<string, PermissionLevel> = {
-                        ...permissions,
+                      setDraftPermissions((prev) => ({
+                        ...prev,
                         processos: level,
                         intimacoes: level === 'gestor' ? 'gestor' : permissions.intimacoes,
                         agendamentos: level === 'gestor' ? 'gestor' : permissions.agendamentos,
-                      };
-                      setPermissions(newPerms);
+                      }));
                     }}
                     note="Pode ser selecionado independentemente. Se Processos for selecionado, Intimações receberá automaticamente o mesmo nível de permissão (espelho)."
                   />
                   <PermissionCard
                     title="Intimações"
                     level={permissions.intimacoes}
-                    onSelect={(level) => setPermissions({ ...permissions, intimacoes: level })}
+                    onSelect={(level) => setDraftPermissions((prev) => ({ ...prev, intimacoes: level }))}
                     note="Pode ser selecionado independentemente. Se Processos for selecionado, Intimações receberá automaticamente o mesmo nível de permissão."
                   />
                   <PermissionCard
                     title="Agendamentos"
                     level={permissions.agendamentos}
-                    onSelect={(level) => setPermissions({ ...permissions, agendamentos: level })}
+                    onSelect={(level) => setDraftPermissions((prev) => ({ ...prev, agendamentos: level }))}
                     note="Pode ser selecionado independentemente. Se Processos for selecionado, Agendamentos receberá automaticamente o mesmo nível de permissão."
                   />
                   <PermissionCard
                     title="Subusuários"
                     level={permissions.subusuarios}
-                    onSelect={(level) => setPermissions({ ...permissions, subusuarios: level })}
+                    onSelect={(level) => setDraftPermissions((prev) => ({ ...prev, subusuarios: level }))}
                     onlyGestor
                   />
                   <PermissionCard
                     title="Tags"
                     level={permissions.tags}
-                    onSelect={(level) => setPermissions({ ...permissions, tags: level })}
+                    onSelect={(level) => setDraftPermissions((prev) => ({ ...prev, tags: level }))}
                   />
                   <PermissionCard
                     title="Tarefas"
                     level={permissions.tarefas}
-                    onSelect={(level) => setPermissions({ ...permissions, tarefas: level })}
+                    onSelect={(level) => setDraftPermissions((prev) => ({ ...prev, tarefas: level }))}
                   />
                 </div>
               </div>
@@ -380,7 +388,7 @@ export function EditTeamMemberModal({ open, member, onClose, onSave }: Props) {
         </div>
 
         <footer className={styles.footer}>
-          <button type="button" className={styles.secondaryButton} onClick={onClose}>
+          <button type="button" className={styles.secondaryButton} onClick={handleClose}>
             Cancelar
           </button>
           <button type="button" className={styles.primaryButton} onClick={handleSave}>

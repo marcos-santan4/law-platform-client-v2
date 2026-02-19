@@ -19,7 +19,11 @@ type Props = {
 };
 
 export function Prazos({ prazos, audiencias = [] }: Props) {
-  const itens = [...prazos, ...audiencias];
+  type ItemWithKind = PrazoItem & { _kind: 'prazo' | 'audiencia' };
+  const itens: ItemWithKind[] = [
+    ...prazos.map((p) => ({ ...p, _kind: 'prazo' as const })),
+    ...audiencias.map((a) => ({ ...a, _kind: 'audiencia' as const })),
+  ];
 
   return (
     <>
@@ -34,7 +38,7 @@ export function Prazos({ prazos, audiencias = [] }: Props) {
           <div className={styles.emptyState}>Nenhum prazo ou audiência pendente.</div>
         ) : (
           itens.map((item) => (
-            <div key={item.id} className={styles.prazoItem}>
+            <div key={`${item._kind}-${item.id}`} className={styles.prazoItem}>
               <FiBell size={18} className={styles.prazoIcon} aria-hidden />
               <div className={styles.prazoContent}>
                 <div className={styles.prazoTitulo}>

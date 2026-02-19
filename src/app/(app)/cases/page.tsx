@@ -1,6 +1,7 @@
 'use client';
 
 import { useMemo, useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { FiSearch, FiPlus, FiEye, FiEdit2, FiTrash2, FiFolder, FiActivity } from 'react-icons/fi';
 import { MdHelpOutline } from 'react-icons/md';
 import { SummaryCard } from '../components/summaryCard';
@@ -103,6 +104,7 @@ const PROCESSOS_MOCK: Processo[] = [
 ];
 
 export default function CasosPage() {
+  const router = useRouter();
   const [cadastrarOpen, setCadastrarOpen] = useState(false);
   const [etiquetas, setEtiquetas] = useState('todos');
   const [responsaveis, setResponsaveis] = useState('todos');
@@ -258,6 +260,7 @@ export default function CasosPage() {
                         type="button"
                         className={styles.actionIconButton}
                         aria-label="Visualizar"
+                        onClick={() => router.push(`/cases/detail/${p.id}`)}
                       >
                         <FiEye size={18} />
                       </button>

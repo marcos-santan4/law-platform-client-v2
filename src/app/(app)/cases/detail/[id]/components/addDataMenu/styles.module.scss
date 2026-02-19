@@ -1,0 +1,14 @@
+@use '../../../../../../_mixins' as *;
+
+.outlineButton {
+  @include button-secondary;
+  min-width: 0;
+  padding: 0 18px;
+}
+
+.primaryButton {
+  @include button-primary;
+  min-width: 0;
+  padding: 0 18px;
+}
+

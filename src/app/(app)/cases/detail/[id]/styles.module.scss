@@ -1,0 +1,275 @@
+@use '../../../../_variables' as *;
+@use '../../../../_mixins' as *;
+
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xl;
+}
+
+.topRow {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.backButton {
+  @include button-secondary;
+  min-width: 0;
+  padding: 0 $spacing-lg;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: $spacing-lg;
+  align-items: stretch;
+
+  @media (max-width: 1000px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.heroMain {
+  background: var(--deepTeal);
+  border-radius: 14px;
+  color: #fff;
+  padding: $spacing-2xl;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  min-height: 140px;
+}
+
+.heroTitleRow {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: $spacing-md;
+  margin-bottom: $spacing-xs;
+}
+
+.heroTitle {
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.heroStatus {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.heroMeta {
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.9);
+  margin-top: 6px;
+}
+
+.heroMetaStrong {
+  font-weight: 800;
+}
+
+.heroMetaMuted {
+  font-size: 13px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.7);
+  margin-top: 6px;
+}
+
+.heroAside {
+  background: #fff;
+  border-radius: 14px;
+  border: $border-light;
+  padding: $spacing-2xl;
+  min-height: 140px;
+}
+
+.asideTitleRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $spacing-md;
+}
+
+.asideTitle {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--deepTeal);
+}
+
+.asideAddButton {
+  @include button-icon;
+  border-radius: $radius-md;
+  border: $border-golden;
+  background: #fff;
+}
+
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-sm;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 14px;
+  border: $border-light;
+  padding: $spacing-sm;
+}
+
+.tab,
+.tabActive {
+  height: 38px;
+  padding: 0 $spacing-md;
+  border-radius: 999px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  background: #fff;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 13px;
+  color: rgba(0, 0, 0, 0.7);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tabActive {
+  background: rgba(11, 47, 54, 0.08);
+  border-color: rgba(11, 47, 54, 0.12);
+  color: var(--deepTeal);
+}
+
+.grid {
+  @include grid-2;
+  @include grid-responsive;
+}
+
+.card {
+  background: #fff;
+  border-radius: 14px;
+  border: $border-light;
+  padding: $spacing-xl;
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: $spacing-md;
+}
+
+.cardTitle {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--deepTeal);
+}
+
+.cardSubTitle {
+  font-size: 13px;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.65);
+  margin-bottom: $spacing-md;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.listRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $spacing-md;
+}
+
+.listLeft {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 1px;
+}
+
+.listIcon {
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  background: rgba(11, 47, 54, 0.08);
+  color: var(--deepTeal);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.listLabel {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--deepTeal);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.viewButton {
+  @include button-secondary;
+  min-width: 0;
+  padding: 0 $spacing-lg;
+  height: 34px;
+  font-size: 13px;
+}
+
+.missingButton {
+  margin-top: $spacing-lg;
+  width: 100%;
+  border-radius: 999px;
+  border: $border-golden;
+  background: rgba(221, 202, 146, 0.22);
+  color: var(--deepTeal);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  height: 40px;
+  cursor: pointer;
+
+  &:hover {
+    background: rgba(221, 202, 146, 0.28);
+  }
+}
+
+.manualBody {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-lg;
+}
+
+.manualEmptyAction {
+  height: 44px;
+  border-radius: 12px;
+  border: $border-golden;
+  background: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+  font-weight: 700;
+  color: var(--deepTeal);
+}
+
+.manualEmptyPlus {
+  width: 24px;
+  height: 24px;
+  border-radius: 8px;
+  background: rgba(221, 202, 146, 0.22);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 900;
+}
+

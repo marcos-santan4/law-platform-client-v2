@@ -42,7 +42,13 @@ type ClientForm = {
   complemento: string;
 };
 
-const ESTADO_CIVIL_OPTIONS = ['Solteiro(a)', 'Casado(a)', 'Separado(a)', 'Divorciado(a)', 'Viúvo(a)'] as const;
+const ESTADO_CIVIL_OPTIONS = [
+  'Solteiro(a)',
+  'Casado(a)',
+  'Separado(a)',
+  'Divorciado(a)',
+  'Viúvo(a)',
+] as const;
 
 const UF_OPTIONS = [
   'AC',
@@ -449,7 +455,7 @@ export function CreateClientModal({ open, onClose }: Props) {
                   setTouched((p) => ({ ...p, nome: true }));
                   return;
                 }
-                setStep((s) => ((s + 1) as Step));
+                setStep((s) => (s + 1) as Step);
               }}
               disabled={!canGoNext}
             >
@@ -471,5 +477,3 @@ export function CreateClientModal({ open, onClose }: Props) {
     </div>
   );
 }
-
-

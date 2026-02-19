@@ -72,11 +72,15 @@ export default function DashboardPage() {
     <div className={styles.dashboard}>
       <div className={styles.topRow}>
         <div className={styles.welcomeCard}>
-          <div className={styles.welcomeGreeting}>Bem-vindo de volta 👋</div>
-          <div className={styles.welcomeName}>Marcos Dev Santana</div>
-          <p className={styles.welcomeDesc}>
-            Acompanhe todas as informações importantes do seu escritório em um só lugar.
-          </p>
+          <div className={styles.welcomeGlow1} aria-hidden="true" />
+          <div className={styles.welcomeGlow2} aria-hidden="true" />
+          <div className={styles.welcomeContent}>
+            <div className={styles.welcomeGreeting}>Bem-vindo de volta 👋</div>
+            <div className={styles.welcomeName}>Marcos Dev Santana</div>
+            <p className={styles.welcomeDesc}>
+              Acompanhe todas as informações importantes do seu escritório em um só lugar.
+            </p>
+          </div>
         </div>
 
         <section className={styles.novidadesCard} aria-label="Novidades">

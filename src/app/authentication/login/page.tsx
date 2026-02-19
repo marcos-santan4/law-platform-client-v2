@@ -17,7 +17,7 @@ export default function LoginPage() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // TODO: integrar autenticação
-    router.push('/clients');
+    router.push('/dashboard');
   };
 
   return (

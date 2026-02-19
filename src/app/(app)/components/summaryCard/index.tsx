@@ -33,12 +33,14 @@ export function SummaryCard(props: Props) {
     <div
       className={`${styles.card} ${styles[`cardBg_${cardBg}`]} ${styles[`iconBg_${iconBgColor}`]}`}
     >
-      <div className={styles.iconWrap}>
-        <span className={styles.icon} aria-hidden="true">
-          {icon}
-        </span>
+      <div className={styles.header}>
+        <div className={styles.iconWrap}>
+          <span className={styles.icon} aria-hidden="true">
+            {icon}
+          </span>
+        </div>
+        <div className={styles.title}>{title}</div>
       </div>
-      <div className={styles.title}>{title}</div>
       {variant === 'single' && <div className={styles.value}>{props.value}</div>}
       {(variant === 'double' || variant === 'triple') && (
         <div className={styles[`grid_${variant}`]}>

@@ -2,8 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from 'react';
 
-import { FiEye, FiPlus, FiSearch, FiUsers, FiUserPlus } from 'react-icons/fi';
-import { TbUserShield } from 'react-icons/tb';
+import { FiEye, FiPlus, FiSearch } from 'react-icons/fi';
 import { LuListFilter } from 'react-icons/lu';
 import styles from './styles.module.scss';
 import { CreateClientModal } from './components/createClientModal';

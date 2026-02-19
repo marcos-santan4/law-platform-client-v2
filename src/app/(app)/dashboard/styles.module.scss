@@ -19,11 +19,42 @@
 }
 
 .welcomeCard {
-  background: var(--deepTeal);
+  background: linear-gradient(135deg, rgb(11, 47, 54) 0%, rgb(26, 74, 82) 100%);
   border-radius: 12px;
   padding: $spacing-2xl;
   color: #fff;
   border: 1px solid rgba(221, 202, 146, 0.25);
+  position: relative;
+  overflow: hidden;
+}
+
+.welcomeContent {
+  position: relative;
+  z-index: 1;
+}
+
+.welcomeGlow1,
+.welcomeGlow2 {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(30px);
+  pointer-events: none;
+}
+
+.welcomeGlow1 {
+  top: -50px;
+  right: -50px;
+  width: 200px;
+  height: 200px;
+  background: rgba(255, 187, 50, 0.2);
+}
+
+.welcomeGlow2 {
+  bottom: 30px;
+  left: -30px;
+  width: 150px;
+  height: 150px;
+  background: rgba(59, 136, 246, 0.15);
 }
 
 .welcomeGreeting {
