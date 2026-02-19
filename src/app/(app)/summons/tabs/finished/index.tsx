@@ -3,7 +3,7 @@
 import { useMemo, useState } from 'react';
 import { FiSearch } from 'react-icons/fi';
 
-import { IntimacaoCard, type Intimacao } from '../../components/intimacaoCard';
+import { IntimacaoCard, type Intimacao } from '../../components/noticeCard';
 import styles from './styles.module.scss';
 
 type Props = {
@@ -17,7 +17,9 @@ export function FinalizadasTab({ finalizadas, onViewDetails }: Props) {
   const filteredFinalizadas = useMemo(() => {
     const q = search.trim().toLowerCase();
     if (!q) return finalizadas;
-    return finalizadas.filter((i) => i.numeroProcesso.toLowerCase().includes(q) || i.destinatario.toLowerCase().includes(q));
+    return finalizadas.filter(
+      (i) => i.numeroProcesso.toLowerCase().includes(q) || i.destinatario.toLowerCase().includes(q),
+    );
   }, [finalizadas, search]);
 
   return (
@@ -67,5 +69,3 @@ export function FinalizadasTab({ finalizadas, onViewDetails }: Props) {
     </>
   );
 }
-
-

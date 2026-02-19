@@ -24,13 +24,13 @@ import styles from '../styles.module.scss';
 
 const NAV_ITEMS = [
   { href: '/dashboard', label: 'Dashboard', icon: FiGrid },
-  { href: '/clientes', label: 'Clientes', icon: FiUsers },
-  { href: '/intimacoes', label: 'Intimações', icon: ImHammer2 },
-  { href: '/casos', label: 'Casos e Processos', icon: TbReportSearch },
-  { href: '/tarefas', label: 'Tarefas', icon: FaTasks },
-  { href: '/financeiro', label: 'Financeiro', icon: FiDollarSign },
-  { href: '/agendamento', label: 'Agendamento', icon: FiCalendar },
-  { href: '/calculadoras', label: 'Calculadoras jurídicas', icon: SlCalculator },
+  { href: '/clients', label: 'Clientes', icon: FiUsers },
+  { href: '/summons', label: 'Intimações', icon: ImHammer2 },
+  { href: '/cases', label: 'Casos e Processos', icon: TbReportSearch },
+  { href: '/tasks', label: 'Tarefas', icon: FaTasks },
+  { href: '/finance', label: 'Financeiro', icon: FiDollarSign },
+  { href: '/schedule', label: 'Agendamento', icon: FiCalendar },
+  { href: '/calculators', label: 'Calculadoras jurídicas', icon: SlCalculator },
 ];
 
 type AppSidebarProps = {
@@ -105,5 +105,3 @@ export function AppSidebar({ collapsed, onToggleCollapsed }: AppSidebarProps) {
     </aside>
   );
 }
-
-

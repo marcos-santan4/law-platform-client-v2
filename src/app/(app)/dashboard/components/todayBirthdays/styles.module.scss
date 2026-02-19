@@ -1,0 +1,39 @@
+@use '../../../../_variables' as *;
+
+.panelTitleWithIcon {
+  font-size: 16px;
+  font-weight: 700;
+  color: $deep-teal;
+  margin: 0 0 $spacing-xl;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.panelTitleWithIcon svg {
+  color: $golden;
+}
+
+.emptyState {
+  padding: 32px 0;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.6);
+  font-weight: 600;
+}
+
+.lista {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.item {
+  padding: 10px 0;
+  font-size: 14px;
+  color: $deep-teal;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.item:last-child {
+  border-bottom: none;
+}

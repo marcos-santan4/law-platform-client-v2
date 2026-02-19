@@ -1,19 +1,11 @@
 'use client';
 
 import { useMemo, useState } from 'react';
-import {
-  FiSearch,
-  FiPlus,
-  FiEye,
-  FiEdit2,
-  FiTrash2,
-  FiFolder,
-  FiActivity,
-} from 'react-icons/fi';
+import { FiSearch, FiPlus, FiEye, FiEdit2, FiTrash2, FiFolder, FiActivity } from 'react-icons/fi';
 import { MdHelpOutline } from 'react-icons/md';
 import { SummaryCard } from '../components/summaryCard';
 import { DropdownSelect, type DropdownOption } from '../components/dropdownSelect';
-import { CadastrarProcessoModal } from './components/cadastrarProcessoModal';
+import { CadastrarProcessoModal } from './components/registerCaseModal';
 import styles from './styles.module.scss';
 
 const ETIQUETAS_OPTIONS: DropdownOption[] = [
@@ -117,10 +109,7 @@ export default function CasosPage() {
   const [status, setStatus] = useState('ativos');
   const [casoProcesso, setCasoProcesso] = useState('todos');
 
-  const responsaveisOptions = useMemo(
-    () => RESPONSAVEIS_MOCK,
-    []
-  );
+  const responsaveisOptions = useMemo(() => RESPONSAVEIS_MOCK, []);
 
   return (
     <div className={styles.casos}>
@@ -275,7 +264,11 @@ export default function CasosPage() {
                       <button type="button" className={styles.actionIconButton} aria-label="Editar">
                         <FiEdit2 size={18} />
                       </button>
-                      <button type="button" className={styles.actionIconButton} aria-label="Excluir">
+                      <button
+                        type="button"
+                        className={styles.actionIconButton}
+                        aria-label="Excluir"
+                      >
                         <FiTrash2 size={18} />
                       </button>
                     </div>

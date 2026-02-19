@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { FiChevronDown, FiSearch } from 'react-icons/fi';
 
-import { IntimacaoCard, type Intimacao } from '../../components/intimacaoCard';
+import { IntimacaoCard, type Intimacao } from '../../components/noticeCard';
 import styles from './styles.module.scss';
 
 type Props = {
@@ -28,7 +28,9 @@ export function IntimacoesTab({
   const typeFilterRef = useRef<HTMLDivElement | null>(null);
   const pageSizeFilterRef = useRef<HTMLDivElement | null>(null);
 
-  const [dateFilter, setDateFilter] = useState<'Todos' | 'Hoje' | 'Ontem' | 'Última semana' | 'Último mês'>('Todos');
+  const [dateFilter, setDateFilter] = useState<
+    'Todos' | 'Hoje' | 'Ontem' | 'Última semana' | 'Último mês'
+  >('Todos');
   const [typeFilter, setTypeFilter] = useState<'Todos' | 'OAB' | 'Número do processo'>('Todos');
   const [pageSize, setPageSize] = useState<25 | 50 | 100 | 200>(25);
   const [search, setSearch] = useState('');
@@ -36,7 +38,9 @@ export function IntimacoesTab({
   useEffect(() => {
     function onMouseDown(e: MouseEvent) {
       const target = e.target as Node;
-      const refs = [dateFilterRef.current, typeFilterRef.current, pageSizeFilterRef.current].filter(Boolean) as HTMLDivElement[];
+      const refs = [dateFilterRef.current, typeFilterRef.current, pageSizeFilterRef.current].filter(
+        Boolean,
+      ) as HTMLDivElement[];
       const clickedInside = refs.some((r) => r.contains(target));
       if (!clickedInside) setOpenFilter(null);
     }
@@ -49,7 +53,9 @@ export function IntimacoesTab({
   const filteredIntimacoes = useMemo(() => {
     const q = search.trim().toLowerCase();
     if (!q) return intimacoes;
-    return intimacoes.filter((i) => i.numeroProcesso.toLowerCase().includes(q) || i.destinatario.toLowerCase().includes(q));
+    return intimacoes.filter(
+      (i) => i.numeroProcesso.toLowerCase().includes(q) || i.destinatario.toLowerCase().includes(q),
+    );
   }, [intimacoes, search]);
 
   return (
@@ -181,7 +187,11 @@ export function IntimacoesTab({
             </button>
 
             {openFilter === 'pageSize' ? (
-              <div className={`${styles.filterDropdown} ${styles.filterDropdownUp}`} role="menu" aria-label="Itens por página">
+              <div
+                className={`${styles.filterDropdown} ${styles.filterDropdownUp}`}
+                role="menu"
+                aria-label="Itens por página"
+              >
                 {([25, 50, 100, 200] as const).map((opt) => (
                   <button
                     key={opt}
@@ -215,5 +225,3 @@ export function IntimacoesTab({
     </>
   );
 }
-
-

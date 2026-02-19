@@ -17,7 +17,7 @@ export default function LoginPage() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // TODO: integrar autenticação
-    router.push('/clientes');
+    router.push('/clients');
   };
 
   return (
@@ -87,4 +87,3 @@ export default function LoginPage() {
     </AuthShell>
   );
 }
-

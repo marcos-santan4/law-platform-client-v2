@@ -18,16 +18,26 @@ function getPageTitle(pathname: string): string {
 
   const routeMap: Record<string, string> = {
     dashboard: 'Dashboard',
+    clients: 'Clientes',
     clientes: 'Clientes',
+    summons: 'Intimações',
     intimacoes: 'Intimações',
+    cases: 'Casos e Processos',
     casos: 'Casos e Processos',
     processos: 'Casos e Processos',
+    tasks: 'Tarefas',
     tarefas: 'Tarefas',
+    finance: 'Financeiro',
     financeiro: 'Financeiro',
+    schedule: 'Agendamento',
     agendamento: 'Agendamento',
+    calculators: 'Calculadoras jurídicas',
     calculadoras: 'Calculadoras jurídicas',
     notificacoes: 'Notificações',
+    notifications: 'Notificações',
+    profile: 'Perfil',
     perfil: 'Perfil',
+    team: 'Equipe',
     equipe: 'Equipe',
   };
 
@@ -76,11 +86,11 @@ export function AppTopHeader() {
             </span>
           </button>
 
-          <Link href="/equipe" className={styles.iconButton} aria-label="Equipe">
+          <Link href="/team" className={styles.iconButton} aria-label="Equipe">
             <FiUsers size={18} />
           </Link>
 
-          <Link href="/perfil" className={styles.iconButton} aria-label="Perfil">
+          <Link href="/profile" className={styles.iconButton} aria-label="Perfil">
             <FiUser size={18} />
           </Link>
         </div>

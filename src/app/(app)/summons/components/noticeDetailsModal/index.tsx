@@ -4,9 +4,9 @@ import { useEffect, useId, useMemo, useRef, useState } from 'react';
 import { IoMdClose } from 'react-icons/io';
 import { FiExternalLink } from 'react-icons/fi';
 
-import type { Intimacao } from '../intimacaoCard';
-import { AddPrazoModal } from '../prazoModal';
-import { AddAudienciaModal } from '../audienciaModal';
+import type { Intimacao } from '../noticeCard';
+import { AddPrazoModal } from '../deadlineModal';
+import { AddAudienciaModal } from '../hearingModal';
 import styles from './styles.module.scss';
 
 type Props = {
@@ -22,10 +22,11 @@ export function IntimacaoDetailsModal({ open, item, onClose }: Props) {
   const [audienciaOpen, setAudienciaOpen] = useState(false);
 
   const processoOptions = useMemo(
-    () => [
-      `${item?.numeroProcesso ?? ''} - ${item?.cliente ?? ''}`.trim(),
-      '0002696-42.2026.4.05.8400 - Larissa Cardoso',
-    ].filter(Boolean),
+    () =>
+      [
+        `${item?.numeroProcesso ?? ''} - ${item?.cliente ?? ''}`.trim(),
+        '0002696-42.2026.4.05.8400 - Larissa Cardoso',
+      ].filter(Boolean),
     [item?.cliente, item?.numeroProcesso],
   );
 
@@ -106,7 +107,9 @@ export function IntimacaoDetailsModal({ open, item, onClose }: Props) {
                   </div>
                   <div className={styles.k}>
                     <div className={styles.kLabel}>Número do Processo</div>
-                    <div className={styles.kValue}>{item.numeroProcesso.replaceAll('.', '').replaceAll('-', '')}</div>
+                    <div className={styles.kValue}>
+                      {item.numeroProcesso.replaceAll('.', '').replaceAll('-', '')}
+                    </div>
                   </div>
                   <div className={styles.k}>
                     <div className={styles.kLabel}>Data de Disponibilização</div>
@@ -159,10 +162,18 @@ export function IntimacaoDetailsModal({ open, item, onClose }: Props) {
               <div className={styles.textBox}>{item.textoIntimacao}</div>
 
               <div className={styles.inlineButtons}>
-                <button type="button" className={styles.outlineBtn} onClick={() => setPrazoOpen(true)}>
+                <button
+                  type="button"
+                  className={styles.outlineBtn}
+                  onClick={() => setPrazoOpen(true)}
+                >
                   Adicionar Prazo
                 </button>
-                <button type="button" className={styles.outlineBtn} onClick={() => setAudienciaOpen(true)}>
+                <button
+                  type="button"
+                  className={styles.outlineBtn}
+                  onClick={() => setAudienciaOpen(true)}
+                >
                   Adicionar Audiência
                 </button>
               </div>
@@ -224,5 +235,3 @@ export function IntimacaoDetailsModal({ open, item, onClose }: Props) {
     </>
   );
 }
-
-

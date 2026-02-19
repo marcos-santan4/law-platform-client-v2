@@ -3,15 +3,15 @@
 import { useMemo, useState } from 'react';
 
 import styles from './styles.module.scss';
-import type { Intimacao } from './components/intimacaoCard';
-import { IntimacaoDetailsModal } from './components/intimacaoDetailsModal';
-import { AddAudienciaModal } from './components/audienciaModal';
-import { AddPrazoModal } from './components/prazoModal';
+import type { Intimacao } from './components/noticeCard';
+import { IntimacaoDetailsModal } from './components/noticeDetailsModal';
+import { AddAudienciaModal } from './components/hearingModal';
+import { AddPrazoModal } from './components/deadlineModal';
 import { AddTarefaModal } from './components/addTarefaModal';
-import { IntimacoesTab } from './tabs/intimacoes';
-import { FinalizadasTab } from './tabs/finalizadas';
-import { ConfiguracoesTab } from './tabs/configuracoes';
-import { AuditoriaTab } from './tabs/auditoria';
+import { IntimacoesTab } from './tabs/notices';
+import { FinalizadasTab } from './tabs/finished';
+import { ConfiguracoesTab } from './tabs/settings';
+import { AuditoriaTab } from './tabs/audit';
 
 type TabKey = 'intimacoes' | 'finalizadas' | 'configuracoes' | 'auditoria';
 
@@ -25,7 +25,11 @@ export default function IntimacoesPage() {
   const [actionItem, setActionItem] = useState<Intimacao | null>(null);
 
   const advogadoOptions = useMemo(
-    () => ['Luiza Medeiros de Jesus', 'Laura Levine Saraiva Muller de Azevedo', 'Marcos Dev Santana'],
+    () => [
+      'Luiza Medeiros de Jesus',
+      'Laura Levine Saraiva Muller de Azevedo',
+      'Marcos Dev Santana',
+    ],
     [],
   );
 
@@ -102,7 +106,8 @@ export default function IntimacoesPage() {
         id: 'f1',
         tribunalSigla: 'TJBA',
         destinatario: 'PEDRO TELES LEITE',
-        descricao: 'Fica(m) a(s) Parte(s), por seu(s) Advogado(s), intimada(s) do evento processual ocorrido e...',
+        descricao:
+          'Fica(m) a(s) Parte(s), por seu(s) Advogado(s), intimada(s) do evento processual ocorrido e...',
         dataDisponibilizacao: '28/01/2026',
         numeroProcesso: '0007354-42.2025.8.05.0113',
         cliente: '—',
@@ -125,7 +130,8 @@ export default function IntimacoesPage() {
         id: 'f2',
         tribunalSigla: 'TJBA',
         destinatario: 'EMILLY OLIVEIRA SANTOS',
-        descricao: 'Fica(m) a(s) Parte(s), por seu(s) Advogado(s), intimada(s) do evento processual ocorrido e...',
+        descricao:
+          'Fica(m) a(s) Parte(s), por seu(s) Advogado(s), intimada(s) do evento processual ocorrido e...',
         dataDisponibilizacao: '26/11/2025',
         numeroProcesso: '0011014-74.2025.8.05.0103',
         cliente: '—',
@@ -207,7 +213,6 @@ export default function IntimacoesPage() {
             Auditoria
           </button>
         </div>
-
       </div>
 
       <section className={styles.panel}>
@@ -290,5 +295,3 @@ export default function IntimacoesPage() {
     </div>
   );
 }
-
-

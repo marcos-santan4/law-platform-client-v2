@@ -1,6 +1,5 @@
 'use client';
 
-import { useMemo } from 'react';
 import {
   FiBriefcase,
   FiUsers,
@@ -8,13 +7,13 @@ import {
   FiFolder,
   FiChevronLeft,
   FiChevronRight,
-  FiCheck,
-  FiBell,
 } from 'react-icons/fi';
-import { ImTrophy } from 'react-icons/im';
-import { IoMdArrowRoundDown } from 'react-icons/io';
-import { MdHelpOutline, MdCake } from 'react-icons/md';
+import { MdHelpOutline } from 'react-icons/md';
 import { SummaryCard } from '../components/summaryCard';
+import { ProcessosPorTag } from './components/casesByTag';
+import { Prazos } from './components/proceduralDeadlines';
+import { AniversariantesDia } from './components/todayBirthdays';
+import { ProcessosPorAdvogado } from './components/casesByLawyer';
 import styles from './styles.module.scss';
 
 const NOVIDADES = [
@@ -57,8 +56,8 @@ const AUDIENCIAS = [
 ];
 
 const PROCESSOS_POR_TAG = [
-  { tag: 'Meu escritório', quantidade: 5, cor: '#ddca92' },
-  { tag: 'teste', quantidade: 3, cor: '#e8a0a0' },
+  { tag: 'Meu escritório', quantidade: 10, cor: '#ddca92' },
+  { tag: 'teste', quantidade: 13, cor: '#e8a0a0' },
 ];
 
 const ADVOGADOS = [
@@ -69,11 +68,6 @@ const ADVOGADOS = [
 ];
 
 export default function DashboardPage() {
-  const totalProcessos = useMemo(
-    () => PROCESSOS_POR_TAG.reduce((acc, p) => acc + p.quantidade, 0),
-    []
-  );
-
   return (
     <div className={styles.dashboard}>
       <div className={styles.topRow}>
@@ -137,128 +131,21 @@ export default function DashboardPage() {
 
       <div className={styles.middleRow}>
         <section className={styles.panel} aria-label="Processos por Tag">
-          <h2 className={styles.panelTitle}>Processos por Tag</h2>
-          <div className={styles.chartWrap}>
-            <div
-              className={styles.donutChart}
-              style={{
-                background: `conic-gradient(${PROCESSOS_POR_TAG.map((p, i) => {
-                  const start = (PROCESSOS_POR_TAG.slice(0, i).reduce((a, x) => a + x.quantidade, 0) / totalProcessos) * 100;
-                  const end = (PROCESSOS_POR_TAG.slice(0, i + 1).reduce((a, x) => a + x.quantidade, 0) / totalProcessos) * 100;
-                  return `${p.cor} ${start}% ${end}%`;
-                }).join(', ')})`,
-              }}
-            >
-              <div className={styles.donutHole}>
-                <span className={styles.donutTotal}>Total de processos</span>
-                <span className={styles.donutValue}>{totalProcessos}</span>
-              </div>
-            </div>
-            <div className={styles.chartLegend}>
-              {PROCESSOS_POR_TAG.map((p) => (
-                <div key={p.tag} className={styles.legendItem}>
-                  <span className={styles.legendDot} style={{ background: p.cor }} />
-                  <span>
-                    {p.tag} ({p.quantidade})
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
+          <ProcessosPorTag data={PROCESSOS_POR_TAG} />
         </section>
 
         <section className={styles.panel} aria-label="Prazos">
-          <div className={styles.panelHeaderRow}>
-            <h2 className={styles.panelTitle}>Prazos</h2>
-            <button type="button" className={styles.helpButton} aria-label="Ajuda">
-              <MdHelpOutline size={18} />
-            </button>
-          </div>
-          <div className={styles.listaPrazos}>
-            {PRAZOS.map((p) => (
-              <div key={p.id} className={styles.prazoItem}>
-                <FiBell size={18} className={styles.prazoIcon} aria-hidden />
-                <div className={styles.prazoContent}>
-                  <div className={styles.prazoTitulo}>
-                    {p.tipo} - Processo {p.processo}
-                  </div>
-                  <div className={styles.prazoMeta}>
-                    {p.data} · {p.advogado}
-                  </div>
-                </div>
-                {p.concluido && (
-                  <div className={styles.prazoCheck} aria-hidden>
-                    <FiCheck size={18} />
-                  </div>
-                )}
-              </div>
-            ))}
-            {AUDIENCIAS.map((a) => (
-              <div key={a.id} className={styles.prazoItem}>
-                <FiBell size={18} className={styles.prazoIcon} aria-hidden />
-                <div className={styles.prazoContent}>
-                  <div className={styles.prazoTitulo}>
-                    {a.tipo} - Processo {a.processo}
-                  </div>
-                  <div className={styles.prazoMeta}>
-                    {a.data} · {a.advogado}
-                  </div>
-                </div>
-                {a.concluido && (
-                  <div className={styles.prazoCheck} aria-hidden>
-                    <FiCheck size={18} />
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
+          <Prazos prazos={PRAZOS} audiencias={AUDIENCIAS} />
         </section>
       </div>
 
       <div className={styles.bottomRow}>
         <section className={styles.panel} aria-label="Aniversariantes do dia">
-          <h2 className={styles.panelTitleWithIcon}>
-            <MdCake size={20} aria-hidden />
-            Aniversariantes do dia
-          </h2>
-          <div className={styles.emptyState}>Nenhum cliente faz aniversário hoje.</div>
+          <AniversariantesDia aniversariantes={[]} />
         </section>
 
         <section className={styles.panel} aria-label="Processos por Advogado">
-          <h2 className={styles.panelTitle}>Processos por Advogado</h2>
-          <div className={styles.tableWrap}>
-            <table className={styles.table}>
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>ADVOGADO</th>
-                  <th>TOTAL DE PROCESSOS</th>
-                </tr>
-              </thead>
-              <tbody>
-                {ADVOGADOS.map((adv) => (
-                  <tr key={adv.email}>
-                    <td>{adv.posicao}º Lugar</td>
-                    <td>
-                      <div className={styles.advInfo}>
-                        <span className={styles.advNameRow}>
-                          {adv.posicao === 1 && (
-                            <ImTrophy size={18} className={styles.trofeu} aria-hidden />
-                          )}
-                          {adv.posicao === 2 && (
-                            <IoMdArrowRoundDown size={18} className={styles.setaVermelha} aria-hidden />
-                          )}
-                          {adv.nome}
-                        </span>
-                        <span className={styles.advEmail}>{adv.email}</span>
-                      </div>
-                    </td>
-                    <td>{adv.processos}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+          <ProcessosPorAdvogado advogados={ADVOGADOS} />
         </section>
       </div>
 

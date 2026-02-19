@@ -4,14 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useRef } from 'react';
-import {
-  FiCalendar,
-  FiBell,
-  FiDollarSign,
-  FiLogOut,
-  FiUsers,
-  FiGrid,
-} from 'react-icons/fi';
+import { FiCalendar, FiBell, FiDollarSign, FiLogOut, FiUsers, FiGrid } from 'react-icons/fi';
 import { FaTasks } from 'react-icons/fa';
 import { ImHammer2 } from 'react-icons/im';
 import { SlCalculator } from 'react-icons/sl';
@@ -22,13 +15,13 @@ import styles from './styles.module.scss';
 
 const NAV_ITEMS = [
   { href: '/dashboard', label: 'Dashboard', icon: FiGrid },
-  { href: '/clientes', label: 'Clientes', icon: FiUsers },
-  { href: '/intimacoes', label: 'Intimações', icon: ImHammer2 },
-  { href: '/casos', label: 'Casos e Processos', icon: TbReportSearch },
-  { href: '/tarefas', label: 'Tarefas', icon: FaTasks },
-  { href: '/financeiro', label: 'Financeiro', icon: FiDollarSign },
-  { href: '/agendamento', label: 'Agendamento', icon: FiCalendar },
-  { href: '/calculadoras', label: 'Calculadoras jurídicas', icon: SlCalculator },
+  { href: '/clients', label: 'Clientes', icon: FiUsers },
+  { href: '/summons', label: 'Intimações', icon: ImHammer2 },
+  { href: '/cases', label: 'Casos e Processos', icon: TbReportSearch },
+  { href: '/tasks', label: 'Tarefas', icon: FaTasks },
+  { href: '/finance', label: 'Financeiro', icon: FiDollarSign },
+  { href: '/schedule', label: 'Agendamento', icon: FiCalendar },
+  { href: '/calculators', label: 'Calculadoras jurídicas', icon: SlCalculator },
 ];
 
 type Props = {
@@ -69,7 +62,13 @@ export function MobileMenu({ open, onClose }: Props) {
   return (
     <>
       <div className={styles.backdrop} aria-hidden="true" />
-      <div ref={menuRef} className={styles.menu} role="dialog" aria-modal="true" aria-label="Menu de navegação">
+      <div
+        ref={menuRef}
+        className={styles.menu}
+        role="dialog"
+        aria-modal="true"
+        aria-label="Menu de navegação"
+      >
         <div className={styles.menuInner}>
           {/* <button
             type="button"
@@ -109,7 +108,12 @@ export function MobileMenu({ open, onClose }: Props) {
           </nav>
 
           <div className={styles.menuFooter}>
-            <Link href="/notificacoes" className={styles.footerItem} onClick={onClose} aria-label="Notificações">
+            <Link
+              href="/notificacoes"
+              className={styles.footerItem}
+              onClick={onClose}
+              aria-label="Notificações"
+            >
               <span className={styles.navIcon} aria-hidden="true">
                 <FiBell size={18} />
               </span>
@@ -128,4 +132,3 @@ export function MobileMenu({ open, onClose }: Props) {
     </>
   );
 }
-

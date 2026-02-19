@@ -1,0 +1,68 @@
+@use '../../../../_variables' as *;
+
+.panelTitle {
+  font-size: 16px;
+  font-weight: 700;
+  color: $deep-teal;
+  margin: 0 0 $spacing-xl;
+}
+
+.tableWrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 400px;
+}
+
+.table th,
+.table td {
+  padding: 12px 10px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  text-align: left;
+  font-size: 14px;
+  color: $deep-teal;
+}
+
+.table th {
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.55);
+}
+
+.advInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.advEmail {
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.6);
+  font-weight: 400;
+}
+
+.advNameRow {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.trofeu {
+  color: $golden;
+}
+
+.setaVermelha {
+  color: #e53e3e;
+}
+
+.emptyState {
+  padding: 32px 0;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.6);
+  font-weight: 600;
+}

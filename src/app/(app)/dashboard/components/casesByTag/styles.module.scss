@@ -1,0 +1,74 @@
+@use '../../../../_variables' as *;
+
+.panelTitle {
+  font-size: 16px;
+  font-weight: 700;
+  color: $deep-teal;
+  margin: 0 0 $spacing-xl;
+}
+
+.chartWrap {
+  display: flex;
+  align-items: center;
+  gap: $spacing-2xl;
+  flex-wrap: wrap;
+}
+
+.donutChart {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.donutHole {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.donutTotal {
+  font-size: 11px;
+  color: rgba(0, 0, 0, 0.55);
+}
+
+.donutValue {
+  font-size: 20px;
+  font-weight: 800;
+  color: $deep-teal;
+}
+
+.chartLegend {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: rgba(0, 0, 0, 0.75);
+}
+
+.legendDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.emptyState {
+  padding: 32px 0;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.6);
+  font-weight: 600;
+}
