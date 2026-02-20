@@ -45,6 +45,7 @@ type Props = {
 export function ViewClientModal({ open, client, onClose, onEdit, onDelete }: Props) {
   const [tab, setTab] = useState<TabKey>('detalhes');
   const [serviceModalOpen, setServiceModalOpen] = useState(false);
+  const [serviceModalKey, setServiceModalKey] = useState(0);
 
   const processes = useMemo(
     () => [
@@ -315,14 +316,17 @@ export function ViewClientModal({ open, client, onClose, onEdit, onDelete }: Pro
                 <input placeholder="Buscar por código ou título" />
               </div>
 
-              <button
-                className={styles.primaryButton}
-                type="button"
-                onClick={() => setServiceModalOpen(true)}
-              >
-                <FiPlus size={18} aria-hidden="true" className={styles.primaryButtonIcon} />
-                <span>Novo Atendimento</span>
-              </button>
+                <button
+                  className={styles.primaryButton}
+                  type="button"
+                  onClick={() => {
+                    setServiceModalKey((prev) => prev + 1);
+                    setServiceModalOpen(true);
+                  }}
+                >
+                  <FiPlus size={18} aria-hidden="true" className={styles.primaryButtonIcon} />
+                  <span>Novo Atendimento</span>
+                </button>
             </div>
 
             <div className={styles.tableWrap}>
@@ -362,6 +366,7 @@ export function ViewClientModal({ open, client, onClose, onEdit, onDelete }: Pro
       </Modal>
 
       <CreateServiceModal
+        key={serviceModalKey}
         open={serviceModalOpen}
         clientName={client.nome}
         onClose={() => setServiceModalOpen(false)}

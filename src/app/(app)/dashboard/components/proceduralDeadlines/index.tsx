@@ -2,7 +2,6 @@
 
 import { useMemo } from 'react';
 import { FiBell, FiCheck } from 'react-icons/fi';
-import { MdHelpOutline } from 'react-icons/md';
 import styles from './styles.module.scss';
 
 export type PrazoItem = {

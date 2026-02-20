@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { FiPlus } from 'react-icons/fi';
 
@@ -42,25 +42,25 @@ function generateCode(): string {
 
 export function CreateServiceModal({ open, clientName, onClose }: Props) {
   const router = useRouter();
-  const [form, setForm] = useState<ServiceForm>(EMPTY_FORM);
-
-  useEffect(() => {
-    if (!open) return;
-    // Gerar código automaticamente quando o modal abre
-    setForm((prev) => ({ ...prev, codigo: generateCode() }));
-  }, [open]);
+  const [form, setForm] = useState<ServiceForm>(() => ({
+    ...EMPTY_FORM,
+    codigo: generateCode(),
+  }));
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Aqui você faria a chamada à API para cadastrar o atendimento
     console.log('Cadastrar atendimento:', form);
-    onClose();
-    setForm(EMPTY_FORM);
+    handleClose();
   };
 
   const handleClose = () => {
+    // Resetar formulário e gerar novo código quando fechar
+    setForm({
+      ...EMPTY_FORM,
+      codigo: generateCode(),
+    });
     onClose();
-    setForm(EMPTY_FORM);
   };
 
   const handleCreateProcess = () => {
