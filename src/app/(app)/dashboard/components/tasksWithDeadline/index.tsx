@@ -1,22 +1,20 @@
 'use client';
 
 import { useMemo } from 'react';
-import { FiBell, FiCheck } from 'react-icons/fi';
+import { FiCheckSquare, FiCheck } from 'react-icons/fi';
 import { MdHelpOutline } from 'react-icons/md';
 import styles from './styles.module.scss';
 
-export type PrazoItem = {
+export type TaskWithDeadlineItem = {
   id: string;
-  tipo: string;
-  processo: string;
+  titulo: string;
   data: string;
-  advogado: string;
+  responsavel: string;
   concluido: boolean;
 };
 
 type Props = {
-  prazos: PrazoItem[];
-  audiencias?: PrazoItem[];
+  tarefas: TaskWithDeadlineItem[];
 };
 
 type StatusCor = 'atrasado' | 'proximo' | 'normal' | 'concluido';
@@ -58,14 +56,14 @@ function parseDataBrasileira(dataStr: string): Date | null {
   }
 }
 
-function getStatusCor(item: PrazoItem): StatusCor {
+function getStatusCor(item: TaskWithDeadlineItem): StatusCor {
   if (item.concluido) return 'concluido';
 
-  const dataPrazo = parseDataBrasileira(item.data);
-  if (!dataPrazo) return 'normal';
+  const dataTarefa = parseDataBrasileira(item.data);
+  if (!dataTarefa) return 'normal';
 
   const agora = new Date();
-  const diffMs = dataPrazo.getTime() - agora.getTime();
+  const diffMs = dataTarefa.getTime() - agora.getTime();
   const diffDias = diffMs / (1000 * 60 * 60 * 24);
 
   if (diffDias < 0) return 'atrasado'; // Atrasado
@@ -73,40 +71,38 @@ function getStatusCor(item: PrazoItem): StatusCor {
   return 'normal';
 }
 
-export function Prazos({ prazos }: Props) {
-  const prazosComStatus = useMemo(
-    () => prazos.map((p) => ({ ...p, statusCor: getStatusCor(p) })),
-    [prazos],
+export function TarefasComPrazo({ tarefas }: Props) {
+  const tarefasComStatus = useMemo(
+    () => tarefas.map((t) => ({ ...t, statusCor: getStatusCor(t) })),
+    [tarefas],
   );
 
   return (
     <>
       <div className={styles.panelHeaderRow}>
-        <h2 className={styles.panelTitle}>Prazos</h2>
+        <h2 className={styles.panelTitle}>Tarefas com prazo</h2>
       </div>
-      <div className={styles.listaPrazos}>
-        {prazosComStatus.length === 0 ? (
-          <div className={styles.emptyState}>Nenhum prazo pendente.</div>
+      <div className={styles.listaTarefas}>
+        {tarefasComStatus.length === 0 ? (
+          <div className={styles.emptyState}>Nenhuma tarefa com prazo pendente.</div>
         ) : (
-          prazosComStatus.map((item) => (
-            <div key={item.id} className={styles.prazoItem}>
-              <FiBell
+          tarefasComStatus.map((item) => (
+            <div key={item.id} className={styles.tarefaItem}>
+              <FiCheckSquare
                 size={18}
-                className={`${styles.prazoIcon} ${styles[`prazoIcon${item.statusCor.charAt(0).toUpperCase() + item.statusCor.slice(1)}`]}`}
+                className={`${styles.tarefaIcon} ${styles[`tarefaIcon${item.statusCor.charAt(0).toUpperCase() + item.statusCor.slice(1)}`]}`}
                 aria-hidden
               />
-              <div className={styles.prazoContent}>
-                <div className={styles.prazoTitulo}>
-                  {item.tipo} - Processo {item.processo}
-                </div>
+              <div className={styles.tarefaContent}>
+                <div className={styles.tarefaTitulo}>{item.titulo}</div>
                 <div
-                  className={`${styles.prazoMeta} ${styles[`prazoMeta${item.statusCor.charAt(0).toUpperCase() + item.statusCor.slice(1)}`]}`}
+                  className={`${styles.tarefaMeta} ${styles[`tarefaMeta${item.statusCor.charAt(0).toUpperCase() + item.statusCor.slice(1)}`]}`}
                 >
-                  {item.data} · {item.advogado}
+                  {item.data} · {item.responsavel}
                 </div>
               </div>
               {item.concluido && (
-                <div className={styles.prazoCheck} aria-hidden>
+                <div className={styles.tarefaCheck} aria-hidden>
                   <FiCheck size={18} />
                 </div>
               )}

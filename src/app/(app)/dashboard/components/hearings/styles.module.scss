@@ -31,13 +31,13 @@
   background: rgba(0, 0, 0, 0.06);
 }
 
-.listaPrazos {
+.listaAudiencias {
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
 
-.prazoItem {
+.audienciaItem {
   display: flex;
   align-items: center;
   gap: 12px;
@@ -46,61 +46,61 @@
   background: rgba(0, 0, 0, 0.02);
 }
 
-.prazoIcon {
+.audienciaIcon {
   flex-shrink: 0;
   color: $golden;
 }
 
-.prazoIconAtrasado {
+.audienciaIconAtrasado {
   color: #d12b2b;
 }
 
-.prazoIconProximo {
+.audienciaIconProximo {
   color: #f59e0b;
 }
 
-.prazoIconNormal {
+.audienciaIconNormal {
   color: $golden;
 }
 
-.prazoIconConcluido {
+.audienciaIconConcluido {
   color: $color-success;
 }
 
-.prazoContent {
+.audienciaContent {
   flex: 1;
   min-width: 0;
 }
 
-.prazoTitulo {
+.audienciaTitulo {
   font-size: 14px;
   font-weight: 600;
   color: $deep-teal;
 }
 
-.prazoMeta {
+.audienciaMeta {
   font-size: 12px;
   color: rgba(0, 0, 0, 0.6);
   margin-top: 4px;
 }
 
-.prazoMetaAtrasado {
+.audienciaMetaAtrasado {
   color: #d12b2b;
 }
 
-.prazoMetaProximo {
+.audienciaMetaProximo {
   color: #f59e0b;
 }
 
-.prazoMetaNormal {
+.audienciaMetaNormal {
   color: rgba(0, 0, 0, 0.6);
 }
 
-.prazoMetaConcluido {
+.audienciaMetaConcluido {
   color: $color-success;
 }
 
-.prazoCheck {
+.audienciaCheck {
   color: $color-success;
   flex-shrink: 0;
 }

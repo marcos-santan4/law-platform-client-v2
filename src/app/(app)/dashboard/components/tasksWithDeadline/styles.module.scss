@@ -31,13 +31,13 @@
   background: rgba(0, 0, 0, 0.06);
 }
 
-.listaPrazos {
+.listaTarefas {
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
 
-.prazoItem {
+.tarefaItem {
   display: flex;
   align-items: center;
   gap: 12px;
@@ -46,61 +46,61 @@
   background: rgba(0, 0, 0, 0.02);
 }
 
-.prazoIcon {
+.tarefaIcon {
   flex-shrink: 0;
   color: $golden;
 }
 
-.prazoIconAtrasado {
+.tarefaIconAtrasado {
   color: #d12b2b;
 }
 
-.prazoIconProximo {
+.tarefaIconProximo {
   color: #f59e0b;
 }
 
-.prazoIconNormal {
+.tarefaIconNormal {
   color: $golden;
 }
 
-.prazoIconConcluido {
+.tarefaIconConcluido {
   color: $color-success;
 }
 
-.prazoContent {
+.tarefaContent {
   flex: 1;
   min-width: 0;
 }
 
-.prazoTitulo {
+.tarefaTitulo {
   font-size: 14px;
   font-weight: 600;
   color: $deep-teal;
 }
 
-.prazoMeta {
+.tarefaMeta {
   font-size: 12px;
   color: rgba(0, 0, 0, 0.6);
   margin-top: 4px;
 }
 
-.prazoMetaAtrasado {
+.tarefaMetaAtrasado {
   color: #d12b2b;
 }
 
-.prazoMetaProximo {
+.tarefaMetaProximo {
   color: #f59e0b;
 }
 
-.prazoMetaNormal {
+.tarefaMetaNormal {
   color: rgba(0, 0, 0, 0.6);
 }
 
-.prazoMetaConcluido {
+.tarefaMetaConcluido {
   color: $color-success;
 }
 
-.prazoCheck {
+.tarefaCheck {
   color: $color-success;
   flex-shrink: 0;
 }

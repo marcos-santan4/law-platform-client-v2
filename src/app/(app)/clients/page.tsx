@@ -42,6 +42,7 @@ type Client = {
 export default function ClientesPage() {
   const [filterOpen, setFilterOpen] = useState(false);
   const [selectedFilter, setSelectedFilter] = useState<FilterOption>('Todos');
+  const [searchQuery, setSearchQuery] = useState<string>('');
   const filterRef = useRef<HTMLDivElement>(null);
   const [createOpen, setCreateOpen] = useState(false);
   const [viewOpen, setViewOpen] = useState(false);
@@ -62,7 +63,7 @@ export default function ClientesPage() {
 
   const filterOptions: FilterOption[] = ['Todos', 'Ativo', 'Inativo'];
 
-  const clients: Client[] = useMemo(
+  const allClients: Client[] = useMemo(
     () => [
       {
         id: '1',
@@ -108,6 +109,27 @@ export default function ClientesPage() {
     [],
   );
 
+  const clients = useMemo(() => {
+    let filtered = allClients;
+
+    // Aplicar filtro de status
+    if (selectedFilter !== 'Todos') {
+      filtered = filtered.filter((c) => c.status === selectedFilter);
+    }
+
+    // Aplicar filtro de pesquisa
+    if (searchQuery.trim()) {
+      const query = searchQuery.toLowerCase().trim();
+      filtered = filtered.filter((c) => {
+        const nomeMatch = c.nome.toLowerCase().includes(query);
+        const cpfMatch = c.cpf?.toLowerCase().includes(query) || false;
+        return nomeMatch || cpfMatch;
+      });
+    }
+
+    return filtered;
+  }, [allClients, selectedFilter, searchQuery]);
+
   return (
     <div>
       {/* <div className={styles.cards}>
@@ -133,7 +155,12 @@ export default function ClientesPage() {
           <div className={styles.searchAndFilter}>
             <div className={styles.search} role="search">
               <FiSearch size={16} aria-hidden="true" />
-              <input placeholder="Buscar por nome ou CPF" />
+              <input
+                type="text"
+                placeholder="Buscar por nome ou CPF"
+                value={searchQuery || ''}
+                onChange={(e) => setSearchQuery(e.target.value)}
+              />
             </div>
 
             <div className={styles.filterInline}>
@@ -196,7 +223,14 @@ export default function ClientesPage() {
             </thead>
             <tbody>
               {clients.map((c) => (
-                <tr key={c.id}>
+                <tr
+                  key={c.id}
+                  className={styles.tableRow}
+                  onClick={() => {
+                    setSelectedClient(c);
+                    setViewOpen(true);
+                  }}
+                >
                   <td>{c.nome}</td>
                   <td>{c.cpf ? c.cpf : '—'}</td>
                   <td className={styles.cellActions}>
@@ -212,7 +246,8 @@ export default function ClientesPage() {
                         type="button"
                         className={styles.actionIconButton}
                         aria-label={`Visualizar ${c.nome}`}
-                        onClick={() => {
+                        onClick={(e) => {
+                          e.stopPropagation();
                           setSelectedClient(c);
                           setViewOpen(true);
                         }}

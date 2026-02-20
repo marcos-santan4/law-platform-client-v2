@@ -5,7 +5,7 @@ import { FiBell, FiCheck } from 'react-icons/fi';
 import { MdHelpOutline } from 'react-icons/md';
 import styles from './styles.module.scss';
 
-export type PrazoItem = {
+export type HearingItem = {
   id: string;
   tipo: string;
   processo: string;
@@ -15,8 +15,7 @@ export type PrazoItem = {
 };
 
 type Props = {
-  prazos: PrazoItem[];
-  audiencias?: PrazoItem[];
+  audiencias: HearingItem[];
 };
 
 type StatusCor = 'atrasado' | 'proximo' | 'normal' | 'concluido';
@@ -58,14 +57,14 @@ function parseDataBrasileira(dataStr: string): Date | null {
   }
 }
 
-function getStatusCor(item: PrazoItem): StatusCor {
+function getStatusCor(item: HearingItem): StatusCor {
   if (item.concluido) return 'concluido';
 
-  const dataPrazo = parseDataBrasileira(item.data);
-  if (!dataPrazo) return 'normal';
+  const dataAudiencia = parseDataBrasileira(item.data);
+  if (!dataAudiencia) return 'normal';
 
   const agora = new Date();
-  const diffMs = dataPrazo.getTime() - agora.getTime();
+  const diffMs = dataAudiencia.getTime() - agora.getTime();
   const diffDias = diffMs / (1000 * 60 * 60 * 24);
 
   if (diffDias < 0) return 'atrasado'; // Atrasado
@@ -73,40 +72,40 @@ function getStatusCor(item: PrazoItem): StatusCor {
   return 'normal';
 }
 
-export function Prazos({ prazos }: Props) {
-  const prazosComStatus = useMemo(
-    () => prazos.map((p) => ({ ...p, statusCor: getStatusCor(p) })),
-    [prazos],
+export function Audiencias({ audiencias }: Props) {
+  const audienciasComStatus = useMemo(
+    () => audiencias.map((a) => ({ ...a, statusCor: getStatusCor(a) })),
+    [audiencias],
   );
 
   return (
     <>
       <div className={styles.panelHeaderRow}>
-        <h2 className={styles.panelTitle}>Prazos</h2>
+        <h2 className={styles.panelTitle}>Audiências</h2>
       </div>
-      <div className={styles.listaPrazos}>
-        {prazosComStatus.length === 0 ? (
-          <div className={styles.emptyState}>Nenhum prazo pendente.</div>
+      <div className={styles.listaAudiencias}>
+        {audienciasComStatus.length === 0 ? (
+          <div className={styles.emptyState}>Nenhuma audiência pendente.</div>
         ) : (
-          prazosComStatus.map((item) => (
-            <div key={item.id} className={styles.prazoItem}>
+          audienciasComStatus.map((item) => (
+            <div key={item.id} className={styles.audienciaItem}>
               <FiBell
                 size={18}
-                className={`${styles.prazoIcon} ${styles[`prazoIcon${item.statusCor.charAt(0).toUpperCase() + item.statusCor.slice(1)}`]}`}
+                className={`${styles.audienciaIcon} ${styles[`audienciaIcon${item.statusCor.charAt(0).toUpperCase() + item.statusCor.slice(1)}`]}`}
                 aria-hidden
               />
-              <div className={styles.prazoContent}>
-                <div className={styles.prazoTitulo}>
+              <div className={styles.audienciaContent}>
+                <div className={styles.audienciaTitulo}>
                   {item.tipo} - Processo {item.processo}
                 </div>
                 <div
-                  className={`${styles.prazoMeta} ${styles[`prazoMeta${item.statusCor.charAt(0).toUpperCase() + item.statusCor.slice(1)}`]}`}
+                  className={`${styles.audienciaMeta} ${styles[`audienciaMeta${item.statusCor.charAt(0).toUpperCase() + item.statusCor.slice(1)}`]}`}
                 >
                   {item.data} · {item.advogado}
                 </div>
               </div>
               {item.concluido && (
-                <div className={styles.prazoCheck} aria-hidden>
+                <div className={styles.audienciaCheck} aria-hidden>
                   <FiCheck size={18} />
                 </div>
               )}

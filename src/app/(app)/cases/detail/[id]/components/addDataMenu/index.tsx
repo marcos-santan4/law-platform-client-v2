@@ -1,7 +1,7 @@
 'use client';
 
 import { FiPlus } from 'react-icons/fi';
-import { DropdownMenu, type DropdownMenuItem } from '../../../../components/dropdownMenu';
+import { DropdownMenu, type DropdownMenuItem } from '../../../../../components/dropdownMenu';
 import styles from './styles.module.scss';
 
 export type AddDataAction = 'movement' | 'coverField' | 'party' | 'document';

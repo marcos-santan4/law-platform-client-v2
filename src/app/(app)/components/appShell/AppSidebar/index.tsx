@@ -21,6 +21,7 @@ import { TbReportSearch } from 'react-icons/tb';
 import logo from '../../../../../../public/images/logos/logo-mindlaw.png';
 import logoCollapsed from '../../../../../../public/images/logos/logo-mindlaw2.png';
 import styles from '../styles.module.scss';
+import { LogoutButton } from '../LogoutButton';
 
 const NAV_ITEMS = [
   { href: '/dashboard', label: 'Dashboard', icon: FiGrid },
@@ -94,12 +95,12 @@ export function AppSidebar({ collapsed, onToggleCollapsed }: AppSidebarProps) {
             <span>Notificações</span>
           </Link>
 
-          <Link href="/authentication/login" className={styles.footerItem}>
+          <LogoutButton className={styles.footerItem}>
             <span className={styles.navIcon} aria-hidden="true">
               <FiLogOut size={18} />
             </span>
             <span>Sair</span>
-          </Link>
+          </LogoutButton>
         </div>
       </div>
     </aside>

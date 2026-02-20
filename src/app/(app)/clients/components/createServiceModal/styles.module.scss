@@ -1,0 +1,86 @@
+@use '../../../../_mixins' as *;
+@use '../../../../_variables' as *;
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.createProcessSection {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+  padding: 16px;
+  background: rgba(0, 0, 0, 0.02);
+  border-radius: 10px;
+}
+
+.createProcessText {
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.7);
+  font-weight: 500;
+}
+
+.createProcessButton {
+  @include button-primary;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.grid2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  align-items: start;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 1px;
+}
+
+.label {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--deepTeal);
+}
+
+.required {
+  color: #d12b2b;
+}
+
+.input {
+  @include form-input;
+}
+
+.textarea {
+  @include form-input;
+  resize: vertical;
+  min-height: 100px;
+  font-family: inherit;
+}
+
+.primaryButton {
+  @include button-primary;
+}
+
+.secondaryButton {
+  @include button-secondary;
+}

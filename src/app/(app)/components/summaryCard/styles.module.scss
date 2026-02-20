@@ -6,7 +6,7 @@
   padding: $spacing-xl;
   border: 1px solid rgba(0, 0, 0, 0.08);
   display: flex;
-  flex-direction: column;
+  // flex-direction: column;
   gap: 8px;
 }
 
@@ -26,12 +26,13 @@
   display: flex;
   align-items: center;
   gap: 12px;
+  height: 100%;
 }
 
 .iconWrap {
   width: 44px;
   height: 44px;
-  border-radius: 10px;
+  border-radius: 90px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -74,16 +75,23 @@
   justify-content: center;
 }
 
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-left: 12px;
+}
+
 .title {
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 0.08em;
+  font-size: 16px;
+  font-weight: 300;
   color: rgba(0, 0, 0, 0.55);
+  text-transform: none;
 }
 
 .value {
-  font-size: 28px;
-  font-weight: 900;
+  font-size: 24px;
+  font-weight: 700;
   color: $deep-teal;
 
   @media (max-width: 768px) {

@@ -152,6 +152,10 @@
   color: rgba(255, 255, 255, 0.9);
   transition: background 0.15s ease;
   text-decoration: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font: inherit;
 }
 
 .footerItem:hover {

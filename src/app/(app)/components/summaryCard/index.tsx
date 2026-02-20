@@ -39,19 +39,21 @@ export function SummaryCard(props: Props) {
             {icon}
           </span>
         </div>
-        <div className={styles.title}>{title}</div>
       </div>
-      {variant === 'single' && <div className={styles.value}>{props.value}</div>}
-      {(variant === 'double' || variant === 'triple') && (
-        <div className={styles[`grid_${variant}`]}>
-          {props.items.map((item) => (
-            <div key={item.label} className={styles.gridItem}>
-              <span className={styles.gridLabel}>{item.label}</span>
-              <span className={styles.gridValue}>{item.value}</span>
-            </div>
-          ))}
-        </div>
-      )}
+      <div className={styles.content}>
+        <div className={styles.title}>{title}</div>
+        {variant === 'single' && <div className={styles.value}>{props.value}</div>}
+        {(variant === 'double' || variant === 'triple') && (
+          <div className={styles[`grid_${variant}`]}>
+            {props.items.map((item) => (
+              <div key={item.label} className={styles.gridItem}>
+                <span className={styles.gridLabel}>{item.label}</span>
+                <span className={styles.gridValue}>{item.value}</span>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
     </div>
   );
 }

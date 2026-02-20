@@ -8,7 +8,7 @@ $modal-width-sm: 760px;
 $modal-height-sm: 640px;
 $modal-width-md: 980px;
 $modal-height-md: 760px;
-$modal-width-lg: 1200px;
+$modal-width-lg: 1080px;
 $modal-height-lg: 860px;
 $modal-width-xl: 1400px;
 $modal-height-xl: 900px;
@@ -90,27 +90,26 @@ $modal-height-xl: 900px;
 
 @mixin modal-title($size: md, $color: $deep-teal) {
   margin: 0;
-  font-weight: 800;
-  letter-spacing: -0.01em;
+  font-weight: 400;
   color: $color;
 
   @if $size == sm {
-    font-size: 20px;
+    font-size: 18px;
   } @else if $size == md {
-    font-size: 22px;
+    font-size: 20px;
   } @else if $size == lg {
-    font-size: 26px;
-  } @else if $size == xl {
-    font-size: 28px;
-  } @else {
     font-size: 22px;
+  } @else if $size == xl {
+    font-size: 24px;
+  } @else {
+    font-size: 16px;
   }
 }
 
 @mixin modal-subtitle {
-  font-size: 18px;
+  font-size: 22px;
   font-weight: 600;
-  color: rgba($deep-teal, 0.8);
+  color: $deep-teal;
 }
 
 @mixin modal-body {

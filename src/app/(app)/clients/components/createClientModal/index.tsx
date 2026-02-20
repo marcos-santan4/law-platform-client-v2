@@ -1,9 +1,9 @@
 'use client';
 
-import { useCallback, useEffect, useId, useMemo, useRef, useState } from 'react';
-import { IoMdClose } from 'react-icons/io';
+import { useCallback, useMemo, useRef, useState } from 'react';
 import { FaRegCalendar } from 'react-icons/fa';
 
+import { Modal } from '../../../components/modal';
 import { DropdownSelect } from '../../../components/dropdownSelect';
 import styles from './styles.module.scss';
 
@@ -106,8 +106,6 @@ const EMPTY_FORM: ClientForm = {
 };
 
 export function CreateClientModal({ open, onClose }: Props) {
-  const titleId = useId();
-  const closeBtnRef = useRef<HTMLButtonElement | null>(null);
   const birthDateInputRef = useRef<HTMLInputElement | null>(null);
   const [step, setStep] = useState<Step>(0);
   const [form, setForm] = useState<ClientForm>(EMPTY_FORM);
@@ -125,60 +123,74 @@ export function CreateClientModal({ open, onClose }: Props) {
     return true;
   }, [form.nome, step]);
 
-  useEffect(() => {
-    if (!open) return;
-    closeBtnRef.current?.focus();
-
-    function onKeyDown(e: KeyboardEvent) {
-      if (e.key === 'Escape') closeAndReset();
-    }
-
-    window.addEventListener('keydown', onKeyDown);
-    return () => window.removeEventListener('keydown', onKeyDown);
-  }, [closeAndReset, open]);
-
-  if (!open) return null;
-
   const stepLabel = step === 0 ? 'Dados pessoais' : step === 1 ? 'Contato' : 'Endereço';
 
+  const subtitle = (
+    <div className={styles.stepper} aria-label="Etapas do cadastro">
+      <div className={styles.dots} aria-hidden="true">
+        <span className={`${styles.dot} ${step === 0 ? styles.dotActive : ''}`} />
+        <span className={`${styles.dot} ${step === 1 ? styles.dotActive : ''}`} />
+        <span className={`${styles.dot} ${step === 2 ? styles.dotActive : ''}`} />
+      </div>
+      <span className={styles.stepText}>
+        {step + 1} / 3 — {stepLabel}
+      </span>
+    </div>
+  );
+
   return (
-    <div
-      className={styles.backdrop}
-      role="presentation"
-      onMouseDown={(e) => {
-        if (e.target === e.currentTarget) closeAndReset();
-      }}
-    >
-      <div className={styles.dialog} role="dialog" aria-modal="true" aria-labelledby={titleId}>
-        <header className={styles.header}>
-          <div className={styles.headerLeft}>
-            <h2 className={styles.headerTitle} id={titleId}>
-              Cadastrar cliente
-            </h2>
-            <div className={styles.stepper} aria-label="Etapas do cadastro">
-              <div className={styles.dots} aria-hidden="true">
-                <span className={`${styles.dot} ${step === 0 ? styles.dotActive : ''}`} />
-                <span className={`${styles.dot} ${step === 1 ? styles.dotActive : ''}`} />
-                <span className={`${styles.dot} ${step === 2 ? styles.dotActive : ''}`} />
-              </div>
-              <span className={styles.stepText}>
-                {step + 1} / 3 — {stepLabel}
-              </span>
-            </div>
-          </div>
-
+    <Modal
+      open={open}
+      onClose={closeAndReset}
+      title="Cadastrar cliente"
+      subtitle={subtitle}
+      size="lg"
+      footer={
+        <>
           <button
-            ref={closeBtnRef}
             type="button"
-            className={styles.iconClose}
-            onClick={closeAndReset}
-            aria-label="Fechar"
+            className={styles.secondaryButton}
+            onClick={() => {
+              if (step > 0) {
+                setStep((s) => (s - 1) as Step);
+              } else {
+                closeAndReset();
+              }
+            }}
           >
-            <IoMdClose size={18} />
+            {step === 0 ? 'Voltar' : 'Anterior'}
           </button>
-        </header>
-
-        <div className={styles.body}>
+          {step < 2 ? (
+            <button
+              type="button"
+              className={styles.primaryButton}
+              onClick={() => {
+                if (step === 0 && !form.nome.trim()) {
+                  setTouched((p) => ({ ...p, nome: true }));
+                  return;
+                }
+                setStep((s) => (s + 1) as Step);
+              }}
+              disabled={!canGoNext}
+            >
+              Próximo
+            </button>
+          ) : (
+            <button
+              type="button"
+              className={styles.primaryButton}
+              onClick={() => {
+                // Aqui você faria a chamada à API para cadastrar o cliente
+                console.log('Cadastrar cliente:', form);
+                closeAndReset();
+              }}
+            >
+              Salvar
+            </button>
+          )}
+        </>
+      }
+    >
           {step === 0 ? (
             <section className={styles.section} aria-label="Dados pessoais">
               <div className={styles.grid3}>
@@ -434,46 +446,6 @@ export function CreateClientModal({ open, onClose }: Props) {
               </div>
             </section>
           ) : null}
-        </div>
-
-        <footer className={styles.footer}>
-          <button
-            type="button"
-            className={styles.secondaryButton}
-            onClick={() => setStep((s) => (s > 0 ? ((s - 1) as Step) : s))}
-            disabled={step === 0}
-          >
-            Anterior
-          </button>
-
-          {step < 2 ? (
-            <button
-              type="button"
-              className={styles.primaryButton}
-              onClick={() => {
-                if (step === 0 && !form.nome.trim()) {
-                  setTouched((p) => ({ ...p, nome: true }));
-                  return;
-                }
-                setStep((s) => (s + 1) as Step);
-              }}
-              disabled={!canGoNext}
-            >
-              Próximo
-            </button>
-          ) : (
-            <button
-              type="button"
-              className={styles.primaryButton}
-              onClick={() => {
-                closeAndReset();
-              }}
-            >
-              Salvar
-            </button>
-          )}
-        </footer>
-      </div>
-    </div>
+    </Modal>
   );
 }

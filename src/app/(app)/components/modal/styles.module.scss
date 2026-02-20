@@ -1,0 +1,81 @@
+@use '../../../_mixins' as *;
+@use '../../../_variables' as *;
+
+.backdrop {
+  @include modal-backdrop;
+}
+
+.dialog {
+  @include modal-dialog-md;
+  grid-template-rows: auto 1fr auto;
+}
+
+.dialogSm {
+  width: min(1050px, 100%);
+  max-height: min(600px, calc(100vh - 48px));
+}
+
+.dialogMd {
+  width: min(1050px, 100%);
+  max-height: min(700px, calc(100vh - 48px));
+}
+
+.dialogLg {
+  width: min(1050px, 100%);
+  max-height: min(820px, calc(100vh - 48px));
+}
+
+.header {
+  @include modal-header;
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.headerCenter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  flex: 1;
+  text-align: center;
+}
+
+.headerTitle {
+  @include modal-title(xl);
+  margin: 0;
+}
+
+.headerSubtitle {
+  @include modal-subtitle;
+}
+
+.iconClose {
+  @include modal-close-button;
+  position: absolute;
+  top: $spacing-xl;
+  right: $spacing-xl;
+  flex-shrink: 0;
+}
+
+.body {
+  padding: 22px;
+  overflow: auto;
+  flex: 1;
+}
+
+.footer {
+  @include modal-footer;
+}
+
+@media (max-width: 520px) {
+  .backdrop {
+    padding: 14px;
+  }
+
+  .body {
+    padding: 16px;
+  }
+}
